@@ -715,7 +715,8 @@ a {
   /* padding:0 0 50px 0; */
   padding: 70px 0px 64px 0px; 
   /* background-color: #f5f5f5; */
-  background-image: url(/assetsimages/serv-bg.png);
+  /* background-image: url(/assetsimages/serv-bg.png); */
+  background-image: url(../public/assets/images/serv-bg.png);
   background-size: 50.3% 100%;
   background-position: top left;
   background-repeat: no-repeat;
@@ -1957,7 +1958,8 @@ img.port-shw {
 .why_abt {
   position: relative;
   padding-bottom: 75px;
-  background: url(/assetsimages/image2.png);
+  /* background: url(../assetsimages/image2.png); */
+  background: url(../public/assets/images/image2.png);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -2087,7 +2089,7 @@ img.port-shw {
 }
 
 .meter-box p {
-  color: #A6A6A6;
+  color: #767373;
   font-size: 20px;
   font-family: Segoe UI;
   font-weight: 600;

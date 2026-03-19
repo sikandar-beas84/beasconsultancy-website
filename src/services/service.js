@@ -43,7 +43,7 @@ export const getDataService = async (url) => {
     }
 };
 export const postService = async (url,slug) => {
-    console.log(slug)
+
     try {
         const responseObj = await fetch(`${env.API_BASE_URL}${url}`, {
             method: 'post',

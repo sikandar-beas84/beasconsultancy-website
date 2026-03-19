@@ -1,0 +1,1637 @@
+@media (min-width: 1921px) {
+    .navbar-light .nav-link {
+      padding: 7px 25px 7px 0px !important;
+    }
+  
+    .about_imgs img {
+      min-width: 100%;
+    }
+  
+    .skill-wrap-img {
+      background: #0081D2;
+    }
+  
+    .textP div {
+      font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 29px;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      color: #000;
+    }
+  
+    .accordion-body {
+      background: transparent;
+      color: black;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 30px;
+      word-wrap: break-word;
+    }
+  
+    .serv-head {
+      margin: 0 auto 38px auto;
+      width: 70%;
+    }
+  
+    .port-box {
+      margin: 0 15px;
+    }
+  
+    .port-box h3 {
+      color: black;
+      font-size: 20px;
+      font-weight: 600;
+      word-wrap: break-word;
+    }
+  }
+  
+  /* 1921 */
+  @media (max-width: 1920.98px) {
+    /* .emblem {
+      width: 8vh;
+      height: 8vh;
+    }
+  
+    .wpp-iicon img {
+      position: relative;
+      top: 57.9vh;
+      left: 36px;
+  } */
+  
+    .navbar-light .nav-link {
+      padding: 7px 25px 7px 0px !important;
+      font-size: 14px;
+    }
+  
+    .about_imgs img {
+      min-width: 100%;
+      height: 100% !important;
+    }
+  
+    .skill-wrap-img {
+      background: #0081D2;
+    }
+  
+    .textP div {
+      font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 29px;
+      letter-spacing: 0.02em;
+      margin-bottom: 0;
+      color: #000;
+    }
+  
+    .accordion-body {
+      /* background: transparent; */
+      color: black;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 30px;
+      word-wrap: break-word;
+    }
+  
+    .serv-head {
+      margin: 0 auto 38px auto;
+      width: 70%;
+    }
+  
+    .port-box {
+      margin: 0 15px;
+    }
+  
+    .port-box h3 {
+      color: black;
+      font-size: 17px;
+      font-weight: 600;
+      word-wrap: break-word;
+      min-height: 100px;
+      ;
+    }
+  }
+  
+  @media (max-width: 1500.98px) {
+    /* .wpp-iicon img {
+      position: relative;
+      top: 58vh;
+      left: 19px;
+  } */
+  }
+  
+  /* 1400-1920 */
+  @media (max-width: 1399.98px) {
+  
+    /* .emblem {
+      width: 15vh;
+      height: 15vh;
+  }
+  .wpp-iicon img {
+    position: relative;
+    top: 59vh;
+    left: 30px;
+  } */
+    .navbar-light .nav-link {
+      padding: 7px 15px 7px 0px !important;
+    }
+  
+    .navbar-brand img {
+      max-width: 234px;
+    }
+  
+    .breadcrumbWrap,
+    .section-padding,
+    .meter-area {
+      padding: 90px 0;
+    }
+  
+    .why_abt,
+    .section-abuts {
+      padding-bottom: 0px;
+    }
+  
+    .inner-page-title {
+      font-size: 32px;
+    }
+  
+    .textP div {
+      font-size: 16px;
+    }
+  
+    .inner-page-title-small {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+  
+    .serv-head h1.inner-page-title.mb-2.text-center {
+      font-size: 32px;
+    }
+  
+    .accordion-body,
+    .serv-head p.text-center {
+      font-size: 16px;
+      line-height: 26px;
+    }
+  
+    .inner-page-title {
+      font-size: 34px;
+    }
+  
+    .inner-page-text {
+      font-size: 17px;
+    }
+  
+    .skill-wrap-head-text {
+      font-size: 19px !important;
+    }
+  
+    .sill-wrap-text,
+    .job-experience-txt,
+    .skill-wrap button {
+      font-size: 15px !important;
+    }
+  
+    .about_texts h1 {
+      font-size: 34px;
+      line-height: 41px;
+    }
+  
+    .about_texts p {
+      font-size: 17px;
+      line-height: 27px;
+    }
+  
+    .services-text h2 {
+      font-size: 28px;
+      line-height: 35px;
+    }
+  
+    .services-text p {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  
+    .proc-btn {
+      font-size: 18px;
+      line-height: 23px;
+    }
+  
+    .job-details-block-card h2 {
+      font-size: 34px;
+    }
+  
+    .job-details-inner-block li {
+      font-size: 16px;
+    }
+  
+    .job-details-title {
+      font-size: 19px;
+    }
+  
+    .portfolio .blog-hm-desc {
+      height: 86px;
+      margin-bottom: 14px;
+    }
+  
+    /* .process-inr {
+      background-image: linear-gradient(to left, #302F2F 50%, transparent 50%);
+      overflow: hidden;
+    } */
+  
+    /* .tabcontent {
+      position: relative;
+    } */
+  
+    .tabcontent {
+      background: #302F2F;
+    }
+  
+    /* .tabcontent::before {
+      background: #302F2F;
+      content: "";
+      position: absolute;
+      top: -38px;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+    } */
+  
+    .proc-img img {
+      margin-left: 23px !important;
+    }
+  
+    .service-inr p.blog-hm-desc {
+      height: 90px;
+    }
+  
+    .srvc-bxtx p:last-of-type {
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+  
+    .srvc-box {
+      padding: 30px 13px;
+    }
+  
+    /* .why-box h3 {
+      min-height: 115px;
+    } */
+  
+    /* Hero Title (64px) */
+    .breadcrumbWrap .pageTitle{
+      font-size: 32px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+  
+    .bnr-txt h1 {
+      font-size: 50px;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    /* Section Title (48px) */
+    .contact_form_heading h2,
+    .serv-head h2,
+    .inner-page-title,
+    .inner-page-title-small {
+      font-size: 42px;
+      line-height: 1.25;
+    }
+  
+    /* Subtitle (20px) */
+    .breadcrumbWrap .pgNameListing ul li,
+    .breadcrumbWrap .pgNameListing ul li a,
+    .map_location_icon_cont h1,
+    button.red-btn.w-100.mt-3.post-job-btn,
+    .accordion-header .accordion-button,
+    .footer-txt,
+    .accordion-button:not(.collapsed),
+    .skill-wrap-head-text,
+    .port-box h3,
+    .bnr-txt p,
+    .serv-head p,
+    .stat-box p,
+    .why-box h3,
+    .port-hd-txt p {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+    .srvc-bxtx h3{ font-size: 17px;
+      line-height: 1.5;}
+  
+    /* Paragraph Large (18px) */
+    .about_texts p,
+    .about_texts p,
+    .inner-page-text,
+    .serv-head p.text-center {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+  
+    /* Paragraph Normal (17px) */
+  
+    /* Small Text (16px) */
+    .map_location_icon_cont h3,
+    .contact_inputs input,
+    .footer-list li a,
+    .get-in-touch-block li,
+    .sill-wrap-text,
+    .job-experience-txt,
+    .skill-wrap button {
+      font-size: 15px;
+      line-height: 1.65;
+    }
+  
+    /* Caption (15px) */
+    .breadcrumbWrap {
+      padding: 105px 0;
+    }
+  
+    .section-padding {
+      padding: 45px 0;
+    }
+  
+    .section-abuts {
+      padding-bottom: 45px;
+    }
+  
+    footer {
+      padding: 45px 0 0 0;
+    }
+  
+    .why {
+      padding: 45px 0;
+      margin-bottom: 45px;
+    }
+  
+    .portfolio {
+      margin-bottom: 45px;
+    }
+  
+    .more {
+      margin-bottom: 45px;
+    }
+  
+    .tachnology {
+      margin-bottom: 45px;
+    }
+  
+    .testimonial {
+      padding: 45px 0px 45px 0px;
+    }
+  
+    .Blogs {
+      padding: 45px 0;
+    }
+  }
+  
+  /* 1200-1399 */
+  @media (max-width: 1199.98px) {
+    /* .wpp-iicon img {
+      position: relative;
+      top: 59vh;
+      left: 25px;
+    } */
+  
+    .navbar-brand img {
+      max-width: 163px;
+    }
+  
+    .navbar-light .nav-link {
+      padding: 7px 10px 7px 0px !important;
+    }
+  
+    .navbar-light .nav-link {
+      font-size: 13px;
+    }
+  
+    .about_imgs {
+      padding-right: 0;
+    }
+  
+    .about_texts h1,
+    .why_abuts h2,
+    .meter-box span,
+    .breadcrumbWrap .pageTitle {
+      font-size: 32px;
+      line-height: 42px;
+    }
+  
+    .about_texts p,
+    .our_box_mi p,
+    .why_abuts ul li,
+    .meter-box p,
+    .breadcrumbWrap .pgNameListing ul li,
+    .breadcrumbWrap .pgNameListing ul li a {
+      font-size: 16px;
+      line-height: 23px;
+    }
+  
+    .our_box_mi h2,
+    .meter-area h2 {
+      font-size: 24px;
+      line-height: 28px;
+    }
+  
+    .meter-area h2 {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .breadcrumbWrap,
+    .section-padding,
+    .meter-area {
+      padding: 40px 0;
+    }
+  
+    .why_abt,
+    .section-abuts {
+      padding-bottom: 40px;
+    }
+  
+    .inner-page-title {
+      font-size: 24px;
+    }
+  
+    .skill-wrap-head-text,
+    .sill-wrap-text {
+      font-size: 16px;
+    }
+  
+    .inner-page-title-small,
+    .serv-head h1.inner-page-title.mb-2.text-center {
+      font-size: 24px;
+    }
+  
+    .port-box h3,
+    .accordion-header .accordion-button,
+    .accordion-header {
+      font-size: 18px;
+    }
+  
+    .accordion-header .accordion-button:not(.collapsed) {
+      font-size: 18px;
+    }
+  
+    .inner-page-title {
+      font-size: 32px;
+    }
+  
+    .inner-page-text {
+      font-size: 17px;
+    }
+  
+    .skill-wrap-head-text {
+      font-size: 18px !important;
+    }
+  
+    .sill-wrap-text,
+    .job-experience-txt,
+    .skill-wrap button {
+      font-size: 14px !important;
+    }
+  
+    .about_texts h1 {
+      font-size: 32px;
+      line-height: 39px;
+    }
+  
+    .services-text h2 {
+      font-size: 26px;
+      line-height: 33px;
+    }
+  
+    .job-details-block-card h2 {
+      font-size: 32px;
+    }
+  
+    .job-details-inner-block li {
+      font-size: 16px;
+    }
+  
+    .job-details-title {
+      font-size: 18px;
+    }
+  
+    .contact_right_box {
+      padding: 30px 20px 1px;
+    }
+  
+    .map_location_icon_cont {
+      margin-left: 20px;
+    }
+  
+    .map_location_icon img {
+      max-width: 32px;
+    }
+  
+    .why-box.why-1 p {
+      min-height: unset;
+      margin-bottom: 0;
+    }
+  
+    .mr-btn {
+      width: unset;
+      white-space: nowrap;
+    }
+  
+    .guidtext h5,
+    .guidtext h5 a {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  
+    .Blogs .blog-hm-title {
+      height: unset;
+    }
+  
+    .Blogs .blog-hm-desc {
+      height: 100px;
+    }
+  
+    .Blogs img.port-shw {
+      height: 100%;
+    }
+  
+    /* Hero Title (64px) */
+    .breadcrumbWrap .pageTitle,
+    .bnr-txt h1 {
+      font-size: 48px;
+      line-height: 1.25;
+    }
+  
+    /* Section Title (48px) */
+    .contact_form_heading h2,
+    .serv-head h2,
+    .inner-page-title,
+    .inner-page-title-small,
+    .serv-head h1.inner-page-title.mb-2.text-center,
+    .stat-box h3,
+    .port-hd-txt h2,
+    .proc-deet,
+    .mr-txt-lft h2,
+    .tech-hd h2,
+    .Blogs-head h2 {
+      font-size: 36px;
+      line-height: 1.25;
+    }
+  
+    /* Subtitle (20px) */
+    .breadcrumbWrap .pgNameListing ul li,
+    .breadcrumbWrap .pgNameListing ul li a,
+    .map_location_icon_cont h1,
+    button.red-btn.w-100.mt-3.post-job-btn,
+    .accordion-header .accordion-button,
+    .footer-txt,
+    .accordion-button:not(.collapsed),
+    .skill-wrap-head-text,
+    .bnr-txt p,
+    .serv-head p,
+    .srvc-bxtx h3,
+    .why-box h3,
+    .port-hd-txt p,
+    .tab button,
+    .mr-txt-lft p,
+    .mr-btn,
+    .tech-hd p,
+    .quote-txt p,
+    .Blogs-head p {
+      font-size: 18px;
+      line-height: 1.55;
+    }
+  
+    /* Paragraph Large (18px) */
+    .about_texts p,
+    .about_texts p,
+    .inner-page-text {
+      font-size: 17px;
+      line-height: 1.65;
+    }
+  
+    /* Paragraph Normal (17px) */
+    button.btn.btn-outline-primary,
+    .sill-wrap-text {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  
+    /* Small Text (16px) */
+    .map_location_icon_cont h3,
+    .contact_inputs input,
+    .footer-list li a,
+    .get-in-touch-block li,
+    .why-box p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  
+    /* Caption (15px) */
+    .breadcrumbWrap {
+      padding: 40px 0;
+    }
+  
+    .section-padding {
+      padding: 40px 0;
+    }
+  
+    .section-abuts {
+      padding-bottom: 40px;
+    }
+  
+    footer {
+      padding: 40px 0 0 0;
+    }
+  
+  
+    .why {
+      padding: 40px 0;
+      margin-bottom: 40px;
+    }
+  
+    .portfolio {
+      margin-bottom: 40px;
+    }
+  
+    .more {
+      margin-bottom: 40px;
+    }
+  
+    .tachnology {
+      margin-bottom: 40px;
+    }
+  
+    .testimonial {
+      padding: 40px 0px 40px 0px;
+    }
+  
+    .Blogs {
+      padding: 40px 0;
+    }
+  
+    .banner img {
+      height: unset;
+    }
+  
+  
+  }
+  
+  /* 992-1199 */
+  @media (max-width: 991.98px) {
+    .proc-deet {
+      flex-direction: column;
+    }
+  
+    .proc-img {
+      flex: 0 0 100%;
+    }
+  
+    .proc-text h2 {
+      font-size: 22px;
+      margin-bottom: 0;
+    }
+  
+    .breadcrumbWrap,
+    .section-padding,
+    .meter-area {
+      padding: 30px 0;
+    }
+  
+    .why_abt,
+    .section-abuts {
+      padding-bottom: 30px;
+    }
+  
+    .why_abuts {
+      padding-top: 30px;
+    }
+  
+    .about_texts h1,
+    .why_abuts h2,
+    .meter-box span,
+    .breadcrumbWrap .pageTitle {
+      font-size: 24px;
+      line-height: 33px;
+    }
+  
+    .py-5.container {
+      padding-top: 25px !important;
+      padding-bottom: 25px !important;
+    }
+  
+    .inner-page-title {
+      font-size: 20px;
+    }
+  
+    .textP div,
+    .sill-wrap-text {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  
+    .pgNameListing ul li:before {
+      top: 0;
+    }
+  
+    .serv-head {
+      width: 100%;
+    }
+  
+    .accordion-body,
+    .serv-head p.text-center {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  
+    .port-box h3,
+    .accordion-header .accordion-button,
+    .accordion-header {
+      font-size: 16px;
+    }
+  
+    .accordion-header .accordion-button:not(.collapsed) {
+      font-size: 16px;
+    }
+  
+    .port-box h3 {
+      padding: 15px;
+    }
+  
+    .inner-page-title {
+      font-size: 28px;
+    }
+  
+    .inner-page-text {
+      font-size: 16px;
+    }
+  
+    .skill-wrap-head-text {
+      font-size: 17px !important;
+    }
+  
+    .sill-wrap-text,
+    .job-experience-txt,
+    .skill-wrap button {
+      font-size: 14px !important;
+    }
+  
+    .about_texts h1 {
+      font-size: 28px;
+      line-height: 35px;
+    }
+  
+    .about_texts p {
+      font-size: 16px;
+      line-height: 23px;
+    }
+  
+    .services-text h2 {
+      font-size: 24px;
+      line-height: 31px;
+    }
+  
+    .services-text p {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  
+    .proc-btn {
+      font-size: 17px;
+      line-height: 24px;
+    }
+  
+    .job-details-block-card h2 {
+      font-size: 28px;
+    }
+  
+    .job-details-inner-block li {
+      font-size: 16px;
+    }
+  
+    .job-details-title {
+      font-size: 17px;
+    }
+  
+  
+    /* nav css */
+    nav .container {
+      position: relative;
+    }
+  
+    .navbar-nav-scroll {
+      overflow-y: unset;
+      max-height: unset !important;
+      background: #fff;
+    }
+  
+    .navbar-light .dropdown-menu {
+      border-radius: 0;
+    }
+  
+    .navbar-collapse {
+      position: absolute;
+      width: 100%;
+      background: #fff;
+      top: 111%;
+      left: 0;
+      z-index: 99;
+      padding: 15px;
+    }
+  
+    .contact_form_box {
+      padding-right: 0;
+    }
+  
+    .srvc-box {
+      border-right: 1px solid #D9D9D9 !important;
+      border-top: 1px solid #D9D9D9;
+    }
+  
+    .srvc-txt-top::before,
+    .srvc-txt-top::after {
+      display: none;
+    }
+  
+    .service-inr p.blog-hm-desc {
+      height: 80px;
+    }
+  
+    .counter {
+      margin-bottom: 25px;
+    }
+  
+    .tab,
+    .tabcontent {
+      width: 100%;
+    }
+  
+    .process-inr {
+      background-image: unset;
+    }
+  
+    .tabcontent::before {
+      top: 0;
+    }
+  
+    /* Hero Title (64px) */
+    .breadcrumbWrap .pageTitle {
+      font-size: 42px;
+      line-height: 1.3;
+    }
+  
+    /* Section Title (48px) */
+    .contact_form_heading h2,
+    .serv-head h2,
+    .inner-page-title,
+    .inner-page-title-small,
+    .serv-head h1.inner-page-title.mb-2.text-center {
+      font-size: 32px;
+      line-height: 1.3;
+    }
+  
+    /* Subtitle (20px) */
+    .breadcrumbWrap .pgNameListing ul li,
+    .breadcrumbWrap .pgNameListing ul li a,
+    .map_location_icon_cont h1,
+    button.red-btn.w-100.mt-3.post-job-btn,
+    .accordion-header .accordion-button,
+    .footer-txt,
+    .accordion-header .accordion-button:not(.collapsed),
+    .skill-wrap-head-text {
+      font-size: 18px;
+      line-height: 1.55;
+    }
+  
+    /* Paragraph Large (18px) */
+    .about_texts p,
+    .about_texts p,
+    .inner-page-text,
+    .srvc-bxtx h3 {
+      font-size: 16px;
+      line-height: 1.65;
+    }
+  
+    /* Paragraph Normal (17px) */
+    button.btn.btn-outline-primary,
+    .port-box p,
+    .srvc-bxtx p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  
+    /* Small Text (16px) */
+    .map_location_icon_cont h3,
+    .contact_inputs input,
+    .footer-list li a,
+    .get-in-touch-block li,
+    .sill-wrap-text {
+      font-size: 14px;
+      line-height: 1.75;
+    }
+  
+    /* Caption (15px) */
+    .breadcrumbWrap {
+      padding: 35px 0;
+    }
+  
+    .section-padding {
+      padding: 35px 0;
+    }
+  
+    .section-abuts,
+    form.was-validate.contact-frm {
+      padding-bottom: 35px;
+    }
+  
+    footer {
+      padding: 35px 0 0 0;
+    }
+  
+    .why {
+      padding: 35px 0;
+      margin-bottom: 35px;
+    }
+  
+    .portfolio {
+      margin-bottom: 35px;
+    }
+  
+    .more {
+      margin-bottom: 35px;
+    }
+  
+    .tachnology {
+      margin-bottom: 35px;
+    }
+  
+    .testimonial {
+      padding: 35px 0px 35px 0px;
+    }
+  
+    .Blogs {
+      padding: 35px 0;
+    }
+  
+    .bnr-txt {
+      width: 75%;
+      padding: unset;
+    }
+  
+    .bnr-txt h1 {
+      font-size: 40px;
+    }
+  
+    .bnr-txt p {
+      margin-bottom: 21px;
+    }
+  
+  }
+  
+  /* end */
+  
+  
+  /* 768-991 */
+  @media (max-width: 767.98px) {
+    .technology-page {
+      min-width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    .tech-next {
+      right: 35%;
+      top: -20px;
+    }
+  
+    .tech-prev {
+      left: 40%;
+      top: -20px;
+    }
+  
+    .quote-txt p {
+      font-size: 14px;
+    }
+  
+    .quote-txt {
+      min-height: 330px;
+    }
+  
+    .job-details-list-box li {
+      padding: 0px 20px 0 0;
+    }
+  
+    .job-details-list-box {
+      gap: 10px;
+    }
+  
+    .job-details-list-box li {
+      line-height: 16px;
+    }
+  
+    .wpp-iicon {
+      display: none;
+    }
+  
+    .social-icon-section li:last-child {
+      display: block;
+    }
+  
+    .bnr-txt p:nth-of-type(2) {
+      display: none;
+    }
+  
+    .banner_thumb_img {
+      height: auto;
+      width: 100%;
+    }
+  
+    .navbar-light .dropdown-menu.show a {
+      font-size: 13px;
+    }
+  
+    /* .bnr-txt{display:none;} */
+    .breadcrumbWrap,
+    .section-padding,
+    .meter-area {
+      padding: 25px 0;
+    }
+  
+    .why_abt,
+    .section-abuts {
+      padding-bottom: 25px;
+    }
+  
+    .why_abuts {
+      padding-top: 25px;
+    }
+  
+    .about_texts h1,
+    .why_abuts h2,
+    .meter-box span,
+    .breadcrumbWrap .pageTitle,
+    .our_box_mi h2,
+    .meter-area h2 {
+      font-size: 20px;
+      line-height: 27px;
+    }
+  
+    .about_texts p,
+    .our_box_mi p,
+    .why_abuts ul li,
+    .meter-box p,
+    .breadcrumbWrap .pgNameListing ul li,
+    .breadcrumbWrap .pgNameListing ul li a {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  
+    .our_box_mi {
+      padding: 25px;
+    }
+  
+    .meter-box {
+      width: 50%;
+    }
+  
+    .our_misson_boxs {
+      padding-right: 0;
+    }
+  
+    .ser_rea {
+      padding: 25px 0;
+    }
+  
+    .ser_rea .about_texts {
+      padding: 0 25px;
+    }
+  
+    .award-section img {
+      max-width: 100%;
+      height: unset;
+    }
+  
+    .meter-box p {
+      margin: 0;
+    }
+  
+    .inner-page-title {
+      font-size: 18px;
+    }
+  
+    .skill-image175,
+    .sill-wrap-text {
+      min-height: unset;
+    }
+  
+    .pb-5.container {
+      padding-bottom: 15px !important;
+    }
+  
+    .inner-page-title-small,
+    .serv-head h1.inner-page-title.mb-2.text-center {
+      font-size: 20px;
+    }
+  
+    .inner-page-title {
+      font-size: 24px;
+    }
+  
+    .inner-page-text {
+      font-size: 15px;
+    }
+  
+    .skill-wrap-head-text {
+      font-size: 16px !important;
+    }
+  
+    .sill-wrap-text,
+    .job-experience-txt,
+    .skill-wrap button {
+      font-size: 13px;
+    }
+  
+    .about_texts h1 {
+      font-size: 24px;
+      line-height: 31px;
+    }
+  
+    .about_texts p {
+      font-size: 15px;
+      line-height: 22px;
+    }
+  
+    .services-text h2 {
+      font-size: 22px;
+      line-height: 29px;
+    }
+  
+    .services-text p {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  
+    .proc-btn {
+      font-size: 16px;
+      line-height: 23px;
+    }
+  
+    .job-details-block-card h2 {
+      font-size: 24px;
+    }
+  
+    .job-details-inner-block li {
+      font-size: 15px;
+    }
+  
+    .job-details-title {
+      font-size: 16px;
+    }
+  
+    .social-icon-section {
+      align-items: center;
+      justify-content: center;
+      padding-top: 15px;
+    }
+  
+    .award-section ul {
+      justify-content: space-between;
+    }
+  
+    .All-Rights-Reserved {
+      text-align: center;
+    }
+  
+    p.main-focus-text.mb-0 {
+      text-align: center;
+      font-size: 12px;
+    }
+  
+    .process-txt {
+      display: block;
+    }
+  
+    .tab,
+    .tabcontent {
+      width: 100%;
+    }
+  
+    .process-inr {
+      background-image: unset;
+    }
+  
+    .tabcontent {
+      position: unset;
+    }
+  
+    .tabcontent::before {
+      display: none;
+    }
+  
+    .tabcontent {
+      background: #302f2f;
+      padding: 15px;
+    }
+  
+    .proc-img img {
+      margin-left: 0 !important;
+    }
+  
+    .why-box.why-1 p {
+      min-height: 102px;
+    }
+  
+    .port-hd-txt {
+      width: 100%;
+    }
+  
+    .more-txt {
+      display: block;
+      text-align: center;
+    }
+  
+    /* Hero Title (64px) */
+    .breadcrumbWrap .pageTitle {
+      font-size: 36px;
+      line-height: 1.3;
+    }
+  
+    /* Section Title (48px) */
+    .contact_form_heading h2,
+    .serv-head h2,
+    .inner-page-title,
+    .Blogs-head h2 {
+      font-size: 28px;
+      line-height: 1.3;
+    }
+  
+    /* Subtitle (20px) */
+    .breadcrumbWrap .pgNameListing ul li,
+    .breadcrumbWrap .pgNameListing ul li a,
+    .map_location_icon_cont h1,
+    button.red-btn.w-100.mt-3.post-job-btn,
+    .accordion-header .accordion-button,
+    .footer-txt,
+    .accordion-header .accordion-button:not(.collapsed) {
+      font-size: 17px;
+      line-height: 1.55;
+    }
+  
+    /* Paragraph Large (18px) */
+    .about_texts p,
+    .about_texts p,
+    .skill-wrap-head-text,
+    .why-box h3 {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+  
+    /* Paragraph Normal (17px) */
+    button.btn.btn-outline-primary,
+    .inner-page-text {
+      font-size: 15px;
+      line-height: 1.75;
+    }
+  
+    /* Small Text (16px) */
+    .map_location_icon_cont h3,
+    .contact_inputs input,
+    .footer-list li a,
+    .get-in-touch-block li,
+    .All-Rights-Reserved,
+    .sill-wrap-text {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+  
+    /* Caption (15px) */
+    .breadcrumbWrap {
+      padding: 30px 0;
+    }
+  
+    .section-padding {
+      padding: 30px 0;
+    }
+  
+    .section-abuts,
+    form.was-validate.contact-frm {
+      padding-bottom: 30px;
+    }
+  
+    footer {
+      padding: 30px 0 0 0;
+    }
+  
+    .why {
+      padding: 30px 0;
+      margin-bottom: 30px;
+    }
+  
+    .portfolio {
+      margin-bottom: 30px;
+    }
+  
+    .more {
+      margin-bottom: 30px;
+    }
+  
+    .tachnology {
+      margin-bottom: 30px;
+    }
+  
+    .testimonial {
+      padding: 30px 0px 30px 0px;
+    }
+  
+    .Blogs {
+      padding: 30px 0;
+    }
+  
+    .service {
+      margin-bottom: 30px;
+    }
+  
+    .bnr-txt {
+      width: 40%;
+      padding: unset;
+      text-align: center;
+    }
+  
+    .bnr-txt h1 {
+      font-size: 13px;
+    }
+  
+    .bnr-txt p {
+      margin-bottom: 15px;
+      font-size: 10px;
+    }
+  
+    .bnr-btn {
+      padding: 10px;
+      font-size: 16px;
+      width: 170px;
+      margin: 0 auto;
+      display: none;
+    }
+  
+    .banner_text_infos {
+      top: 15%;
+      transform: translateY(-25%);
+    }
+  
+    .scroll_down_am {
+      display: none;
+    }
+  
+    .why-box {
+      padding: 20px;
+    }
+  
+    .stat-box {
+      padding: 21px;
+    }
+  
+  }
+  
+  /* 576-767 */
+  @media (max-width: 575.98px) {
+  
+    .breadcrumbWrap,
+    .section-padding,
+    .meter-area {
+      padding: 15px 0;
+    }
+  
+    .why_abt,
+    .section-abuts {
+      padding-bottom: 15px;
+    }
+  
+    .why_abuts {
+      padding-top: 15px;
+    }
+  
+    .ser_rea {
+      padding: 15px 0;
+    }
+  
+    .ser_rea .about_texts {
+      padding: 0 15px;
+    }
+  
+    .our_box_mi {
+      padding: 15px;
+    }
+  
+    .about_texts h1,
+    .why_abuts h2,
+    .meter-box span,
+    .breadcrumbWrap .pageTitle,
+    .our_box_mi h2,
+    .meter-area h2 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  
+    .meter-box {
+      padding: 15px;
+      margin-top: 15px;
+    }
+  
+    .breadcrumbWrap .pageTitle {
+      margin-bottom: 0;
+    }
+  
+    .inner-page-title-small,
+    .serv-head h1.inner-page-title.mb-2.text-center {
+      font-size: 18px;
+    }
+  
+    .inner-page-title {
+      font-size: 22px;
+    }
+  
+    .inner-page-text {
+      font-size: 14px;
+    }
+  
+    .skill-wrap-head-text {
+      font-size: 15px !important;
+    }
+  
+    .sill-wrap-text,
+    .job-experience-txt,
+    .skill-wrap button {
+      font-size: 12px;
+    }
+  
+    .about_texts h1 {
+      font-size: 22px;
+      line-height: 29px;
+    }
+  
+    .about_texts p {
+      font-size: 14px;
+      line-height: 21px;
+    }
+  
+    .services-text h2 {
+      font-size: 20px;
+      line-height: 27px;
+    }
+  
+    .services-text p {
+      font-size: 13px;
+      line-height: 20px;
+    }
+  
+    .proc-btn {
+      font-size: 15px;
+      line-height: 22px;
+    }
+  
+    .job-details-block-card h2 {
+      font-size: 22px;
+    }
+  
+    .job-details-inner-block li {
+      font-size: 14px;
+    }
+  
+    .job-details-title {
+      font-size: 15px;
+    }
+  
+    .serviceDetailsWrap {
+      padding-bottom: 15px;
+    }
+  
+    .shp1 img,
+    .shp2 img {
+      max-width: 100%;
+    }
+  
+    section.blue-bg.p-10 {
+      padding: 10px 0;
+      text-align: center;
+    }
+  
+    nav.bg-white.p-4.navbar.navbar-expand-lg.navbar-light {
+      padding: 10px 0 !important;
+    }
+  
+    .skill-wrap-img-without-bg .img-fluid {
+      max-width: 75%;
+    }
+  
+    /* Hero Title (64px) */
+    .breadcrumbWrap .pageTitle {
+      font-size: 30px;
+      line-height: 1.35;
+    }
+  
+    /* Section Title (48px) */
+    .contact_form_heading h2,
+    .serv-head h2,
+    .inner-page-title,
+    .Blogs-head h2 {
+      font-size: 24px;
+      line-height: 1.3;
+    }
+  
+    /* Subtitle (20px) */
+    .breadcrumbWrap .pgNameListing ul li,
+    .breadcrumbWrap .pgNameListing ul li a,
+    .map_location_icon_cont h1,
+    button.red-btn.w-100.mt-3.post-job-btn,
+    .accordion-header .accordion-button,
+    .footer-txt,
+    .accordion-header .accordion-button:not(.collapsed) {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  
+    /* Paragraph Large (18px) */
+    .about_texts p,
+    .about_texts p,
+    .inner-page-text {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+  
+    /* Paragraph Normal (17px) */
+    button.btn.btn-outline-primary {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+  
+    /* Small Text (16px) */
+    .map_location_icon_cont h3,
+    .contact_inputs input,
+    .footer-list li a,
+    .get-in-touch-block li,
+    .All-Rights-Reserved,
+    .sill-wrap-text {
+      font-size: 13px;
+      line-height: 1.85;
+    }
+  
+    /* Caption (15px) */
+  
+    .breadcrumbWrap {
+      padding: 25px 0;
+    }
+  
+    .section-padding {
+      padding: 25px 0;
+    }
+  
+    .section-abuts {
+      padding-bottom: 25px;
+    }
+  
+    footer {
+      padding: 25px 0 0 0;
+    }
+  
+    .why {
+      padding: 25px 0;
+      margin-bottom: 25px;
+    }
+  
+    .portfolio {
+      margin-bottom: 25px;
+    }
+  
+    .more {
+      margin-bottom: 25px;
+    }
+  
+    .tachnology {
+      margin-bottom: 25px;
+    }
+  
+    .testimonial {
+      padding: 25px 0px 25px 0px;
+    }
+  
+    .Blogs {
+      padding: 25px 0;
+    }
+  
+    .why-box.why-1 p {
+      min-height: unset;
+    }
+  }
+  
+  /* 575 */
+  
+  @media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+      position: absolute;
+      top: 32px;
+    }
+  }

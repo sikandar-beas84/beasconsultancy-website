@@ -65,6 +65,7 @@ export const getServiceData = async (url, accessToken, des) => {
     }
 };
 export const postService = async (url, slug) => {
+   
     try {
         const responseObj = await fetch(`${env.API_BASE_URL}${url}`, {
             method: 'post',
@@ -92,6 +93,7 @@ export const postService = async (url, slug) => {
 }
 export const postServiceData = async (url, accessToken, payload) => {
     try {
+       
       const responseObj = await fetch(`${env.API_BASE_URL}${url}`, {
         method: 'post',
         headers: {

@@ -14,7 +14,6 @@ const IndustriesBody = ({ slug, industries }) => {
     const router = useRouter();
     const [enrichedContents, setEnrichedContents] = useState([]);
 
-    console.log("slug", slug)
 
     /**
      * 🔍 Resolve industry FROM CONTEXT using slug

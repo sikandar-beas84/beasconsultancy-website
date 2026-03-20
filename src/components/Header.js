@@ -116,7 +116,6 @@ const Header = ({ homeData, loading }) => {
   const router = useRouter();
   const casestudy = Array.isArray(homeData?.projects) ? homeData.projects?.[0] : [];
   const emblemRef = useRef(null);
-
   useEffect(() => {
     if (!emblemRef.current) return;
 
@@ -175,7 +174,6 @@ const Header = ({ homeData, loading }) => {
       return 0;
     });
   }, [homeData]);
-
   return (
     <>
 

@@ -1,8 +1,6 @@
 import { getDataService, postService } from '@/apiservices/service';
-import React from 'react'
-import { env } from '@/util/constants/common';
 import CasestudyGeneric from '@/components/CaseStudy';
-
+import React from 'react'
 export async function generateMetadata() {
     try {
         const seoRes = await postService('get-seo-by-slug', 'casestudies');
@@ -19,23 +17,26 @@ export async function generateMetadata() {
                 description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
                 images: seometadata?.image
                     && `${env.BACKEND_BASE_URL}${seometadata.image}`,
-                url: seometadata?.url
-                    ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
-                    : `${env.FRONTEND_BASE_URL}`,
                 // : `${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`
-
+                url: seometadata?.url
+                ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
+                : `${env.FRONTEND_BASE_URL}`,
             },
         };
     } catch (error) {
+
         return {
             title: "Home",
             description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
         };
     }
 }
-const Page = async ({ searchParams }) => {
-    const params = await searchParams;
-    const id = params?.id;
+const page = async({params}) => {
+    
+
+    const param = await params;
+    const id = param?.slug;
+
     const [common, projetcs, caseStudy] = await Promise.all([getDataService('get-home-common'), getDataService('get-projects'), getDataService('get-menu-casestudy')])
     // const currentIndex = projetcs?.data?.projects?.findIndex(
     //     (item) => item?.slug?.toString() === id
@@ -49,9 +50,9 @@ const Page = async ({ searchParams }) => {
 
     return (
         <div>
-            <CasestudyGeneric menucasestudy={menucasestudy} homeData={homeData} projects={projetcs?.data?.projects} slug={id} arrow={false} />
+            <CasestudyGeneric menucasestudy={menucasestudy} homeData={homeData} projects={projetcs?.data?.projects} slug={id} arrow={true} />
         </div>
     )
 }
 
-export default Page
+export default page

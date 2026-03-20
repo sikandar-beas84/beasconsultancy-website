@@ -21,7 +21,7 @@ export async function generateMetadata() {
         : [],
   
       keywords: seo?.keyword
-        ? seometadata.keyword
+        ? seo?.keyword
         : "About Beas, Meet our team, Software Company, Technology, Experts at Beas, Corporate Profile",
   
       authors: seo?.author

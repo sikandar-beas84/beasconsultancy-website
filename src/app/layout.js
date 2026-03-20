@@ -26,11 +26,12 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
 
-  const [getMenus, services, industries,common] = await Promise.all([
+  const [getMenus, services, industries,common,projects] = await Promise.all([
     getDataService('get-home-menus'),
     getDataService('get-home-services'),
     getDataService('get-home-industries'),
     getDataService('get-home-common'),
+     getDataService('get-projects'),
 
   ]);
   const mapServices = (services) => {
@@ -63,8 +64,9 @@ export default async function RootLayout({ children }) {
    
 
     // Projects data (for case studies)
-    projects: [] // Add from your data source if available
+    projects:projects?.data?.projects??[] // Add from your data source if available
   };
+  
   return (
     <html lang="en">
       <body>

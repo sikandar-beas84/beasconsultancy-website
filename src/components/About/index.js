@@ -2,13 +2,9 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Image from 'next/image';
 import BreadCrumb from '../BreadCrumb';
-// import BreadCrumb from '../component/BreadCrumb';
-// import SEO from '../../components/SEO';
-
-// import HomeService from '../../util/service/Home';
 import { env } from '../../util/constants/common';
 
-const AboutUs = ({ aboutus, commonaboutus, seometadata }) => {
+const AboutUs = ({ aboutus, commonaboutus }) => {
 
     // ---- Split description once (server-side safe)
     const descriptionText = aboutus?.description
@@ -20,42 +16,17 @@ const AboutUs = ({ aboutus, commonaboutus, seometadata }) => {
         : '';
 
 
-    const metaTitle = seometadata?.title
-        ? seometadata?.title
-        : `About Us`;
-    const metaKeyword = seometadata?.keyword
-        ? seometadata?.keyword
-        : "About Beas, Meet our team, Software Company, Technology, Experts at Beas, Corporate Profile";
-    const metaDesc = seometadata?.description
-        ? seometadata?.description
-        : "Learn more about Beas and our specialties.";
-    const metaImage = seometadata?.image
-        ? `${env.BACKEND_BASE_URL}${seometadata?.image}`
-        : `${env.BACKEND_BASE_URL}${aboutus?.image}`;
-    const metaUrl = seometadata?.url
-        ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
-        : `${env.FRONTEND_BASE_URL}about`;
-    const metaAuthor = seometadata?.author
-        ? seometadata?.author
-        : "BEAS Consultancy And Services Private Limited";
+   
 
     return (
         <>
-            {/* <SEO
-                title={metaTitle}
-                description={metaDesc}
-                keywords={metaKeyword}
-                image={metaImage}
-                url={metaUrl}
-                author={metaAuthor}
-            /> */}
+           
 
             <main>
-                {/* <BreadCrumb
+                <BreadCrumb
                     pagetitle="About Us"
                     pageBanner={`assets/img/menu-content/${aboutus?.menu_contents?.banner || ''}`}
-                /> */}
-                <BreadCrumb pagetitle="About Us" pageBanner={aboutus?.menu_contents?.banner} />
+                />
                 {/* ===== About Intro ===== */}
                 <section className="section-padding">
                     <Container>

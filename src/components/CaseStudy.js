@@ -202,7 +202,7 @@ const CasestudyGeneric = ({
                                         <Accordion.Header>
                                             {activeCaseStudy?.benefits_to_the_customer
                                                 ? "Benefits To The Customer"
-                                                : "Sample Screen"}
+                                                : "Sample Screen"}  
                                         </Accordion.Header>
                                         <Accordion.Body>
                                             {activeCaseStudy?.benefits_to_the_customer ? (

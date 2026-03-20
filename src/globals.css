@@ -2408,14 +2408,14 @@ input::placeholder {
 }
 
 .accordion-button::after {
-  background-image: url(/assetsimages/arrow-up-black.png);
+  background-image: url(/assets/images/arrow-up-black.png);
   width: 20px;
   height: 20px;
 }
 
 .accordion-button:not(.collapsed)::after {
-  background-image: url(/assetsimages/arrow-up.png);
-  width: 20px;
+  background-image: url(/assets/images/arrow-up.png);
+  width: 200px;
   height: 20px;
 }
 
@@ -3617,7 +3617,7 @@ textarea.form-control.h-150.mb-3 {
 } */
 
 .accordion-header .accordion-button:hover::after {
-  background-image: url(/assetsimages/arrow-up.png);
+  background-image: url(/assets/images/arrow-up.png);
   width: 20px;
   height: 20px;
 }
@@ -4073,17 +4073,17 @@ textarea.form-control.h-150.mb-3 {
     background-color: #F07309; color:#fff;font-size:18px;
   }
   .ccase-study-container .accordion-button::after {
-    background-image: url(/_next/static/media/arrow-up-black.7105f236.png);
+    background-image: url('/assets/images/arrow-up-black.7105f236.png') !important;
     width: 20px;
     height: 20px;
     filter: invert(1) brightness(200%)!important;
 }
-.ccase-study-container .accordion-header .accordion-button:hover::after {
-  background-image: url(/_next/static/media/arrow-up.9a19ad22.png);
+/* .ccase-study-container .accordion-header .accordion-button:hover::after {
+  background-image: url('/assets/images/arrow-up.9a19ad22.png');
   width: 20px;
   height: 20px;
   filter: invert(0) brightness(200%)!important;
-}
+} */
 .ccase-study-container .serviceDetailsWrap img{color: transparent;
     border: 1px solid #ccc;
     padding: 5px;
@@ -4138,7 +4138,7 @@ textarea.form-control.h-150.mb-3 {
   }
 }
 .accordion-header .accordion-button:hover::after {
-  background-image: url(/_next/static/media/arrow-up.9a19ad22.png);
+  background-image: url('/assets/images/arrow-up.9a19ad22.png');
   width: 20px;
   height: 20px;
   filter: invert(1) brightness(200%)!important;
@@ -6174,3 +6174,9 @@ transform-origin: 0 0;}
     top: 32px;
   }
 }
+.ccase-study-container .accordion-button:after {
+  transform: rotate(180deg)!important;
+  }
+  .ccase-study-container .accordion-button:not(.collapsed):after {
+  transform: rotate(0deg)!important;
+  }

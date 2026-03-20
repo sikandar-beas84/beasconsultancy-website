@@ -35,21 +35,19 @@ const Page = async ({ searchParams }) => {
     const params = await searchParams;
     const id = params?.id;
     const [common,projetcs,caseStudy] =await Promise.all([getDataService('get-home-common'),getDataService('get-projects'),getDataService('get-menu-casestudy')])
-    const currentIndex = projetcs?.data?.projects?.findIndex(
-        (item) => item.slug.toString() === id
-    );
-    const casestudy = projetcs?.data?.projects[currentIndex];
+    // const currentIndex = projetcs?.data?.projects?.findIndex(
+    //     (item) => item?.slug?.toString() === id
+    // );
+    // const casestudy = projetcs?.data?.projects[currentIndex];
     const menucasestudy = caseStudy.data?.casestudy || [];
     const homeData={
         portfoliohomepage:common.data,
         projects:projetcs?.data?.projects,
     }
-    // console.log("projetcsprojetcs",casestudy,menucasestudy,projetcs,id,homeData)
-    console.log("projetcsprojetcs",projetcs?.projects)
     
     return (
         <div>
-            <CasestudyGeneric casestudy={casestudy}  menucasestudy={menucasestudy} homeData={homeData} projects={projetcs?.data?.projects} slug={id} arrow={false} />
+            <CasestudyGeneric   menucasestudy={menucasestudy} homeData={homeData} projects={projetcs?.data?.projects} slug={id} arrow={false} />
         </div>
     )
 }

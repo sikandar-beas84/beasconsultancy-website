@@ -274,13 +274,13 @@ const ContactUs = ({ contactus, faqs }) => {
                         );
 
                         return (
-                          <Accordion defaultActiveKey={firstAccordionIndex.toString()} flush>
+                          <Accordion defaultActiveKey={firstAccordionIndex?.toString()} flush>
                             {faqs?.map((item, index) => {
                               if (item.type !== "faq-heading") {
                                 counter++; // increment only for FAQ items
 
                                 return (
-                                  <Accordion.Item eventKey={index.toString()} key={index}>
+                                  <Accordion.Item eventKey={index?.toString()} key={index}>
                                     <Accordion.Header>
                                       {`${counter}. ${item.title}`}
                                     </Accordion.Header>

@@ -13,13 +13,12 @@ import IndustriesProcessClient from '@/components/client/IndustriesProcessClient
 // import ModalClient from '@/components/client/ModalClient';
 import ServiceCardClient from '@/components/client/ServiceCardClient';
 import StatCounterClient from '@/components/client/StatCounterClient';
-import { getHomeData } from '@/services/service';
-import { postService } from '@/services/service';
+import { getDataService, postService } from '@/apiservices/service';
 
 // Metadata for SEO (Next.js 16+)
-export async function generateMetadata(){
+export async function generateMetadata() {
   try {
-    const seoRes = await  postService('get-seo-by-slug','');
+    const seoRes = await postService('get-seo-by-slug', '');
 
     const seometadata = seoRes?.data?.seometa || null;
 
@@ -31,9 +30,9 @@ export async function generateMetadata(){
       openGraph: {
         title: seometadata?.title || "Home",
         description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
-        images: seometadata?.image 
-          ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`]:'',
-        url: seometadata?.url 
+        images: seometadata?.image
+          ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
+        url: seometadata?.url
           ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
           : `${env.FRONTEND_BASE_URL}`,
       },
@@ -50,24 +49,20 @@ export async function generateMetadata(){
 export default async function Home() {
   try {
     // Fetch data directly in the Server Component
-    const [homeRes,contactUs, seoRes] = await Promise.all([
-      getContactData('get-home-common'),
-      getContactData('get-home-contactus'),
-      getContactData('get-home-menus'),
-      getContactData('get-home-services'),
-      getContactData('get-home-industries'),
-      getContactData('get-home-aboutus'),
-      getContactData('get-home-testimonials'),
-      getContactData('get-home-technologies'),
-      getContactData('get-home-partners'),
-      getContactData('get-home-projects'),
-      getContactData('get-home-banners'),
-      getContactData('get-home-blogs'),
-      postService('get-seo-by-slug','')
+    const [banners, services,aboutus, common,industries,testimonials, technologies,projects, blogs] = await Promise.all([
+      getDataService('get-home-banners'),
+      getDataService('get-home-services'),
+      getDataService('get-home-aboutus'),
+      getDataService('get-home-common'),
+      getDataService('get-home-industries'),
+      getDataService('get-home-testimonials'),
+      getDataService('get-home-technologies'),
+      getDataService('get-projects'),
+      getDataService('get-home-blogs')
     ]);
-    const homeData = homeRes?.data || null;
-    const aboutuspreviewText = homeData?.aboutus?.menu_contents?.description;
 
+    const homeData = common?.data || null;
+    const aboutuspreviewText = aboutus?.data?.aboutus?.menu_contents?.description;
     return (
       <>
         {/* Modal Client Component */}
@@ -79,17 +74,18 @@ export default async function Home() {
             <Container fluid className="mtt-100">
               <Row>
                 <Col className="px-0 beas_banner">
-                  <BannerSliderClient bannerSlide={homeData?.banners} />
+                  <BannerSliderClient bannerSlide={banners.data?.banners ?? []} />
                 </Col>
               </Row>
             </Container>
 
             {/* Service Section */}
+            
             <div className="service mb-0" id="what_why_panel1">
               <div className="container">
                 <div className="serv-head">
-                  <h2>{homeData?.servicehomepage?.title}</h2>
-                  <p>{homeData?.servicehomepage?.long_desc}</p>
+                  <h2>{common?.data?.servicehomepage?.title}</h2>
+                  <p>{common?.data?.servicehomepage?.long_desc}</p>
                 </div>
               </div>
               <div className="service-inr">
@@ -97,7 +93,7 @@ export default async function Home() {
                   <div className="srvc-txt">
                     <div className="srvc-txt-top">
                       <div className="row">
-                        <ServiceCardClient services={homeData?.services?.children} />
+                        <ServiceCardClient services={services?.data?.services?.children} />
                       </div>
                     </div>
                   </div>
@@ -109,7 +105,7 @@ export default async function Home() {
             <div className="About">
               <div className="container">
                 <div className="serv-head stat-head">
-                  <h2>{homeData?.aboutus?.name}</h2>
+                  <h2>{aboutus?.data?.aboutus?.name}</h2>
                   <p>
                     {aboutuspreviewText}{' '}
                     <Link href="/about" className="blue-text">
@@ -148,12 +144,12 @@ export default async function Home() {
                           <div className="col-lg-4 col-md-6 col-sm-6 p-0">
                             <div className="why-box why-1">
                               <div className="why-img">
-                                <Image 
-                                  width={70} 
-                                  height={70} 
-                                  src={`${env.BACKEND_BASE_URL}${item.image}`} 
-                                  alt={item.title} 
-                                  loading="lazy" 
+                                <Image
+                                  width={70}
+                                  height={70}
+                                  src={`${env.BACKEND_BASE_URL}${item.image}`}
+                                  alt={item.title}
+                                  loading="lazy"
                                 />
                               </div>
                               <h3>{item.title}</h3>
@@ -178,9 +174,9 @@ export default async function Home() {
                 </div>
                 <div className="row">
                   <div className="col-lg-12 col-md-12 col-sm-12">
-                    <BannerCarousalClient 
-                      page="projectsnew" 
-                      projects={homeData?.projects} 
+                    <BannerCarousalClient
+                      page="projectsnew"
+                      projects={projects?.data?.projects}
                     />
                   </div>
                 </div>
@@ -188,10 +184,10 @@ export default async function Home() {
             </div>
 
             {/* Industries Process Section */}
-            <IndustriesProcessClient 
-              industryData={homeData?.industries?.children} 
-              pageTitle={homeData?.industrieshomepage?.title} 
-              pageDesc={homeData?.industrieshomepage?.long_desc} 
+            <IndustriesProcessClient
+              industryData={industries?.data?.industries?.children}
+              pageTitle={industries?.data?.industries?.title}
+              pageDesc={industries?.data?.industries?.long_desc}
             />
 
             {/* Consultation Section */}
@@ -203,8 +199,8 @@ export default async function Home() {
                       <h2>{homeData?.consultanthomepage?.title}</h2>
                       <p>{homeData?.consultanthomepage?.long_desc}</p>
                     </div>
-                    <Link 
-                      href={homeData?.consultanthomepage?.short_desc || '#'} 
+                    <Link
+                      href={homeData?.consultanthomepage?.short_desc || '#'}
                       className="mr-btn"
                     >
                       Get Free Consultation Now
@@ -225,7 +221,7 @@ export default async function Home() {
                   <div className="row">
                     <div className='col-12'>
                       <div className='technology-box pb-5'>
-                        <TechnologySliderClient technologies={homeData?.technologies} />
+                        <TechnologySliderClient technologies={technologies?.data?.technologies} />
                       </div>
                     </div>
                   </div>
@@ -244,9 +240,9 @@ export default async function Home() {
                 <div className="test-inr">
                   <div className="row">
                     <div className="col-lg-12 col-md-12 col-sm-12">
-                      <BannerCarousalClient 
-                        page="testimonialnew" 
-                        testimonials={homeData?.testimonials} 
+                      <BannerCarousalClient
+                        page="testimonialnew"
+                        testimonials={testimonials?.data?.testimonials}
                       />
                     </div>
                   </div>
@@ -263,7 +259,7 @@ export default async function Home() {
                 </div>
                 <div className="Blogs-inr">
                   <div className="row">
-                    {homeData?.blogs?.map((item, index) => {
+                    {blogs?.data?.blogs?.map((item, index) => {
                       const createdAtString = item?.created_at;
                       const created_at = createdAtString ? new Date(createdAtString) : null;
                       const monthName = created_at
@@ -316,7 +312,7 @@ export default async function Home() {
     );
   } catch (error) {
     console.error('Error fetching home data:', error);
-    
+
     // Return a fallback UI or error message
     return (
       <div className="container text-center py-5">

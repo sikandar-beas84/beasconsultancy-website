@@ -1,6 +1,6 @@
 // app/contact/page.js
 import ContactUs from '@/components/Contact/ContactUs'
-import { getDataService, postService } from '@/services/service'
+import { getDataService, postService } from '@/apiservices/service'
 
 
 export async function generateMetadata() {

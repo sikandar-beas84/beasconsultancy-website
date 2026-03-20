@@ -333,7 +333,7 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
             const longdesc = item?.long_desc ? item.long_desc.split(",") : [];
             
             return (
-              <>
+                <div key={index}>
 
                 <div className="port-box" onClick={() => router.push(`/casestudy/${item.slug}`)}>
                   <div className="port-img port-img2">
@@ -357,7 +357,7 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
                   </div>
                 </div>
 
-              </>
+              </div>
             );
           })}
 

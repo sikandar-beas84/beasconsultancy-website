@@ -54,6 +54,7 @@ const Header = ({ homeData, loading }) => {
                 fetchPriority="high"
                 className="img-fluid"
               />
+              
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
@@ -175,8 +176,6 @@ const Header = ({ homeData, loading }) => {
     });
   }, [homeData]);
 
-  //////////////////////////////////////////
-
   return (
     <>
 
@@ -210,7 +209,7 @@ const Header = ({ homeData, loading }) => {
 
             {homeData?.logo?.image && (
               <Image
-                src={`${env.BACKEND_BASE_URL}${homeData.logo.image}`}
+                src={`${env.BACKEND_BASE_URL}${homeData?.logo?.image}`}
                 alt="Logo"
                 width={234}
                 height={35}
@@ -284,7 +283,7 @@ const Header = ({ homeData, loading }) => {
                     return (
                       <Link
                         key={item.slug}
-                        href={`/${item.slug}/${casestudy.slug}`}
+                        href={`/${item?.slug}/${casestudy?.slug}`}
                         className="nav-link"
                       >
                         {item.name}

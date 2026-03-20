@@ -42,7 +42,7 @@ const Footer = ({ homeData }) => {
         });
     }, [homeData]);
     //////////////////////////////////////////
-
+    
     return (
         <>
 
@@ -59,7 +59,7 @@ const Footer = ({ homeData }) => {
                                             if (item.slug === 'casestudy') {
                                                 return (
                                                     <li className='footer-li' key={index}>
-                                                        <Link href={`/${item.slug}/${casestudy.slug}`} className="nav-link">{item.name}</Link>
+                                                        <Link href={`/${item.slug}/${casestudy?.slug}`} className="nav-link">{item.name}</Link>
                                                     </li>
                                                 );
                                             } else {
@@ -156,7 +156,8 @@ const Footer = ({ homeData }) => {
                                                     src={`${env.BACKEND_BASE_URL}${item.image}`}
                                                     alt="image"
                                                 />
-                                            )}                    </li>
+                                            )}
+                                        </li>
                                     ))}
                                 </ul>
                             </div>

@@ -1,10 +1,12 @@
 import { getDataService, postServiceData } from '@/apiservices/service';
 import Blogs from '@/components/blog/Blogs';
 import React from 'react'
+import { env } from '@/util/constants/common';
+
 export async function generateMetadata() {
     try {
         const seoRes = await postServiceData('get-seo-by-slug', 'blogs');
-        
+
 
         const seometadata = seoRes?.data?.seometa || null;
         return {
@@ -33,13 +35,37 @@ export async function generateMetadata() {
     }
 }
 const page = async () => {
+    try {
+        const [blogs, commonblog] = await Promise.all([
+            getDataService('get-blogs'),
+            getDataService('get-all-common')
+        ]);
 
-    const [blogs, commonblog] = await Promise.all([getDataService('get-blogs'), getDataService('get-all-common')])
-    return (
-        <div>
-            <Blogs blogs={blogs?.data?.blogs} commonblog={commonblog?.data?.common.find(item => item.slug === 'blog-section-homepage') || null} />
-        </div>
-    )
-}
+        // If data fetching fails during build, return a simple structure
+        if (!blogs?.data?.blogs) {
+            return (
+                <div>
+                    <Blogs blogs={[]} commonblog={null} />
+                </div>
+            );
+        }
 
+        return (
+            <div>
+                <Blogs
+                    blogs={blogs.data.blogs}
+                    commonblog={commonblog?.data?.common?.find(item => item.slug === 'blog-section-homepage') || null}
+                />
+            </div>
+        );
+    } catch (error) {
+        console.error('Error fetching blogs:', error);
+        // Return empty state during build to prevent build failure
+        return (
+            <div>
+                <Blogs blogs={[]} commonblog={null} />
+            </div>
+        );
+    }
+};
 export default page

@@ -3,16 +3,19 @@ import Container from 'react-bootstrap/Container';
 import { Col, Row } from "react-bootstrap";
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { env } from '@/util/constants/common';
 
-// Import client components
+// Import critical components normally
 import BannerSliderClient from '@/components/client/BannerSliderClient';
-import BannerCarousalClient from '@/components/client/BannerCarousalClient';
-import TechnologySliderClient from '@/components/client/TechnologySliderClient';
-import IndustriesProcessClient from '@/components/client/IndustriesProcessClient';
-// import ModalClient from '@/components/client/ModalClient';
 import ServiceCardClient from '@/components/client/ServiceCardClient';
-import StatCounterClient from '@/components/client/StatCounterClient';
+
+// Dynamic import for below-the-fold components
+const BannerCarousalClient = dynamic(() => import('@/components/client/BannerCarousalClient'), { ssr: true });
+const TechnologySliderClient = dynamic(() => import('@/components/client/TechnologySliderClient'), { ssr: true });
+const IndustriesProcessClient = dynamic(() => import('@/components/client/IndustriesProcessClient'), { ssr: true });
+const StatCounterClient = dynamic(() => import('@/components/client/StatCounterClient'), { ssr: true });
+
 import { getDataService, postService } from '@/apiservices/service';
 
 // Metadata for SEO (Next.js 16+)
@@ -235,7 +238,13 @@ export default async function Home() {
                 <div className="serv-head test-head">
                   <h2>{homeData?.testimonialhomepage?.title}</h2>
                   <p>{homeData?.testimonialhomepage?.long_desc}</p>
-                  <img src="assets/images/test-star-grp.png" alt="stars" />
+                  <Image 
+                    src="/assets/images/test-star-grp.png" 
+                    alt="stars" 
+                    width={150} 
+                    height={30} 
+                    loading="lazy"
+                  />
                 </div>
                 <div className="test-inr">
                   <div className="row">

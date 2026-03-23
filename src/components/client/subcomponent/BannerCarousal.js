@@ -152,15 +152,12 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
               <div className="portfolio-work-wrap">
                 <div className="portfolio-work-wrap__img">
                   <Image
-                    src={`${env.BACKEND_BASE_URL}${item.image}`}   // use optimized format (webp/avif)
+                    src={`${env.BACKEND_BASE_URL}${item.image}`}
                     alt="Hero Banner"
-                    width={1920}
-                    height={1080}
-                    priority      // ✅ ensures this image is not lazy-loaded
-                    fetchPriority="high" // ✅ tells browser it’s critical
-                    className="img-fluid" // you can keep bootstrap class
+                    width={400}
+                    height={300}
+                    className="img-fluid"
                   />
-
                 </div>
                 <div
                   className="portfolio-work-wrap__block"
@@ -194,13 +191,11 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
                 </div>
                 <div className="media">
                   <Image
-                    src={`${env.BACKEND_BASE_URL}assets/img/testimonial/${item.profile_photo_path}`}   // use optimized format (webp/avif)
+                    src={`${env.BACKEND_BASE_URL}assets/img/testimonial/${item.profile_photo_path}`}
                     alt="Hero Banner"
-                    width={1920}
-                    height={1080}
-                    priority      // ✅ ensures this image is not lazy-loaded
-                    fetchPriority="high" // ✅ tells browser it’s critical
-                    className="img-fluid" // you can keep bootstrap class
+                    width={100}
+                    height={100}
+                    className="img-fluid"
                   />
                   <div className="media-body">
                     <div className="overview">
@@ -211,15 +206,12 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
                       </div>
                       <div className="overview-box-quote">
                         <Image
-                          src="/assets/images/quote.png"   // use optimized format (webp/avif)
+                          src="/assets/images/quote.png"
                           alt="Hero Banner"
-                          width={1920}
-                          height={1080}
-                          priority      // ✅ ensures this image is not lazy-loaded
-                          fetchPriority="high" // ✅ tells browser it’s critical
-                          className="img-fluid" // you can keep bootstrap class
+                          width={40}
+                          height={30}
+                          className="img-fluid"
                         />
-
                       </div>
                     </div>
                   </div>
@@ -237,24 +229,12 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
             <div className='tools' key={index}>
               <div className='tools-image'>
                 <Image
-                  src={`${env.BACKEND_BASE_URL}assets/img/technology/${item.logo}`}   // use optimized format (webp/avif)
-                  alt="Hero Banner"
-                  width={1920}
-                  height={1080}
-                  priority      // ✅ ensures this image is not lazy-loaded
-                  fetchPriority="high" // ✅ tells browser it’s critical
-                  className="img-fluid" // you can keep bootstrap class
+                  src={`${env.BACKEND_BASE_URL}assets/img/technology/${item.logo}`}
+                  alt="technology"
+                  width={120}
+                  height={80}
+                  className="img-fluid"
                 />
-                <Image
-                  src={`${env.BACKEND_BASE_URL}assets/img/technology/${item.logo}`}   // use optimized format (webp/avif)
-                  alt="Hero Banner"
-                  width={1920}
-                  height={1080}
-                  priority      // ✅ ensures this image is not lazy-loaded
-                  fetchPriority="high" // ✅ tells browser it’s critical
-                  className="img-fluid" // you can keep bootstrap class
-                />
-
               </div>
             </div>
           ))}
@@ -267,13 +247,11 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
           {clients?.map((item, index) => (
             <div className='client-logo' key={index}>
               <Image
-                src={`${env.BACKEND_BASE_URL}${item.logo}`}   // use optimized format (webp/avif)
-                alt="Hero Banner"
-                width={1920}
-                height={1080}
-                priority      // ✅ ensures this image is not lazy-loaded
-                fetchPriority="high" // ✅ tells browser it’s critical
-                className="img-fluid" // you can keep bootstrap class
+                src={`${env.BACKEND_BASE_URL}${item.logo}`}
+                alt="client logo"
+                width={150}
+                height={80}
+                className="img-fluid"
               />
 
             </div>
@@ -301,8 +279,6 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
                       alt="image"
                       width={50}
                       height={50}
-                      priority
-                      fetchPriority="high"
                       className="img-fluid"
                     />
                   </div>
@@ -342,9 +318,7 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
                       src={`${env.BACKEND_BASE_URL}${item.image}`}
                       alt="projects"
                       width={400}
-                      height={400}
-                      priority
-                      fetchPriority="high"
+                      height={300}
                       className="img-fluid port-shw"
                     />
                   </div>
@@ -398,9 +372,7 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
                           src={`${env.BACKEND_BASE_URL}${item.image}`}
                           alt="blog"
                           width={400}
-                          height={400}
-                          priority
-                          fetchPriority="high"
+                          height={300}
                           className="img-fluid port-shw"
                         />
                         <div className="guidcal">

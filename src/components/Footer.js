@@ -9,38 +9,9 @@ import Link from 'next/link';
 
 const Footer = ({ homeData }) => {
 
-    const casestudy = Array.isArray(homeData?.projects) ? homeData.projects?.[0] : [];
+    const casestudy = homeData?.casestudy;
+    const finalServices = homeData?.services?.finalServices || [];
 
-    const finalServices = useMemo(() => {
-        const children = homeData?.services?.children;
-
-        if (!Array.isArray(children)) return [];
-
-        const expanded = children.flatMap(item => {
-            if (item.slug === "application-solutioning") {
-                return item.children?.map(child => ({
-                    slug: child.slug,
-                    name: child.name,
-                })) || [];
-            }
-
-            return [{
-                slug: item.slug,
-                name: item.name,
-            }];
-        });
-
-        const bottomSlugs = ["ui-ux", "professional-services"];
-
-        return expanded.sort((a, b) => {
-            const aLast = bottomSlugs.includes(a.slug);
-            const bLast = bottomSlugs.includes(b.slug);
-
-            if (aLast && !bLast) return 1;
-            if (!aLast && bLast) return -1;
-            return 0;
-        });
-    }, [homeData]);
     //////////////////////////////////////////
     return (
         <>

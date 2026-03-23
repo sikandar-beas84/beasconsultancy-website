@@ -6,42 +6,73 @@ import InduIndustriesMain from '@/components/industries/IndustriesMain';
 export async function generateMetadata() {
     try {
         const seoRes = await postService('get-seo-by-slug', 'industries');
-
         const seometadata = seoRes?.data?.seometa || null;
       
         return {
-            title: seometadata?.title || "industries",
+            title: seometadata?.title || "Industries",
             description: seometadata?.description || "Explore our wide range of services to empower your business through innovative solutions.",
             keywords: seometadata?.keyword || "services, beas consultancy, business solutions, software development",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
             openGraph: {
-                title: seometadata?.title || "Home",
+                title: seometadata?.title || "Industries",
                 description: seometadata?.description || "Explore our wide range of services to empower your business through innovative solutions.",
                 images: seometadata?.image
                     ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
                 url: seometadata?.url
                     ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
-                    : `${env.FRONTEND_BASE_URL}`,
+                    : `${env.FRONTEND_BASE_URL}/industries`,
             },
         };
     } catch (error) {
-      
+        console.error('Error generating metadata for industries:', error);
         return {
-            title: "industries",
+            title: "Industries",
             description: "Explore our wide range of services to empower your business through innovative solutions.",
         };
     }
 }
 
-const page = async() => {
-    const industries = await getDataService('get-home-industries');
-
-    return (
-        <div>
-            <InduIndustriesMain industries={industries?.data?.industries}  />
-        </div>
-    )     
-  
+// Add this to generate static params if needed, or to handle build-time data fetching
+export async function generateStaticParams() {
+    // Return empty array if you don't need to pre-render specific params
+    // This ensures the page is generated at build time without requiring API data
+    return [];
 }
 
-export default page
+const page = async () => {
+    try {
+        const response = await getDataService('get-home-industries');
+        
+        // Safe data extraction with fallbacks
+        const industries = response?.data?.industries || null;
+        
+        // If no industries data, return a fallback UI
+        if (!industries) {
+            console.warn('No industries data received from API');
+            return (
+                <div className="container mx-auto px-4 py-8">
+                    <h1 className="text-3xl font-bold mb-6">Industries We Serve</h1>
+                    <p className="text-gray-600">Unable to load industries at the moment. Please try again later.</p>
+                </div>
+            );
+        }
+
+        return (
+            <div>
+                <InduIndustriesMain industries={industries} />
+            </div>
+        );
+    } catch (error) {
+        console.error('Error fetching industries data:', error);
+        
+        // Return a fallback UI instead of throwing
+        return (
+            <div className="container mx-auto px-4 py-8">
+                <h1 className="text-3xl font-bold mb-6">Industries We Serve</h1>
+                <p className="text-gray-600">Unable to load industries at the moment. Please try again later.</p>
+            </div>
+        );
+    }
+}
+
+export default page;

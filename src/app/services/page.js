@@ -1,6 +1,8 @@
 import { getDataService, postService } from '@/apiservices/service';
 import ServiceMain from '@/components/servicepage/ServiceMain';
 import React from 'react'
+import { env } from '@/util/constants/common';
+
 export async function generateMetadata() {
     try {
         const seoRes = await postService('get-seo-by-slug', 'services');

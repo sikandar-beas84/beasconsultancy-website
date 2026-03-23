@@ -1,6 +1,7 @@
 // app/contact/page.js
 import Skills from '@/components/Skills';
 import {getDataService, postService } from '@/apiservices/service';
+import { env } from '@/util/constants/common';
 
 
 export async function generateMetadata() {

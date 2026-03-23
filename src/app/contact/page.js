@@ -1,35 +1,55 @@
 // app/contact/page.js
 import ContactUs from '@/components/Contact/ContactUs'
 import { getDataService, postService } from '@/apiservices/service'
+import { env } from '@/util/constants/common';
 
 
 export async function generateMetadata() {
-    const seoRes = await postService('get-seo-by-slug', 'contact')
-    
-    const seo =await seoRes?.data?.seometa
-   
-    return {
-        title: seo?.title || "Contact us",
-        description: seo?.description || "Get in touch with us",
-        openGraph: {
-            title: seo?.meta_title,
-            description: seo?.description,
-            images: [seo?.meta_image],
-        },
+    try {
+        const seoRes = await postService('get-seo-by-slug', 'contact')
+        const seo = seoRes?.data?.seometa
+        
+        return {
+            title: seo?.title || "Contact us",
+            description: seo?.description || "Get in touch with us",
+            openGraph: {
+                title: seo?.title || "Contact us",
+                description: seo?.description || "Get in touch with us",
+                images: seo?.image ? `${env.BACKEND_BASE_URL}${seo.image}` : undefined,
+                url: seo?.url ? `${env.FRONTEND_BASE_URL}${seo.url}` : `${env.FRONTEND_BASE_URL}`,
+            },
+        }
+    } catch (error) {
+        console.error('Error fetching contact page SEO:', error)
+        return {
+            title: "Contact us",
+            description: "Get in touch with us",
+        }
     }
 }
-
 const Page = async () => {
-
-    const [contact, faqData] = await Promise.all([getDataService('get-contact'),getDataService('get-faq')]);
-    return (
-        <div>
-
-        <ContactUs  contactus={contact?.data?.contact} faqs={faqData?.data?.faqs} />
+    try {
+        const [contact, faqData] = await Promise.all([
+            getDataService('get-contact'),
+            getDataService('get-faq')
+        ]);
         
-
-        </div>
-    )
+        return (
+            <div>
+                <ContactUs  
+                    contactus={contact?.data?.contact || null} 
+                    faqs={faqData?.data?.faqs || []} 
+                />
+            </div>
+        )
+    } catch (error) {
+        console.error('Error fetching contact page data:', error)
+        return (
+            <div>
+                <ContactUs contactus={null} faqs={[]} />
+            </div>
+        )
+    }
 }
 
 export default Page

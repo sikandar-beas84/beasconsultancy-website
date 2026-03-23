@@ -9,27 +9,45 @@ import Link from 'next/link';
 
 const Blogs = ({ blogs, commonblog }) => {
     const router = useRouter();
+    
+    // ✅ Add this check for fallback
     if (router.isFallback) {
         return <div>Loading...</div>;
     }
 
-    const PER_PAGE = 6; // 👉 SET ITEMS PER PAGE
+    // ✅ Ensure blogs is always an array
+    const blogsArray = blogs || [];
+    
+    const PER_PAGE = 6;
     const [currentPage, setCurrentPage] = useState(1);
 
-    const totalBlogs = blogs?.length || 0;
+    const totalBlogs = blogsArray.length;
     const totalPages = Math.ceil(totalBlogs / PER_PAGE);
 
-    // Slice according to page
-    const displayedBlogs = blogs.slice(
+    // ✅ Safe slice operation
+    const displayedBlogs = blogsArray.slice(
         (currentPage - 1) * PER_PAGE,
         currentPage * PER_PAGE
     );
 
     const goToPage = (pageNum) => setCurrentPage(pageNum);
+    
+    // ✅ Show empty state if no blogs
+    if (blogsArray.length === 0) {
+        return (
+            <>
+                <BreadCrumb pagetitle={commonblog?.title} pageBanner={`${commonblog?.image}`} />
+                <Container className='pt-5'>
+                    <div className="text-center">
+                        <h3>No blogs found</h3>
+                    </div>
+                </Container>
+            </>
+        );
+    }
 
     return (
         <>
-
             <main>
                 <BreadCrumb pagetitle={commonblog?.title} pageBanner={`${commonblog?.image}`} />
 
@@ -43,29 +61,24 @@ const Blogs = ({ blogs, commonblog }) => {
                         </Col>
                     </Row>
                 </Container>
+                
                 <section className="section-abuts section-services">
                     <div className="container">
                         <div className="row">
                             {displayedBlogs?.map((item, index) => {
-
                                 const createdAtString = item?.created_at;
                                 const created_at = createdAtString ? new Date(createdAtString) : null;
                                 const day = created_at
                                     ? String(created_at.getDate()).padStart(2, "0")
                                     : "";
-                                const month = created_at ? created_at.getMonth() + 1 : "";
                                 const monthName = created_at
                                     ? new Intl.DateTimeFormat('en-US', { month: 'short' }).format(created_at)
                                     : "";
-                                const year = created_at ? created_at.getFullYear() : "";
 
                                 return (
                                     <div className="col-12 col-md-4" key={index}>
                                         <div>
-                                            <Link
-                                                href={`blogs/${item?.slug}`}
-
-                                            >
+                                            <Link href={`blogs/${item?.slug}`}>
                                                 <div className="guiditem">
                                                     <div className="blog-hm-img">
                                                         <Image
@@ -78,66 +91,62 @@ const Blogs = ({ blogs, commonblog }) => {
                                                             className="img-fluid port-shw"
                                                         />
                                                         <div className="guidcal">
-
                                                             <strong>{day}</strong> <br /><span>{monthName}</span>
                                                         </div>
                                                     </div>
                                                     <div className="guidtext">
                                                         <h5 className='blog-hm-title'>{item?.title}</h5>
-                                                        <div className="blog-hm-desc" dangerouslySetInnerHTML={{ __html: item?.short_desc }}
-                                                        ></div>
-                                                        <div className="d-flex justify-content-center mt-35"><div className="post-job-btn">Read More</div></div>
-
+                                                        <div className="blog-hm-desc" dangerouslySetInnerHTML={{ __html: item?.short_desc }} />
+                                                        <div className="d-flex justify-content-center mt-35">
+                                                            <div className="post-job-btn">Read More</div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </Link>
                                         </div>
                                     </div>
                                 );
-
                             })}
                         </div>
                     </div>
 
-                    {/* PAGINATION UI */}
-                    <div className="pagination-wrapper mt-5 d-flex justify-content-center">
-                        <ul className="pagination">
-
-                            {/* PREV BUTTON */}
-                            <li
-                                className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
-                                onClick={() => currentPage > 1 && goToPage(currentPage - 1)}
-                            >
-                                <span className="page-link">Prev</span>
-                            </li>
-
-                            {/* PAGE NUMBERS */}
-                            {Array.from({ length: totalPages }, (_, i) => i + 1)?.map(num => (
+                    {/* PAGINATION UI - Only show if there are multiple pages */}
+                    {totalPages > 1 && (
+                        <div className="pagination-wrapper mt-5 d-flex justify-content-center">
+                            <ul className="pagination">
+                                {/* PREV BUTTON */}
                                 <li
-                                    key={num}
-                                    className={`page-item ${currentPage === num ? "active" : ""}`}
-                                    onClick={() => goToPage(num)}
+                                    className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+                                    onClick={() => currentPage > 1 && goToPage(currentPage - 1)}
                                 >
-                                    <span className="page-link">{num}</span>
+                                    <span className="page-link">Prev</span>
                                 </li>
-                            ))}
 
-                            {/* NEXT BUTTON */}
-                            <li
-                                className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
-                                onClick={() => currentPage < totalPages && goToPage(currentPage + 1)}
-                            >
-                                <span className="page-link">Next</span>
-                            </li>
-                        </ul>
-                    </div>
+                                {/* PAGE NUMBERS */}
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map(num => (
+                                    <li
+                                        key={num}
+                                        className={`page-item ${currentPage === num ? "active" : ""}`}
+                                        onClick={() => goToPage(num)}
+                                    >
+                                        <span className="page-link">{num}</span>
+                                    </li>
+                                ))}
 
-
-
+                                {/* NEXT BUTTON */}
+                                <li
+                                    className={`page-item ${currentPage === totalPages ? "disabled" : ""}`}
+                                    onClick={() => currentPage < totalPages && goToPage(currentPage + 1)}
+                                >
+                                    <span className="page-link">Next</span>
+                                </li>
+                            </ul>
+                        </div>
+                    )}
                 </section>
             </main>
         </>
     );
-
 }
-export default Blogs
+
+export default Blogs;

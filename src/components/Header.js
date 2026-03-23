@@ -11,7 +11,8 @@ import Image from 'next/image';
 import Link from "next/link";
 
 const Header = ({ homeData, loading }) => {
-
+  const [showService,setShowService]=useState(false)
+  const [showIndustry,setShowIndustry]=useState(false)
   if (loading) {
     // SKELETON HEADER
     return (
@@ -114,66 +115,9 @@ const Header = ({ homeData, loading }) => {
   }
 
   const router = useRouter();
-  const casestudy = Array.isArray(homeData?.projects) ? homeData.projects?.[0] : [];
+  const casestudy = homeData?.casestudy;
+  const finalServices = homeData?.services?.finalServices || [];
   const emblemRef = useRef(null);
-  useEffect(() => {
-    if (!emblemRef.current) return;
-
-    const element = emblemRef.current;
-    const text = element.innerText;
-    element.innerHTML = "";
-
-    for (let i = 0; i < text.length; i++) {
-      const letter = text[i];
-      const span = document.createElement("span");
-      span.textContent = letter;
-
-      const r = (360 / text.length) * i;
-      const x = (Math.PI / text.length).toFixed(0) * i;
-      const y = (Math.PI / text.length).toFixed(0) * i;
-
-      span.style.transform = `rotate(${r}deg) translate3d(${x}px, ${y}px, 0)`;
-
-      element.appendChild(span);
-    }
-  }, []);
-
-
-
-  const [showService, setServiceShow] = useState(false);
-  const [showIndustry, setIndustryShow] = useState(false);
-  const [open, setOpen] = useState(false);
-
-  const finalServices = useMemo(() => {
-    const children = homeData?.services?.children;
-
-    if (!Array.isArray(children)) return [];
-
-    const expanded = children.flatMap(item => {
-      if (item.slug === "application-solutioning") {
-        return item.children?.map(child => ({
-          slug: child.slug,
-          name: child.name,
-        })) || [];
-      }
-
-      return [{
-        slug: item.slug,
-        name: item.name,
-      }];
-    });
-
-    const bottomSlugs = ["ui-ux", "professional-services"];
-
-    return expanded.sort((a, b) => {
-      const aLast = bottomSlugs.includes(a.slug);
-      const bLast = bottomSlugs.includes(b.slug);
-
-      if (aLast && !bLast) return 1;
-      if (!aLast && bLast) return -1;
-      return 0;
-    });
-  }, [homeData]);
   return (
     <>
 
@@ -236,8 +180,8 @@ const Header = ({ homeData, loading }) => {
                         id="navbarScrollingDropdown"
                         key={item.slug}
                         show={showIndustry}
-                        onMouseEnter={() => setIndustryShow(true)}
-                        onMouseLeave={() => setIndustryShow(false)}
+                        onMouseEnter={() => setShowIndustry(true)}
+                        onMouseLeave={() => setShowIndustry(false)}
                       >
                         {homeData?.industries?.children?.map((child) => (
                           <Link
@@ -260,8 +204,8 @@ const Header = ({ homeData, loading }) => {
                         id="services-menu"
                         key={item.slug}
                         show={showService}
-                        onMouseEnter={() => setServiceShow(true)}
-                        onMouseLeave={() => setServiceShow(false)}
+                        onMouseEnter={() => setShowService(true)}
+                        onMouseLeave={() => setShowService(false)}
                       >
                         {finalServices?.map((service) => (
                           <Link

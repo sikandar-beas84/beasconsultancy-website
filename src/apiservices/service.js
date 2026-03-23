@@ -1,4 +1,4 @@
-import { env } from '../util/constants/common';
+import { env } from '@/util/constants/common';
 
 export const getDataService = async (url) => {
     try {
@@ -9,8 +9,7 @@ export const getDataService = async (url) => {
                 "Content-Type": "application/json",
                 'X-SECURE-KEY': `${env.ACCESS_TOKEN}`
             },
-            //  cache: 'no-store'
-            next: { revalidate: 80 }
+            next: { revalidate: 120 }
         });
 
         const responseObj = await response.json();
@@ -32,7 +31,7 @@ export const postService = async (url, slug) => {
                 'X-SECURE-KEY': `${env.ACCESS_TOKEN}`
             },
             body: JSON.stringify({ slug: slug }),
-            next: { revalidate: 80 }
+            next: { revalidate: 120 }
 
         }).then((response) => {
 
@@ -59,7 +58,7 @@ export const postServiceData = async (url, accessToken, payload) => {
           'X-SECURE-KEY': accessToken
         },
         body: JSON.stringify({ slug: payload }),
-        next: { revalidate: 80 }
+        next: { revalidate: 120 }
   
       }).then((response) => {
         return response.json()

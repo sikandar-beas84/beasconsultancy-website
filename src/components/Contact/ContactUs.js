@@ -10,12 +10,15 @@ import CountryCodeDropdown from './CountryCodeDropdown.js';
 
 import { env } from '../../util/constants/common';
 
-//  Load reCAPTCHA only on client
+// Load reCAPTCHA only on client
 const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), {
   ssr: false
 });
 
 const ContactUs = ({ contactus, faqs }) => {
+  // Add safety defaults
+  const safeContactus = contactus || {};
+  const safeFaqs = faqs || [];
 
   const fileInputRef = useRef(null);
   const [captchaToken, setCaptchaToken] = useState(null);
@@ -74,7 +77,6 @@ const ContactUs = ({ contactus, faqs }) => {
     setLoading(true);
     setStatus('');
     
-
     try {
       const res = await fetch(`${env.API_BASE_URL}save-customer-enquiry`, {
         method: 'POST',
@@ -85,36 +87,51 @@ const ContactUs = ({ contactus, faqs }) => {
       });
       const result = await res.json();
 
-
       if (res.ok) {
         setStatus('✅ Message sent successfully!');
         setErrors({});
-        setFormData({ name: '', email: '', phone: '', subject: '', message: '', file: null });
-        // ✅ Reset file input
+        setFormData({ 
+          name: '', 
+          email: '', 
+          phone: '', 
+          subject: '', 
+          message: '', 
+          file: null,
+          countrycode: '+91'
+        });
+        // Reset file input
         if (fileInputRef.current) {
           fileInputRef.current.value = null;
         }
+        // Reset captcha
+        setCaptchaToken(null);
       } else {
-        setStatus(``);
-        setErrors(result.error);
+        setStatus('');
+        setErrors(result.error || {});
       }
     } catch (err) {
-      //console.error(err);
-      setStatus('❌ Submission failed.');
+      console.error('Submission error:', err);
+      setStatus('❌ Submission failed. Please try again.');
     } finally {
-      setLoading(false); // ✅ stop loader
+      setLoading(false);
     }
   };
 
-  // ---- FAQ helpers
- 
-  const faqHeading = faqs?.find(item => item.type === 'faq-heading');
-  // const faqItems = faqs?.filter(item => item.type !== 'faq-heading');
+  // ---- FAQ helpers with safety checks
+  const faqHeading = safeFaqs?.find(item => item?.type === 'faq-heading');
   
+  // Get first non-heading FAQ for default active key
+  const firstNonHeadingIndex = safeFaqs?.findIndex(
+    (item) => item?.type !== "faq-heading"
+  );
+  
+  // Safe banner URL with fallback
+  const bannerUrl = safeContactus?.banner || '/assets/images/default-banner.jpg';
+
   return (
     <>
       <main>
-        <BreadCrumb pagetitle="Contact Us" pageBanner={contactus?.banner} />
+        <BreadCrumb pagetitle="Contact Us" pageBanner={bannerUrl} />
 
         {/* ===== Contact Form ===== */}
         <section className="section-padding">
@@ -223,9 +240,21 @@ const ContactUs = ({ contactus, faqs }) => {
                 <div className="contact_right_box">
                   <div className='contact_form_add_heading'>
                     {[
-                      { icon: 'add2.png', title: 'Address', text: contactus?.address },
-                      { icon: 'add3.png', title: 'Email', text: contactus?.email },
-                      { icon: 'add1.png', title: 'Mobile', text: `${contactus?.phone} ${contactus?.mobile}` }
+                      { 
+                        icon: 'add2.png', 
+                        title: 'Address', 
+                        text: safeContactus?.address || 'Address not available' 
+                      },
+                      { 
+                        icon: 'add3.png', 
+                        title: 'Email', 
+                        text: safeContactus?.email || 'Email not available' 
+                      },
+                      { 
+                        icon: 'add1.png', 
+                        title: 'Mobile', 
+                        text: `${safeContactus?.phone || ''} ${safeContactus?.mobile || ''}`.trim() || 'Phone not available' 
+                      }
                     ]?.map((item, index) => (
                       <div key={index} className="form_add">
                         <div className='map_location_icon'>
@@ -239,7 +268,6 @@ const ContactUs = ({ contactus, faqs }) => {
                         </div>
                         <div className='map_location_icon_cont'>
                           <h1>{item.title}</h1>
-                          
                           <h3 dangerouslySetInnerHTML={{ __html: item.text }} />
                         </div>
                       </div>
@@ -252,41 +280,46 @@ const ContactUs = ({ contactus, faqs }) => {
         </section>
 
         {/* ===== FAQ ===== */}
-        <section className="section-abuts section-contact contactUsAccordian">
-          <Container>
-            <div className="row">
-              <div className="col-lg-12">
-                <div className="ser_rea">
-                  <div className="about_texts contact-bg">
-                    <div className="serv-head">
-
-                      {faqHeading && (
-                        <>
-                          <h2>{faqHeading.title}</h2>
-                          <p>{faqHeading.long_desc}</p>
-                        </>
-                      )}
-                    </div>
+        {safeFaqs && safeFaqs.length > 0 && (
+          <section className="section-abuts section-contact contactUsAccordian">
+            <Container>
+              <div className="row">
+                <div className="col-lg-12">
+                  <div className="ser_rea">
+                    <div className="about_texts contact-bg">
+                      <div className="serv-head">
+                        {faqHeading && (
+                          <>
+                            <h2>{faqHeading?.title || 'Frequently Asked Questions'}</h2>
+                            <p>{faqHeading?.long_desc || 'Find answers to common questions'}</p>
+                          </>
+                        )}
+                      </div>
+                      
                       {(() => {
-                        let counter = 0; // manual numbering only for FAQ items
-
-                        const firstAccordionIndex = faqs?.findIndex(
-                          (item) => item.type !== "faq-heading"
+                        let counter = 0;
+                        const nonHeadingFaqs = safeFaqs.filter(item => item?.type !== "faq-heading");
+                        
+                        if (nonHeadingFaqs.length === 0) {
+                          return <p>No FAQs available.</p>;
+                        }
+                        
+                        const firstAccordionIndex = safeFaqs?.findIndex(
+                          (item) => item?.type !== "faq-heading"
                         );
 
                         return (
                           <Accordion defaultActiveKey={firstAccordionIndex?.toString()} flush>
-                            {faqs?.map((item, index) => {
-                              if (item.type !== "faq-heading") {
-                                counter++; // increment only for FAQ items
-
+                            {safeFaqs?.map((item, index) => {
+                              if (item?.type !== "faq-heading") {
+                                counter++;
                                 return (
                                   <Accordion.Item eventKey={index?.toString()} key={index}>
                                     <Accordion.Header>
-                                      {`${counter}. ${item.title}`}
+                                      {`${counter}. ${item?.title || 'Question'}`}
                                     </Accordion.Header>
                                     <Accordion.Body>
-                                      <p>{item.short_desc}</p>
+                                      <p>{item?.short_desc || 'No answer available'}</p>
                                     </Accordion.Body>
                                   </Accordion.Item>
                                 );
@@ -296,19 +329,19 @@ const ContactUs = ({ contactus, faqs }) => {
                           </Accordion>
                         );
                       })()}
-                    
+                    </div>
                   </div>
                 </div>
               </div>
+            </Container>
+            <div className="shp1">
+              <img src="/assets/images/ser-bg.png" alt="shape" />
             </div>
-          </Container>
-          <div className="shp1">
-            <img src="assets/images/ser-bg.png" />
-          </div>
-          <div className="shp2">
-            <img src="assets/images/ser-bg2.png" />
-          </div>
-        </section>
+            <div className="shp2">
+              <img src="/assets/images/ser-bg2.png" alt="shape" />
+            </div>
+          </section>
+        )}
       </main>
     </>
   );

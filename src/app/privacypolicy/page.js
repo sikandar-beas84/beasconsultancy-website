@@ -1,6 +1,6 @@
 // app/contact/page.js
 import { getDataService, postService } from '@/apiservices/service';
-import AboutUs from '@/components/About'
+import { env } from '@/util/constants/common';
 import PrivacyPolicy from '@/components/privacypolicy/privacypolicy';
 
 

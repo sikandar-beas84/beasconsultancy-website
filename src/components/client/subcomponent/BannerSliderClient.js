@@ -21,13 +21,14 @@ const BannerSlider = ({ bannerSlide }) => {
               <div className='banner'>
                 <div className="banner_thumb_img">
                   <Image
-                    src={`${env.BACKEND_BASE_URL}${item?.image}`}   // use optimized format (webp/avif)
+                    src={`${env.BACKEND_BASE_URL}${item?.image}`}
                     alt="Hero Banner"
-                    width={1920}
-                    height={980}
-                    priority      // ✅ ensures this image is not lazy-loaded
-                    fetchPriority="high" // ✅ tells browser it’s critical
-                    className="img-fluid" // you can keep bootstrap class
+                    width={1600}
+                    height={800}
+                    priority={index === 0}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    className="img-fluid"
+                    sizes="100vw"
                   />
 
                   <Carousel.Caption>

@@ -8,9 +8,10 @@ export async function generateMetadata({params}) {
     try {
         const param=await params;
         const slug=param?.slug;
-        const seoRes = await postServiceData('get-seo-by-slug', slug);
+        const seoRes = await postService('get-seo-by-slug', slug);
         
         const seometadata = seoRes?.data?.seometa || null;
+      
         return {
             title: seometadata?.title || `Blog`,
             description: seometadata?.description || "Explore exciting Blog opportunities with us.",
@@ -29,7 +30,7 @@ export async function generateMetadata({params}) {
             },
         };
     } catch (error) {
-
+            console.log(error)
         return {
             title: "Carrer",
             description: "Explore exciting career opportunities with us.",

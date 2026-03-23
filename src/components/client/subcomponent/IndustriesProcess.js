@@ -58,7 +58,7 @@ const IndustriesProcess = ({pageTitle, pageDesc, industryData=[]}) => {
                                         <div className="proc-img">
                                             <Image
                                                 src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${tabs[activeIndex]?.menu_contents?.image}`}
-                                                alt={tabs[activeIndex]?.name}
+                                                alt={tabs[activeIndex]?.name??"Industries"}
                                                 width={800}
                                                 height={800}
                                                 className="img-fluid"

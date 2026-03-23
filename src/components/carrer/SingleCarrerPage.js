@@ -122,7 +122,6 @@ const SingleCarrerPage = ({ career, menucareer, careerId }) => {
     if (typeof skills === 'string') return skills.split(',').filter(s => s.trim());
     return [];
   };
-  console.log("formData",formData)
 
   return (
     <>

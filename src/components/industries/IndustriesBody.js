@@ -1,25 +1,22 @@
 'use client'
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from "react-bootstrap";
 import Link from 'next/link';
 import Image from 'next/image';
 import { env } from '../../util/constants/common';
-import { useRouter } from 'next/navigation';
 import BreadCrumb from '../BreadCrumb';
-import { postServiceData } from '@/apiservices/service';
 
-
-const IndustriesBody = ({ slug, industries }) => {
-    const router = useRouter();
-    const [enrichedContents, setEnrichedContents] = useState([]);
-
-
+const IndustriesBody = ({ slug, industries, initialIndustry, initialEnrichedContents }) => {
     /**
      * 🔍 Resolve industry FROM CONTEXT using slug
+     * Now using the pre-resolved industry from SSR
      */
     const industry = useMemo(() => {
-        if(!industries)  return;
+        if (initialIndustry) return initialIndustry;
+        
+        // Fallback to client-side resolution if SSR didn't provide it
+        if (!industries) return null;
         let currentLevel = industries;
         let found = null;
 
@@ -29,45 +26,17 @@ const IndustriesBody = ({ slug, industries }) => {
             currentLevel = found.children || [];
         }
         return found;
-    }, [industries, slug]);
+    }, [industries, slug, initialIndustry]);
+
+    // Use the pre-enriched contents from SSR
+    const enrichedContents = initialEnrichedContents || [];
 
     if (!industry) {
         return <div>Industry not found</div>;
     }
 
-    /**
-     * 🔁 Enrich case studies FROM industry contents (NO industry API)
-     */
-    useEffect(() => {
-        const contents = industry?.menu_contents?.contents || [];
-
-        const enrich = async () => {
-            const result = await Promise.all(
-                contents?.map(async (item) => {
-                    if (!item.extra_description) return item;
-                    try {
-                        const data = await postServiceData("get-casestudy-by-slug", env.ACCESS_TOKEN, item.extra_description);
-                        return { ...item, casestudy: data };
-                    } catch {
-                        return item;
-                    }
-                })
-            );
-            setEnrichedContents(result);
-        };
-
-        enrich();
-    }, [industry]);
-
-    /**
-     * 🔹 SEO META
-     */
-
-
     return (
         <>
-
-
             <main>
                 <BreadCrumb
                     pagetitle={industry.name}
@@ -96,7 +65,6 @@ const IndustriesBody = ({ slug, industries }) => {
                                 {enrichedContents?.map((item, index) => {
                                     const casestudyData = item?.casestudy?.data?.casestudy;
                                     if (!casestudyData?.slug) return null;
-
                                     return (
                                         <Col xs={12} md={4} key={index}>
                                             <div className="guiditem">
@@ -146,4 +114,5 @@ const IndustriesBody = ({ slug, industries }) => {
         </>
     );
 };
+
 export default IndustriesBody;

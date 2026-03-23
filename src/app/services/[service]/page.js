@@ -1,4 +1,4 @@
-import { getDataService, postService } from '@/apiservices/service';
+import { getDataService, postService, postServiceData } from '@/apiservices/service';
 import BreadCrumb from '@/components/BreadCrumb';
 import React from 'react'
 import { env } from '@/util/constants/common';
@@ -34,12 +34,13 @@ const flattenServices = (services, parentPath = '') => {
     return acc;
   }, []);
 };
+
 export async function generateMetadata({ params }) {
   try {
     const resolvedParams = await params;
     const slug = resolvedParams.service;
     const serviceData = await postService('get-seo-by-slug', slug);
-    const seometadata = serviceData?.data?.seometa
+    const seometadata = serviceData?.data?.seometa;
     return {
       title: seometadata?.title || "Home",
       description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
@@ -56,24 +57,132 @@ export async function generateMetadata({ params }) {
       },
     };
   } catch (error) {
-
+    console.error('Error generating metadata:', error);
     return {
       title: "Home",
       description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
     };
   }
 }
+
 const page = async ({ params }) => {
-  const [serviceData, services] = await Promise.all([getDataService('get-clients'), getDataService('get-menu-services')]);
-  const resolvedParams = await params;
-  const slug = resolvedParams.service;
+  try {
+    const resolvedParams = await params;
+    const slug = resolvedParams.service;
 
+    // Fetch all required data
+    const [clientsData, servicesData] = await Promise.all([
+      getDataService('get-clients'),
+      getDataService('get-menu-services')
+    ]);
 
-  return (
-    <div>
-      <Servicebody slug={slug} allclient={serviceData?.data?.clients} services={services?.data?.services?.children} />
-    </div>
-  )
+    const allclient = clientsData?.data?.clients;
+    const services = servicesData?.data?.services?.children;
+
+    // Validate services data
+    if (!services || !Array.isArray(services)) {
+      console.error('Invalid services data received:', services);
+      return <div>Unable to load services data. Please try again later.</div>;
+    }
+
+    // Find the specific service based on slug
+    const findService = (servicesList, serviceSlug) => {
+      if (!servicesList || !Array.isArray(servicesList)) return null;
+
+      const appSlugs = [
+        "application-development",
+        "application-maintenance",
+        "ui-ux",
+        "professional-services",
+      ];
+
+      let foundService = null;
+
+      if (appSlugs.includes(serviceSlug)) {
+        // Find parent "application-solutioning" first
+        const parent = servicesList.find(s => s && s.slug === "application-solutioning");
+        if (parent && parent.children && Array.isArray(parent.children)) {
+          foundService = parent.children.find(c => c && c.slug === serviceSlug);
+        }
+      } else {
+        // Direct service lookup
+        foundService = servicesList.find(s => s && s.slug === serviceSlug);
+      }
+
+      return foundService || null;
+    };
+
+    const service = findService(services, slug);
+
+    if (!service) {
+      return <div>Service not found</div>;
+    }
+
+    // Enrich children with case studies data on the server
+    const enrichChildrenWithCaseStudies = async (children) => {
+      if (!children || !Array.isArray(children)) return [];
+
+      const enriched = await Promise.all(
+        children.map(async (child) => {
+          const contents = child?.menu_contents?.contents || [];
+          
+          let enrichedContents = [];
+          
+          if (Array.isArray(contents) && contents.length > 0) {
+            enrichedContents = await Promise.all(
+              contents.map(async (content) => {
+                if (!content.extra_description) return content;
+                try {
+                  const data = await postServiceData(
+                    "get-casestudy-by-slug",
+                    env.ACCESS_TOKEN,
+                    content.extra_description
+                  );
+                  return { ...content, casestudy: data };
+                } catch (error) {
+                  console.error('Error fetching case study for slug:', content.extra_description, error);
+                  return content;
+                }
+              })
+            );
+          }
+
+          return {
+            ...child,
+            menu_contents: {
+              ...child.menu_contents,
+              contents: enrichedContents,
+            },
+          };
+        })
+      );
+
+      return enriched;
+    };
+
+    const enrichedChildren = await enrichChildrenWithCaseStudies(service.children);
+
+    // Log for debugging
+
+    // Prepare the props for the client component
+    const serviceProps = {
+      slug,
+      allclient,
+      services,
+      initialService: service,
+      initialEnrichedChildren: enrichedChildren
+    };
+
+    return (
+      <div>
+        <Servicebody {...serviceProps} />
+      </div>
+    );
+
+  } catch (error) {
+    console.error('Error in service page:', error);
+    return <div>An error occurred while loading the page. Please try again later.</div>;
+  }
 }
 
 export default page;

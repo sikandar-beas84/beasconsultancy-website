@@ -1,11 +1,12 @@
 import { getDataService, postService } from '@/apiservices/service';
 import SingleCarrerPage from '@/components/carrer/SingleCarrerPage';
 import React from 'react'
+import { env } from '@/util/constants/common';
+
 export async function generateMetadata() {
     try {
+       
         const seoRes = await postService('get-seo-by-slug', 'career');
-        
-
         const seometadata = seoRes?.data?.seometa || null;
         return {
             title: seometadata?.title || `Careers`,
@@ -39,7 +40,6 @@ const page = async({params}) => {
 
     const carrerId = careers?.data?.careers.find((item) => item.title.toString() === slug);
     
-
 
 
 

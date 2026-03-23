@@ -11,7 +11,6 @@ const PrivacyPolicy = ({ privacypolicy }) => {
       return <div>Loading...</div>;
     }
   
-    console.log("privacypolicy",privacypolicy)
    
     return (
       <>

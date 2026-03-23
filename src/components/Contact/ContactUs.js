@@ -73,6 +73,7 @@ const ContactUs = ({ contactus, faqs }) => {
 
     setLoading(true);
     setStatus('');
+    
 
     try {
       const res = await fetch(`${env.API_BASE_URL}save-customer-enquiry`, {
@@ -108,7 +109,7 @@ const ContactUs = ({ contactus, faqs }) => {
   // ---- FAQ helpers
  
   const faqHeading = faqs?.find(item => item.type === 'faq-heading');
-  const faqItems = faqs?.filter(item => item.type !== 'faq-heading');
+  // const faqItems = faqs?.filter(item => item.type !== 'faq-heading');
   
   return (
     <>
@@ -251,7 +252,7 @@ const ContactUs = ({ contactus, faqs }) => {
         </section>
 
         {/* ===== FAQ ===== */}
-        <section className="section-abuts section-contact">
+        <section className="section-abuts section-contact contactUsAccordian">
           <Container>
             <div className="row">
               <div className="col-lg-12">

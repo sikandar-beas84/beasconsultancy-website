@@ -11,7 +11,6 @@ import BannerCarousal from "./client/subcomponent/BannerCarousal";
 import BreadCrumb from "./BreadCrumb";
 
 const CasestudyGeneric = ({
-    casestudy,
     menucasestudy,
     projects,
     currentSlug,

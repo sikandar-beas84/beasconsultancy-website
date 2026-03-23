@@ -42,7 +42,6 @@ const Footer = ({ homeData }) => {
         });
     }, [homeData]);
     //////////////////////////////////////////
-    
     return (
         <>
 
@@ -109,7 +108,7 @@ const Footer = ({ homeData }) => {
                             <div className='get-in-touch-block'>
                                 <div className='footer-txt'>Get In Touch</div>
                                 <ul>
-                                    <li><Map size={16} />{homeData?.contactus?.address}</li>
+                                    <li><Map size={16} /><div dangerouslySetInnerHTML={{ __html: homeData?.contactus?.address || '' }} /></li>
                                     <li><Phone size={16} /> {homeData?.contactus?.phone}</li>
                                     <li><Mail size={16} /> {homeData?.contactus?.email}</li>
 
@@ -147,18 +146,25 @@ const Footer = ({ homeData }) => {
                         <Col>
                             <div className='award-section'>
                                 <ul>
-                                    {homeData?.certificates?.map((item, index) => (
-                                        <li className='certificate-icon' key={index}>
+                                    {homeData?.certificates?.map((item, index) => {
+
+                                        return <li className='certificate-icon' key={index}>
                                             {item?.image && (
-                                                <Image
-                                                    width={220}
-                                                    height={90}
-                                                    src={`${env.BACKEND_BASE_URL}${item.image}`}
-                                                    alt="image"
-                                                />
+                                                <Link
+                                                    href={item?.description}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <Image
+                                                        width={220}
+                                                        height={90}
+                                                        src={`${env.BACKEND_BASE_URL}${item.image}`}
+                                                        alt="image"
+                                                    />
+                                                </Link>
                                             )}
                                         </li>
-                                    ))}
+                                    })}
                                 </ul>
                             </div>
                         </Col>

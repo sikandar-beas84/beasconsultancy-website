@@ -1,31 +1,34 @@
 "use client"
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import Container from 'react-bootstrap/Container';
 import { Col, Row } from "react-bootstrap";
 import Link from 'next/link';
 import Image from 'next/image';
 import { env } from '@/util/constants/common';
 import { useRouter } from 'next/navigation';
-import { postServiceData } from '@/apiservices/service';
 import ImageModal from '../ImageModal';
 import BreadCrumb from '../BreadCrumb';
+import BannerCarousalClient from '../client/BannerCarousalClient';
 
-const Servicebody = ({ slug, allclient,services }) => {
-
+const Servicebody = ({ slug, allclient, services, initialService, initialEnrichedChildren }) => {
     const router = useRouter();
-    const [modalImage, setModalImage] = useState(null);
+    const [modalImage, setModalImage] = React.useState(null);
+    
     const openModal = (img) => {
-        setModalImage(img); // open modal with clicked image
+        setModalImage(img);
     };
 
     const closeModal = () => {
-        setModalImage(null); // close modal
+        setModalImage(null);
     };
 
-    const [enrichedChildren, setEnrichedChildren] = useState([]);
+    // Use pre-enriched children from SSR or fallback to empty array
+    const enrichedChildren = initialEnrichedChildren || [];
 
-   
+    // Find the service using pre-resolved data or fallback to client-side resolution
     const service = useMemo(() => {
+        if (initialService) return initialService;
+        
         if (!services || !services.length) return null;
        
         const appSlugs = [
@@ -41,53 +44,10 @@ const Servicebody = ({ slug, allclient,services }) => {
         }
 
         return services.find(s => s.slug === slug) || null;
-    }, [services, slug]);
+    }, [services, slug, initialService]);
 
-    
-    useEffect(() => {
-        if (!service?.children) return;
-
-        const enrich = async () => {
-            const result = await Promise.all(
-                service.children?.map(async (child) => {
-                    const contents = child?.menu_contents?.contents || [];
-
-                    const enrichedContents = await Promise.all(
-                        contents?.map(async (c) => {
-                            if (!c.extra_description) return c;
-                            try {
-                                const data = await postServiceData(
-                                    "get-casestudy-by-slug",
-                                    env.ACCESS_TOKEN,
-                                    c.extra_description
-                                );
-                                return { ...c, casestudy: data };
-                            } catch {
-                                return c;
-                            }
-                        })
-                    );
-
-                    return {
-                        ...child,
-                        menu_contents: {
-                            ...child.menu_contents,
-                            contents: enrichedContents,
-                        },
-                    };
-                })
-            );
-
-            setEnrichedChildren(result);
-        };
-
-        enrich();
-    }, [service]);
-
-    /**
-     * ⏳ SAFE RETURNS (AFTER hooks)
-     */
-    if (router.isFallback ) {
+    // Check if we're in fallback mode
+    if (router.isFallback) {
         return <div>Loading...</div>;
     }
 
@@ -95,38 +55,8 @@ const Servicebody = ({ slug, allclient,services }) => {
         return <div>Service not found</div>;
     }
 
-    /**
-     * 🔹 SEO
-     */
-    // const metaTitle = seometadata?.title || "Services";
-    // const metaKeyword =
-    //     seometadata?.keyword ||
-    //     "services, beas consultancy, business solutions, software development";
-    // const metaDesc =
-    //     seometadata?.description ||
-    //     service?.menu_contents?.description
-    //         ?.replace(/(<([^>]+)>)/gi, "")
-    //         ?.slice(0, 50);
-
-    // const metaImage = seometadata?.image
-    //     ? `${env.BACKEND_BASE_URL}${seometadata.image}`
-    //     : `${env.BACKEND_BASE_URL}${service.image}`;
-
-    // const metaUrl = seometadata?.url
-    //     ? `${env.FRONTEND_BASE_URL}services/${seometadata.url}`
-    //     : `${env.FRONTEND_BASE_URL}services/${service.slug}`;
-
     return (
         <>
-            {/* <SEO
-                title={metaTitle}
-                description={metaDesc}
-                keywords={metaKeyword}
-                image={metaImage}
-                url={metaUrl}
-                author="BEAS Consultancy And Services Private Limited"
-            /> */}
-
             <main>
                 <BreadCrumb
                     pagetitle={service.name}
@@ -152,11 +82,9 @@ const Servicebody = ({ slug, allclient,services }) => {
                                                         <li>b) <span onClick={() => openModal('/assets/images/azure.webp')} className="bblue-llink"> Azure Cloud</span></li>
                                                         <li>c) <span onClick={() => openModal('/assets/images/oracle_cloud.webp')} className="bblue-llink"> Oracle Cloud</span></li>
                                                         <li>d) <span onClick={() => openModal('/assets/images/google_cloud.webp')} className="bblue-llink"> Google Cloud</span></li>
-
                                                     </ul>
                                                 </div>
-                                            )
-                                            }
+                                            )}
                                             {item1?.image && (
                                                 <span
                                                     onClick={() => openModal(`${env.BACKEND_BASE_URL}${item1?.image}`)}
@@ -176,7 +104,6 @@ const Servicebody = ({ slug, allclient,services }) => {
                                         <Col xs={12}>
                                             <div className="imageTextBlock">
                                                 <div className="row center-cols py-3">
-
                                                     {slug !== "professional-services" ? (
                                                         item1.menu_contents?.contents
                                                             ?.sort((a, b) => Number(a.extra_order) - Number(b.extra_order))
@@ -225,9 +152,8 @@ const Servicebody = ({ slug, allclient,services }) => {
                                                                 );
                                                             })
                                                     ) : (
-                                                        <BannerCarousal page="clients" clients={allclient} />
+                                                        <BannerCarousalClient page="clients" clients={allclient} />
                                                     )}
-
                                                 </div>
                                             </div>
                                         </Col>
@@ -241,7 +167,7 @@ const Servicebody = ({ slug, allclient,services }) => {
                 <ImageModal
                     show={!!modalImage}
                     image={modalImage}
-                    onClose={() => setModalImage(null)}
+                    onClose={closeModal}
                 />
             </main>
         </>

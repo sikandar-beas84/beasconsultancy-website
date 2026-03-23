@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../globals.css";
 import { getDataService } from "@/apiservices/service";
@@ -9,29 +9,32 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
 
 export const metadata = {
   title: "Beas consltancy",
   description: "Beas",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
-
 export default async function RootLayout({ children }) {
 
-  const [getMenus, services, industries,common,projects] = await Promise.all([
+  const [getMenus, services, industries,common,projects,contactUs] = await Promise.all([
     getDataService('get-home-menus'),
     getDataService('get-home-services'),
     getDataService('get-home-industries'),
     getDataService('get-home-common'),
      getDataService('get-projects'),
+     getDataService('get-home-contactus')
 
   ]);
   const mapServices = (services) => {
@@ -43,6 +46,8 @@ export default async function RootLayout({ children }) {
   };
   const homeData = {
     // Menus data (the array of menu items)
+    socials:common?.data?.socials,
+    contactus:contactUs?.data?.contactus,
     menus: getMenus?.data?.menus,
     logo:common?.data?.logo,
     certificates:common.data?.certificates,
@@ -56,17 +61,16 @@ export default async function RootLayout({ children }) {
     industries: industries.data.industries, // This already has the complete structure with children
 
     // Contact info (you'll need to add this from somewhere)
-    contactus: {
-      email: "beas@beas.co.in", // Add from your data source
-      mobile: "+91-9433068494"   // Add from your data source
-    },
+    // contactus: {
+    //   email: "beas@beas.co.in", // Add from your data source
+    //   mobile: "+91-9433068494"   // Add from your data source
+    // },
 
-   
+    
 
     // Projects data (for case studies)
     projects:projects?.data?.projects??[] // Add from your data source if available
   };
-  
   return (
     <html lang="en">
       <body>

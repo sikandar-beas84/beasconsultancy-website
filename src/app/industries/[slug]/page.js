@@ -1,7 +1,8 @@
 import React from 'react'
 import { env } from '@/util/constants/common';
 import IndustriesBody from '@/components/industries/IndustriesBody';
-import { getDataService } from '@/apiservices/service';
+import { getDataService, postService, postServiceData } from '@/apiservices/service';
+
 export async function generateMetadata({ params }) {
     try {
         const param = await params;
@@ -26,26 +27,107 @@ export async function generateMetadata({ params }) {
             },
         };
     } catch (error) {
+        console.error('Error generating metadata:', error);
         return {
             title: "Home",
             description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
         };
     }
 }
+
 const page = async ({ params }) => {
-    const param = await params;
-    const slug = await param.slug;
+    try {
+        const param = await params;
+        const slug = await param.slug;
 
-    const [industries] = await Promise.all([
-        getDataService('get-menu-industries'),
-    ]);
+        // Fetch industries data with proper error handling
+        const industriy = await getDataService('get-menu-industries');
+        const industriesData = industriy?.data?.industries?.children;
 
-   
-    return (
-        <div>
-            <IndustriesBody slug={[slug]} industries={industries?.data?.industries?.children} />
-        </div>
-    )
+        // Validate industriesData
+        if (!industriesData || !Array.isArray(industriesData)) {
+            console.error('Invalid industries data received:', industriesData);
+            return <div>Unable to load industries data. Please try again later.</div>;
+        }
+
+        // Find the specific industry based on slug
+        const findIndustry = (industries, slugParts) => {
+            // Ensure industries is an array
+            if (!industries || !Array.isArray(industries)) return null;
+
+            let currentLevelData = industries;
+            let found = null;
+
+            // Ensure slugParts is an array
+            const slugArray = Array.isArray(slugParts) ? slugParts : [slugParts];
+
+            for (const part of slugArray) {
+                // Check if currentLevelData is an array before using find
+                if (!Array.isArray(currentLevelData)) {
+                    return null;
+                }
+
+                found = currentLevelData.find(item => item && item.slug === part);
+                if (!found) return null;
+
+                // Safely access children property
+                currentLevelData = found.children && Array.isArray(found.children) ? found.children : [];
+            }
+
+            return found;
+        };
+
+        const industry = findIndustry(industriesData, slug);
+
+        if (!industry) {
+            return <div>Industry not found</div>;
+        }
+
+        // Enrich case studies data on the server
+        const contents = industry?.menu_contents?.contents || [];
+
+        let enrichedContents = [];
+
+        if (Array.isArray(contents) && contents.length > 0) {
+            enrichedContents = await Promise.all(
+                contents.map(async (item) => {
+                    if (!item.extra_description) return item;
+                    try {
+                        // Fix: Use postServiceData with token and slug
+                        const data = await postServiceData(
+                            "get-casestudy-by-slug",
+                            env.ACCESS_TOKEN,
+                            item.extra_description
+                        );
+                        return { ...item, casestudy: data };
+                    } catch (error) {
+                        console.error('Error fetching case study for slug:', item.extra_description, error);
+                        return item;
+                    }
+                })
+            );
+        }
+
+        
+
+        // Prepare the props for the client component
+        const industriesProps = {
+            slug,
+            industries: industriesData,
+            initialIndustry: industry,
+            initialEnrichedContents: enrichedContents
+        };
+
+        return (
+            <div>
+                <IndustriesBody {...industriesProps} />
+            </div>
+        );
+
+    } catch (error) {
+        console.error('Error in industries page:', error);
+        return <div>An error occurred while loading the page. Please try again later.</div>;
+    }
 }
 
-export default page
+export default page;

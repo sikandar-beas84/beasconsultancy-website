@@ -36,7 +36,7 @@ export async function generateMetadata() {
 const page = async({params}) => {
     const param=await params;
     const slug=param.slug;
-    const [menucareer, careers,contact] = await Promise.all([getDataService('get-menu-careers'), getDataService('get-careers'),getDataService('get-contact')])
+    const [menucareer, careers] = await Promise.all([getDataService('get-menu-careers'), getDataService('get-careers')])
 
     const carrerId = careers?.data?.careers.find((item) => item.title.toString() === slug);
     

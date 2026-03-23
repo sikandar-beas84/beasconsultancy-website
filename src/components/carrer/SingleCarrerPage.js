@@ -9,7 +9,7 @@ import CountryCodeDropdown from '../Contact/CountryCodeDropdown';
 import BreadCrumb from '../BreadCrumb';
 
 const SingleCarrerPage = ({ career, menucareer, careerId }) => {
-
+  console.log("career",career)
   const router = useRouter();
 
   // Add check for career data
@@ -128,7 +128,7 @@ const SingleCarrerPage = ({ career, menucareer, careerId }) => {
     <>
       <main>
         <BreadCrumb
-          pagetitle={career?.role}
+          pagetitle={career?.find((e) => e.id === careerId)?.role}
           pageslug='Career'
           pageBanner={`assets/img/menu-content/${menucareer?.menu_contents?.banner}`}
         />

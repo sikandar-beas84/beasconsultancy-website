@@ -36,8 +36,9 @@ const flattenServices = (services, parentPath = '') => {
 
 export async function generateMetadata({ params }) {
   try {
-    const resolvedParams = await params;
-    const slug = resolvedParams.service;
+    
+    const {slug} = await params;
+    
     const serviceData = await postService('get-seo-by-slug', slug);
     const seometadata = serviceData?.data?.seometa;
     return {
@@ -66,8 +67,7 @@ export async function generateMetadata({ params }) {
 
 const page = async ({ params }) => {
   try {
-    const resolvedParams = await params;
-    const slug = resolvedParams.service;
+    const {slug} = await params
 
     // Fetch all required data
     const [clientsData, servicesData] = await Promise.all([

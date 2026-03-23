@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -111,7 +112,7 @@ export default async function RootLayout({ children }) {
         {/* GTM Noscript */}
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPFDQXZG"
           height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
-
+        <ErrorBoundary/>
         <Header homeData={homeData} loading={false} />
         {children}
         <Footer homeData={homeData} />

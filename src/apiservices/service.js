@@ -9,7 +9,7 @@ export const getDataService = async (url) => {
                 "Content-Type": "application/json",
                 'X-SECURE-KEY': `${env.ACCESS_TOKEN}`
             },
-            cache: "no-store",
+            next: { revalidate: 120 }
         });
 
         const responseObj = await response.json();
@@ -58,8 +58,7 @@ export const postServiceData = async (url, accessToken, payload) => {
                 'X-SECURE-KEY': accessToken
             },
             body: JSON.stringify({ slug: payload }),
-            cache: "no-store",
-
+            next: { revalidate: 120 }
         }).then((response) => {
             return response.json()
         })

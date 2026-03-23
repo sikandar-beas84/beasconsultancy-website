@@ -9,7 +9,6 @@ import CountryCodeDropdown from '../Contact/CountryCodeDropdown';
 import BreadCrumb from '../BreadCrumb';
 
 const SingleCarrerPage = ({ career, menucareer, careerId }) => {
-  console.log("career",career)
   const router = useRouter();
 
   // Add check for career data
@@ -123,6 +122,7 @@ const SingleCarrerPage = ({ career, menucareer, careerId }) => {
     if (typeof skills === 'string') return skills.split(',').filter(s => s.trim());
     return [];
   };
+  console.log("formData",formData)
 
   return (
     <>
@@ -275,9 +275,10 @@ const SingleCarrerPage = ({ career, menucareer, careerId }) => {
 
                           <Col xs={12} lg={2}>
                             <div className="upload-btn-wrapper">
-                              <button className="btn2" type="button">
+                              <button className="btn2">
                                 Upload CV <ArrowUp />
                               </button>
+
                               <input
                                 type="file"
                                 name="resume"
@@ -285,9 +286,9 @@ const SingleCarrerPage = ({ career, menucareer, careerId }) => {
                                 ref={fileInputRef}
                                 accept=".doc,.docx,.pdf,.ppt,.pptx"
                                 className="form-control mb-1"
-                                required
                               />
                             </div>
+                            {formData.resume && <p className='cv-file-name'>{formData.resume?.name}</p>}
                             {errors?.resume && (
                               <p className="error_message">{errors.resume[0]}</p>
                             )}

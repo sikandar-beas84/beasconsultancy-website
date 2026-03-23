@@ -30,7 +30,7 @@ export async function generateMetadata({params}) {
             },
         };
     } catch (error) {
-            console.log(error)
+          
         return {
             title: "Carrer",
             description: "Explore exciting career opportunities with us.",

@@ -1,4 +1,3 @@
-// app/contact/page.js
 import ContactUs from '@/components/Contact/ContactUs'
 import { getDataService, postService } from '@/apiservices/service'
 import { env } from '@/util/constants/common';
@@ -6,34 +5,48 @@ import { env } from '@/util/constants/common';
 
 export async function generateMetadata() {
     try {
-        const seoRes = await postService('get-seo-by-slug', 'contact')
-        const seo = seoRes?.data?.seometa
-        
+        const seoRes = await postService('get-seo-by-slug', 'contact');
+        const seo = seoRes?.data?.seometa;
+
         return {
             title: seo?.title || "Contact us",
             description: seo?.description || "Get in touch with us",
+
+            keywords: seo?.keyword || "contact, support, help",
+
+            authors: [
+                { name: seo?.author || "BEAS Consultancy And Services Private Limited" }
+            ],
+
             openGraph: {
                 title: seo?.title || "Contact us",
-                description: seo?.description || "Get in touch with us",
-                images: seo?.image ? `${env.BACKEND_BASE_URL}${seo.image}` : undefined,
-                url: seo?.url ? `${env.FRONTEND_BASE_URL}${seo.url}` : `${env.FRONTEND_BASE_URL}`,
+                description: seo?.description || "",
+                images: seo?.image
+                    ? [`${env.BACKEND_BASE_URL}${seo.image}`] // ✅ FIXED
+                    : [],
+                url: seo?.url
+                    ? `${env.FRONTEND_BASE_URL}${seo.url}`
+                    : `${env.FRONTEND_BASE_URL}`,
             },
         }
     } catch (error) {
-        console.error('Error fetching contact page SEO:', error)
+        console.error('Error fetching contact page SEO:', error);
         return {
             title: "Contact us",
             description: "Get in touch with us",
         }
     }
 }
+
 const Page = async () => {
     try {
         const [contact, faqData] = await Promise.all([
             getDataService('get-contact'),
             getDataService('get-faq')
         ]);
-        
+        if (!contact.data || !faqData?.data) {
+            return <div>Loading...</div>;
+        }
         return (
             <div>
                 <ContactUs  
@@ -43,7 +56,8 @@ const Page = async () => {
             </div>
         )
     } catch (error) {
-        console.error('Error fetching contact page data:', error)
+        console.error('Error fetching contact page data:', error);
+
         return (
             <div>
                 <ContactUs contactus={null} faqs={[]} />
@@ -52,4 +66,4 @@ const Page = async () => {
     }
 }
 
-export default Page
+export default Page;

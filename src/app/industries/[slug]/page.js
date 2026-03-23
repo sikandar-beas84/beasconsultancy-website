@@ -5,8 +5,7 @@ import { getDataService, postService, postServiceData } from '@/apiservices/serv
 
 export async function generateMetadata({ params }) {
     try {
-        const param = await params;
-        const slug = await param.slug;
+        const {slug} =await params;
         const seoRes = await postService('get-seo-by-slug', slug);
 
         const seometadata = seoRes?.data?.seometa || null;
@@ -49,8 +48,7 @@ const page = async ({ params }) => {
     });
 
     try {
-        const param = await params;
-        const slug = await param.slug;
+        const {slug} =await params;
 
         // Fetch industries data with timeout and proper error handling
         const industriyPromise = getDataService('get-menu-industries');

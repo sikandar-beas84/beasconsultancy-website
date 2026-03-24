@@ -21,8 +21,8 @@ export async function generateMetadata() {
                     && `${env.BACKEND_BASE_URL}${seometadata.image}`,
                 // : `${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`
                 url: seometadata?.url
-                ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
-                : `${env.FRONTEND_BASE_URL}`,
+                    ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
+                    : `${env.FRONTEND_BASE_URL}`,
             },
         };
     } catch (error) {
@@ -33,18 +33,20 @@ export async function generateMetadata() {
         };
     }
 }
-const page = async({params}) => {
-    
+const page = async ({ params }) => {
 
-    const param = await params;
-    const id = param?.slug;
 
+    const { slug } = await params;
+    const id = slug;
     const [common, projetcs, caseStudy] = await Promise.all([getDataService('get-home-common'), getDataService('get-projects'), getDataService('get-menu-casestudy')])
     // const currentIndex = projetcs?.data?.projects?.findIndex(
     //     (item) => item?.slug?.toString() === id
     // );
     // const casestudy = projetcs?.data?.projects[currentIndex];
     const menucasestudy = caseStudy.data?.casestudy || [];
+    if (!caseStudy.data?.casestudy || !projetcs?.data?.projects) {
+        return <div>Loading...</div>;
+    }
     const homeData = {
         portfoliohomepage: common.data,
         projects: projetcs?.data?.projects,

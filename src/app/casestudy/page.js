@@ -42,6 +42,10 @@ const Page = async ({ searchParams }) => {
     // );
     // const casestudy = projetcs?.data?.projects[currentIndex];
     const menucasestudy = caseStudy.data?.casestudy || [];
+
+    if (!common.data || !projetcs?.data?.projects) {
+        return <div>Loading...</div>;
+    }
     const homeData = {
         portfoliohomepage: common.data,
         projects: projetcs?.data?.projects,

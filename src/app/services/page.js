@@ -34,11 +34,14 @@ export async function generateMetadata() {
 
 
 const page = async () => {
-    const [serviceDataArr,service] = await Promise.all([getDataService('get-home-services'),getDataService('get-home-common')]);
-    
+    const [serviceDataArr] = await Promise.all([getDataService('get-home-services')]);
+
+    if (!serviceDataArr.data) {
+        return <div>Loading...</div>;
+    }
     return (
         <div>
-            <ServiceMain services={serviceDataArr?.data?.services?.children} service={serviceDataArr?.data?.services}/>
+            <ServiceMain services={serviceDataArr?.data?.services?.children} service={serviceDataArr?.data?.services} />
         </div>
     )
 }

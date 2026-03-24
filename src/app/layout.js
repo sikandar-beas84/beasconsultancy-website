@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Script from "next/script";
 
 import "../globals.css";
-import { getDataService } from "@/apiservices/service";
+import { getDataService, getDataServiceLongCashe } from "@/apiservices/service";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "swiper/css";
@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,12 +33,12 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const [getMenus, services, industries, common, projects, contactUs] = await Promise.all([
-    getDataService('get-home-menus'),
+    getDataServiceLongCashe('get-home-menus'),
     getDataService('get-home-services'),
     getDataService('get-home-industries'),
-    getDataService('get-home-common'),
-    getDataService('get-projects'),
-    getDataService('get-home-contactus')
+    getDataServiceLongCashe('get-home-common'),
+    getDataServiceLongCashe('get-projects'),
+    getDataServiceLongCashe('get-home-contactus')
   ]);
 
   const mapServices = (services) => {
@@ -111,7 +112,7 @@ export default async function RootLayout({ children }) {
         {/* GTM Noscript */}
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PPFDQXZG"
           height="0" width="0" style={{ display: 'none', visibility: 'hidden' }}></iframe></noscript>
-
+        <ErrorBoundary/>
         <Header homeData={homeData} loading={false} />
         {children}
         <Footer homeData={homeData} />

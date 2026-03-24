@@ -12,7 +12,7 @@ import TechnologySliderClient from '@/components/client/TechnologySliderClient';
 import IndustriesProcessClient from '@/components/client/IndustriesProcessClient';
 import ServiceCardClient from '@/components/client/ServiceCardClient';
 import StatCounterClient from '@/components/client/StatCounterClient';
-import { getDataService, postService } from '@/apiservices/service';
+import { getDataService, getDataServiceLongCashe, postService, postServiceLongCashe } from '@/apiservices/service';
 
 // Loading fallback components
 const SectionLoader = () => (
@@ -33,7 +33,7 @@ const SkeletonCard = () => (
 // Metadata for SEO (Next.js 16+)
 export async function generateMetadata() {
   try {
-    const seoRes = await postService('get-seo-by-slug', '');
+    const seoRes = await postServiceLongCashe('get-seo-by-slug', '');
     const seometadata = seoRes?.data?.seometa || null;
 
     return {
@@ -73,7 +73,7 @@ async function BannerSection() {
 async function ServiceSection() {
   const [services, common] = await Promise.all([
     getDataService('get-home-services'),
-    getDataService('get-home-common')
+    getDataServiceLongCashe('get-home-common')
   ]);
   
   return (
@@ -102,7 +102,7 @@ async function ServiceSection() {
 async function AboutSection() {
   const [aboutus, common] = await Promise.all([
     getDataService('get-home-aboutus'),
-    getDataService('get-home-common')
+    getDataServiceLongCashe('get-home-common')
   ]);
   
   const aboutuspreviewText = aboutus?.data?.aboutus?.menu_contents?.description;
@@ -133,7 +133,7 @@ async function AboutSection() {
 }
 
 async function WhyChooseUsSection() {
-  const common = await getDataService('get-home-common');
+  const common = await getDataServiceLongCashe('get-home-common');
   const homeData = common?.data || null;
   
   return (
@@ -181,7 +181,7 @@ async function WhyChooseUsSection() {
 async function PortfolioSection() {
   const [projects, common] = await Promise.all([
     getDataService('get-projects'),
-    getDataService('get-home-common')
+    getDataServiceLongCashe('get-home-common')
   ]);
   
   const homeData = common?.data || null;
@@ -221,7 +221,7 @@ async function IndustriesSection() {
 }
 
 async function ConsultationSection() {
-  const common = await getDataService('get-home-common');
+  const common = await getDataServiceLongCashe('get-home-common');
   const homeData = common?.data || null;
   
   return (
@@ -249,7 +249,7 @@ async function ConsultationSection() {
 async function TechnologySection() {
   const [technologies, common] = await Promise.all([
     getDataService('get-home-technologies'),
-    getDataService('get-home-common')
+    getDataServiceLongCashe('get-home-common')
   ]);
   
   const homeData = common?.data || null;
@@ -278,7 +278,7 @@ async function TechnologySection() {
 async function TestimonialSection() {
   const [testimonials, common] = await Promise.all([
     getDataService('get-home-testimonials'),
-    getDataService('get-home-common')
+    getDataServiceLongCashe('get-home-common')
   ]);
   
   const homeData = common?.data || null;
@@ -375,7 +375,7 @@ export default async function Home() {
   const criticalData = await Promise.all([
     getDataService('get-home-banners').catch(() => null),
     getDataService('get-home-services').catch(() => null),
-    getDataService('get-home-common').catch(() => null)
+    getDataServiceLongCashe('get-home-common').catch(() => null)
   ]);
 
   const [banners, services, common] = criticalData;

@@ -1,11 +1,11 @@
 import ContactUs from '@/components/Contact/ContactUs'
-import { getDataService, postService } from '@/apiservices/service'
+import { getDataServiceMidCashe, postServiceLongCashe } from '@/apiservices/service'
 import { env } from '@/util/constants/common';
 
 
 export async function generateMetadata() {
     try {
-        const seoRes = await postService('get-seo-by-slug', 'contact');
+        const seoRes = await postServiceLongCashe('get-seo-by-slug', 'contact');
         const seo = seoRes?.data?.seometa;
 
         return {
@@ -41,8 +41,8 @@ export async function generateMetadata() {
 const Page = async () => {
     try {
         const [contact, faqData] = await Promise.all([
-            getDataService('get-contact'),
-            getDataService('get-faq')
+            getDataServiceMidCashe('get-contact'),
+            getDataServiceMidCashe('get-faq')
         ]);
         if (!contact.data || !faqData?.data) {
             return <div>Loading...</div>;

@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Script from "next/script";
 
 import "../globals.css";
-import { getDataService } from "@/apiservices/service";
+import { getDataService, getDataServiceLongCashe } from "@/apiservices/service";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "swiper/css";
@@ -33,12 +33,12 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const [getMenus, services, industries, common, projects, contactUs] = await Promise.all([
-    getDataService('get-home-menus'),
+    getDataServiceLongCashe('get-home-menus'),
     getDataService('get-home-services'),
     getDataService('get-home-industries'),
-    getDataService('get-home-common'),
-    getDataService('get-projects'),
-    getDataService('get-home-contactus')
+    getDataServiceLongCashe('get-home-common'),
+    getDataServiceLongCashe('get-projects'),
+    getDataServiceLongCashe('get-home-contactus')
   ]);
 
   const mapServices = (services) => {

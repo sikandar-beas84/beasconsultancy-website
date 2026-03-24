@@ -1,4 +1,4 @@
-import { getDataService, postService } from '@/apiservices/service';
+import { getDataService, getDataServiceLongCashe, postService, postServiceLongCashe } from '@/apiservices/service';
 import Blog from '@/components/blog/Blog';
 import React from 'react'
 import { env } from '@/util/constants/common';
@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
     try {
         const {slug}=await params
         
-        const seoRes = await postService('get-seo-by-slug', slug);
+        const seoRes = await getDataServiceLongCashe('get-seo-by-slug', slug);
         const seometadata = seoRes?.data?.seometa || null;
 
         return {
@@ -37,8 +37,8 @@ export async function generateMetadata({ params }) {
 const page = async ({ params }) => {
     const {slug} =await params;
     const [blogs, commonblog] = await Promise.all([
-        postService('get-blog-by-slug', slug),
-        getDataService('get-all-common')
+        postServiceLongCashe('get-blog-by-slug', slug),
+        getDataServiceLongCashe('get-all-common')
     ]);
 
     // ✅ fallback protection

@@ -1,11 +1,11 @@
 import Skills from '@/components/Skills';
-import { getDataService, postService } from '@/apiservices/service';
+import {getDataServiceLongCashe, postService } from '@/apiservices/service';
 import { env } from '@/util/constants/common';
 
 
 export async function generateMetadata() {
   try {
-    const seoRes = await postService('get-seo-by-slug', 'skills');
+    const seoRes = await postServiceLongCashe('get-seo-by-slug', 'skills');
     const seo = seoRes?.data?.seometa;
 
     return {
@@ -40,7 +40,7 @@ export async function generateMetadata() {
 
 const Page = async () => {
 
-  const skillData = await getDataService('get-menu-skills');
+  const skillData = await getDataServiceLongCashe('get-menu-skills');
 
   // ✅ fallback protection
   if (!skillData) {

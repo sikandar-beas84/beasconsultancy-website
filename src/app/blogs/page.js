@@ -1,11 +1,11 @@
-import { getDataService, postServiceData } from '@/apiservices/service';
+import { getDataService, getDataServiceLongCashe, postServiceData, postServiceLongCashe } from '@/apiservices/service';
 import Blogs from '@/components/blog/Blogs';
 import React from 'react'
 import { env } from '@/util/constants/common';
 
 export async function generateMetadata() {
     try {
-        const seoRes = await postServiceData('get-seo-by-slug', 'blogs');
+        const seoRes = await postServiceLongCashe('get-seo-by-slug', 'blogs');
 
 
         const seometadata = seoRes?.data?.seometa || null;
@@ -37,8 +37,8 @@ export async function generateMetadata() {
 const page = async () => {
     try {
         const [blogs, commonblog] = await Promise.all([
-            getDataService('get-blogs'),
-            getDataService('get-all-common')
+            getDataServiceLongCashe('get-blogs'),
+            getDataServiceLongCashe('get-all-common')
         ]);
 
         // If data fetching fails during build, return a simple structure

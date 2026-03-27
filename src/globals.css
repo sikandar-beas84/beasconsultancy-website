@@ -4369,7 +4369,7 @@ textarea.form-control.h-150.mb-3 {
   background: #fff;
   height: 50px;} 
 .job-details-list-box{display: flex;
-  gap: 10px;
+  gap: 9px;
   flex-wrap: wrap;
   padding: 0;}
 .job-details-list-box li{
@@ -4733,7 +4733,7 @@ transform-origin: 0 0;}
   }
 
   .skill-wrap-head-text {
-    font-size: 19px !important;
+    font-size: 17px !important;
   }
 
   .sill-wrap-text,

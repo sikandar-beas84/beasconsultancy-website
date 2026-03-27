@@ -84,7 +84,7 @@ const Footer = ({ homeData }) => {
                                     <li><Mail size={16} /> {homeData?.contactus?.email}</li>
 
                                 </ul>
-                                <div className='footer-txt mt-3'>Follow Us</div>
+                                <div className='footer-txt mt-3 footer-txt-social'>Follow Us</div>
                                 <div className='social-icon-section'>
                                     <ul>
                                         {homeData?.socials?.map((item, index) => (

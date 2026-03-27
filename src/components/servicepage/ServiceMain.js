@@ -47,116 +47,123 @@ const ServiceMain = ({ services, service }) => {
       <>
         
         <main>
-          <BreadCrumb pagetitle="Services" pageBanner={`assets/img/menu-content/${service?.menu_contents?.banner}`} />
-          <Container className='py-5'>
-            <Row>
-              <Col>
-                <div className="about_texts">
-                  <h1>{service?.menu_contents?.short_desc}</h1>
-                  <p>{service?.menu_contents?.description}</p>
+        <BreadCrumb pagetitle="Services" pageBanner={`assets/img/menu-content/${service?.menu_contents?.banner}`} />
+        <Container className='py-5'>
+          <Row>
+            <Col>
+              <div className="about_texts">
+                <h1>{service?.menu_contents?.short_desc}</h1>
+                {/* <p>{service?.menu_contents?.description}</p> */}
+                <p dangerouslySetInnerHTML={{ __html: service?.menu_contents?.description }} />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+        <section className="section-abuts section-services">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="ser_rea services_sec pt-0">
+                  {finalServices?.map((item, index) => {
+                    const isOddRow = index % 2 === 0;
+
+                    const description = item?.menu_contents?.description
+                      ? item?.menu_contents?.description.split(' ').slice(0, 90).join(' ') + '...'
+                      : '';
+
+                    return (
+                      <div className="row no-gutters align-items-center" key={index}>
+                        {isOddRow ? (
+                          <>
+                            <div className="col-lg-6 col-12 order-lg-2 order-2">
+                              <div className="services-text">
+                                <h2>{item?.menu_contents?.title}</h2>
+                                <p dangerouslySetInnerHTML={{ __html: description }} />
+                                <Link
+                                  href={`/services/${item?.menu_contents?.slug}`}
+                                  className="services-btn proc-btn thar-three4"
+                                >
+                                  Read More
+                                </Link>
+                              </div>
+                            </div>
+
+                            {/* IMAGE */}
+                            <div className="col-lg-6 col-12 order-lg-1 order-1">
+                              <div className="mediaimg">
+                                <Image
+                                  width={600}
+                                  height={150}
+                                  src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`}
+                                  alt="image"
+                                  className="img-fluid"
+                                  loading="lazy"
+                                />
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+
+                            <div className="col-lg-6 col-12 order-lg-1 order-2">
+                              <div className="services-text">
+                                <h2>{item?.menu_contents?.title}</h2>
+                                <p dangerouslySetInnerHTML={{ __html: description }} />
+                                <Link
+                                  href={`/services/${item?.menu_contents?.slug}`}
+                                  className="services-btn proc-btn thar-three4"
+                                >
+                                  Read More
+                                </Link>
+                              </div>
+                            </div>
+
+                            {/* IMAGE */}
+                            <div className="col-lg-6 col-12 order-lg-2 order-1">
+                              <div className="mediaimg">
+                                <Image
+                                  width={600}
+                                  height={150}
+                                  src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`}
+                                  alt="image"
+                                  className="img-fluid"
+                                  loading="lazy"
+                                />
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
-              </Col>
-            </Row>
-          </Container>
-          <section className="section-abuts section-services">
-            <div className="container">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div className="ser_rea services_sec">
-                    {finalServices?.map((item, index) => {
-                      const isEven = index % 2 !== 0;
-  
-                      const description = item?.menu_contents?.description
-                        ? item?.menu_contents?.description.split(' ').slice(0, 90).join(' ') + '...'
-                        : '';
-  
-                      return (
-                        <div className="row no-gutters" key={index}>
-                          {isEven ? (
-                            <>
-                              <div className="col-lg-6 col-12">
-                                <div className="services-text">
-                                  <h2>{item?.menu_contents?.title}</h2>
-                                  <p dangerouslySetInnerHTML={{ __html: description }} />
-                                  <Link
-                                    href={`/services/${item?.menu_contents?.slug}`}
-                                    className="services-btn proc-btn thar-three4"
-                                  >
-                                    Read More
-                                  </Link>
-                                </div>
-                              </div>
-                              <div className="col-lg-6 col-12">
-                                <div className="mediaimg">
-                                  <Image
-                                    width={600}
-                                    height={150}
-                                    src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`}
-                                    alt="image"
-                                    className="img-fluid"
-                                    loading="lazy"
-                                  />
-                                </div>
-                              </div>
-                            </>
-                          ) : (
-                            <>
-                              <div className="col-lg-6 col-12">
-                                <div className="mediaimg">
-                                  <Image
-                                    width={600}
-                                    height={150}
-                                    src={`${env.BACKEND_BASE_URL}assets/img/menu-content/${item?.menu_contents?.image}`}
-                                    alt="image"
-                                    className="img-fluid"
-                                    loading="lazy"
-                                  />
-                                </div>
-                              </div>
-                              <div className="col-lg-6 col-12">
-                                <div className="services-text">
-                                  <h2>{item?.menu_contents?.title}</h2>
-                                  <p dangerouslySetInnerHTML={{ __html: description }} />
-                                  <Link
-                                    href={`/services/${item?.menu_contents?.slug}`}
-                                    className="services-btn proc-btn thar-three4"
-                                  >
-                                    Read More
-                                  </Link>
-                                </div>
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-  
-                </div>
+
+
               </div>
             </div>
-            <div className="shp1">
-              <Image
-                src="/assets/images/ser-bg.png"
-                alt="shape"
-                width={474}
-                height={73}
-                loading="lazy"
-  
-              />
-            </div>
-            <div className="shp2">
-              <Image
-                src="/assets/images/ser-bg2.png"
-                alt="shape"
-                width={474}
-                height={73}
-                loading="lazy"
-  
-              />
-            </div>
-          </section>
-        </main>
+          </div>
+          <div className="shp1">
+            <Image
+              src="/assets/images/ser-bg.png"
+              alt="shape"
+              width={474}
+              height={73}
+              loading="lazy"
+
+            />
+          </div>
+          <div className="shp2">
+            <Image
+              src="/assets/images/ser-bg2.png"
+              alt="shape"
+              width={474}
+              height={73}
+              loading="lazy"
+
+            />
+          </div>
+        </section>
+      </main>
       </>
     )
   }

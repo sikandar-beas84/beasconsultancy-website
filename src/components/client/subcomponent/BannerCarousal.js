@@ -313,7 +313,7 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
 
                 <div className="port-box" onClick={() => router.push(`/casestudy/${item.slug}`)}>
                   <div className="port-img port-img2">
-                    <p className='port-badge'>{item?.order}/{projects?.length}</p>
+                    <p className='port-badge'>{index+1}/{projects?.length-1}</p>
                     <Image
                       src={`${env.BACKEND_BASE_URL}${item.image}`}
                       alt="projects"

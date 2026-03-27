@@ -78,7 +78,7 @@ const Footer = ({ homeData }) => {
                         <Col xs={12} md={4}>
                             <div className='get-in-touch-block'>
                                 <div className='footer-txt'>Get In Touch</div>
-                                <ul>
+                                <ul className='footer_add_ul'>
                                     <li><Map size={16} /><div dangerouslySetInnerHTML={{ __html: homeData?.contactus?.address || '' }} /></li>
                                     <li><Phone size={16} /> {homeData?.contactus?.phone}</li>
                                     <li><Mail size={16} /> {homeData?.contactus?.email}</li>

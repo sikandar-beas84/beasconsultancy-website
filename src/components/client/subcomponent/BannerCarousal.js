@@ -56,13 +56,19 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     autoplaySpeed: 3000,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1199,
         settings: {
           slidesToShow: slidesToShowDefault > 3 ? 3 : slidesToShowDefault,
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
         }
@@ -127,13 +133,19 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     autoplaySpeed: 3000,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1199,
         settings: {
           slidesToShow: slidesToShowDefault > 3 ? 3 : slidesToShowDefault,
         }
       },
       {
-        breakpoint: 600,
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
         }

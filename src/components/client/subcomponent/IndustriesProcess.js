@@ -4,19 +4,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { env } from '@/util/constants/common';
 import Link from 'next/link';
 
-const IndustriesProcess = ({pageTitle, pageDesc, industryData=[]}) => {
+const IndustriesProcess = ({pageTitle, pageDesc, industryData=[], slideSpeed = 5000, autoStart = true, animationDuration = 0.8}) => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(autoStart);
     const tabs = industryData;
     const activeTab = tabs[activeIndex];
     useEffect(() => {
+        if (!isPlaying || tabs.length === 0) return;
+        
         const interval = setInterval(() => {
             setActiveIndex((prevIndex) =>
                 prevIndex === tabs.length - 1 ? 0 : prevIndex + 1
             );
-        }, 5000);
+        }, slideSpeed);
 
-        return () => clearInterval(interval); // cleanup
-    }, [tabs.length]);
+        return () => clearInterval(interval);
+    }, [tabs.length, isPlaying, slideSpeed]);
+
+    // Control functions
+    const play = () => setIsPlaying(true);
+    const pause = () => setIsPlaying(false);
+    const togglePlayPause = () => setIsPlaying(prev => !prev);
+    const goToSlide = (index) => setActiveIndex(index);
+    const nextSlide = () => setActiveIndex(prev => prev === tabs.length - 1 ? 0 : prev + 1);
+    const prevSlide = () => setActiveIndex(prev => prev === 0 ? tabs.length - 1 : prev - 1);
 
     return (
         <>
@@ -53,7 +64,7 @@ const IndustriesProcess = ({pageTitle, pageDesc, industryData=[]}) => {
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: 1 }}
                                         exit={{ opacity: 0 }}
-                                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                                        transition={{ duration: animationDuration, ease: "easeInOut" }}
                                     >
                                         <div className="proc-img">
                                             <Image

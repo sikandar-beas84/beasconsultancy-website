@@ -348,7 +348,7 @@ async function BlogsSection() {
                         <div className="guidtext">
                           <h5 className='blog-hm-title'>{item.title}</h5>
                           <div
-                            className="mb-0 blog-hm-desc color-black"
+                            className="mb-0 blog-hm-desc color-black home_blog_card_des"
                             dangerouslySetInnerHTML={{ __html: item.short_desc }}
                           />
                           <div className="d-flex justify-content-center mt-35">

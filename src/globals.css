@@ -3497,6 +3497,7 @@ a.services-btn {
 .blog-hm-desc {
   line-height: 1.45em;
   height: calc(1.4em * 6);
+  height: 93px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 6;
@@ -3506,7 +3507,7 @@ a.services-btn {
 .home_blog_card_des {
   line-height: 1.45em;
   height: calc(1.4em * 6);
-  max-height: 90px;
+  max-height: 93px;
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 6;

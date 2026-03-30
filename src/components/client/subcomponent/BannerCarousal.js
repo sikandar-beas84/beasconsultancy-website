@@ -22,6 +22,7 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     speed: 500,
     slidesToShow: slidesToShowDefault,
     slidesToScroll: 1,
+    // autoplay: false,
     autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
@@ -52,19 +53,20 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     speed: 500,
     slidesToShow: slidesToShowDefault,
     slidesToScroll: 1,
+    // autoplay: false,
     autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
       {
         breakpoint: 1199,
         settings: {
-          slidesToShow: slidesToShowDefault > 3 ? 3 : slidesToShowDefault,
+          slidesToShow: slidesToShowDefault > 2 ? 2 : slidesToShowDefault,
         }
       },
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
         }
       },
       {
@@ -129,7 +131,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     speed: 500,
     slidesToShow: slidesToShowDefault,
     slidesToScroll: 1,
-    autoplay: false,
+    // autoplay: false,
+    autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
       {
@@ -340,7 +343,9 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
                       className="img-fluid port-shw"
                     />
                   </div>
-                  <h3 className='pport-image-title'>{titleText}</h3>
+                  <div className="pport_image_title_block">
+                    <h3 className='pport-image-title'>{titleText}</h3>
+                  </div>
                   <div className='blog-hm-desc p-3'>{item?.short_desc}</div>
                   <div className="port-tags">
                     { longdesc?.map((item, index)=>(

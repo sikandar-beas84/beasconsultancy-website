@@ -22,8 +22,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     speed: 500,
     slidesToShow: slidesToShowDefault,
     slidesToScroll: 1,
-    // autoplay: false,
-    autoplay: true,
+     autoplay: false,
+   // autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
       {

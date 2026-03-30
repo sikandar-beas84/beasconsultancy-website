@@ -12,7 +12,7 @@ const BannerSlider = ({ bannerSlide }) => {
 
   return (
     <>
-      <Carousel slide={true} fade={false} interval={3000}>
+      <Carousel slide={false} fade={false} interval={3000}>
         {bannerSlide?.map((item, index) => {
           const descriptionText = item?.description;
           // descriptionText="Empower your digital transformation with artificial intelligence, intelligent automation, and next-gen software innovation.";

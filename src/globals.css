@@ -2550,7 +2550,7 @@ input::placeholder {
   max-height: 100%;
   object-fit: contain;
   object-position: top;
-  width: auto;
+  /* width: auto; */
   height: auto;
 }
 

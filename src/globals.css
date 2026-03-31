@@ -4339,6 +4339,9 @@ textarea.form-control.h-150.mb-3 {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  width: 100%;
+  height: 150px;
 }
 
 .client-logo img.client_logo_img {

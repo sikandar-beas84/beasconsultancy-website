@@ -22,6 +22,19 @@ body {
   font-size: 1rem;
 }
 
+/* NEW CSS - Slider loading state to prevent hydration flash */
+.slider-loading {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  color: #6c757d;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
 /* .container,
 .container-lg,
 .container-md,

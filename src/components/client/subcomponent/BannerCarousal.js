@@ -1,4 +1,6 @@
-import React from 'react';
+'use client'; // new-edit
+
+import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 import { Col, Row } from "react-bootstrap";
 import { ArrowUpRight } from "react-feather";
@@ -12,36 +14,92 @@ import { Autoplay, Grid } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/grid";
 
+// OLD DYNAMIC IMPORT - Not needed here, handled in BannerCarousalClient
 const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, blogs, technologies }) => {
 
   const router = useRouter();
+  
+  // REVERTED - Original simple approach
+  const sliderRef = useRef(null);
 
+  // REVERTED - Simple useEffect for refresh
+  useEffect(() => {
+    // Simple refresh after mount
+    const timer = setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 300);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // OLD BREAKPOINT CONFIGURATION
+  // const createSliderSettings = (slidesToShowDefault, sliderDot = false) => ({
+  //   dots: sliderDot,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: slidesToShowDefault,
+  //   slidesToScroll: 1,
+  //    autoplay: false,
+  //   // autoplay: true,
+  //   autoplaySpeed: 3000,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1199,
+  //       settings: {
+  //         slidesToShow: slidesToShowDefault > 3 ? 3 : slidesToShowDefault,
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 1024,
+  //       settings: {
+  //         slidesToShow: 2,
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 768,
+  //       settings: {
+  //         slidesToShow: 1,
+  //       }
+  //     }
+  //   ]
+  // });
+
+  // NEW BREAKPOINT CONFIGURATION - Fixed for proper responsive behavior
   const createSliderSettings = (slidesToShowDefault, sliderDot = false) => ({
     dots: sliderDot,
     infinite: true,
     speed: 500,
     slidesToShow: slidesToShowDefault,
     slidesToScroll: 1,
-     autoplay: false,
-   // autoplay: true,
+    autoplay: false,
+    // autoplay: true,
     autoplaySpeed: 3000,
     responsive: [
       {
-        breakpoint: 1199,
+        breakpoint: 1200, // Screens less than 1200px
         settings: {
           slidesToShow: slidesToShowDefault > 3 ? 3 : slidesToShowDefault,
         }
       },
       {
-        breakpoint: 1024,
+        breakpoint: 992, // Screens less than 992px (tablets) - THIS IS THE KEY FIX
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 2, // Force 2 slides for portfolio section
+          slidesToScroll: 1,
         }
       },
       {
-        breakpoint: 768,
+        breakpoint: 768, // Screens less than 768px
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 576, // Screens less than 576px (mobile)
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
         }
       }
     ]
@@ -61,18 +119,21 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
         breakpoint: 1199,
         settings: {
           slidesToShow: slidesToShowDefault > 2 ? 2 : slidesToShowDefault,
+          slidesToScroll: 1,
         }
       },
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
         }
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
         }
       }
     ]
@@ -139,18 +200,21 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
         breakpoint: 1199,
         settings: {
           slidesToShow: slidesToShowDefault > 3 ? 3 : slidesToShowDefault,
+          slidesToScroll: 1,
         }
       },
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
+          slidesToScroll: 1,
         }
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          slidesToScroll: 1,
         }
       }
     ]
@@ -315,7 +379,12 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       )}
 
       {page == 'projectsnew' && (
-        <Slider {...settings}>
+        // OLD CODE - No hydration check, slider renders immediately
+        // <Slider ref={sliderRef} {...settings}>
+        
+        // NEW CODE - Only render slider after component is mounted to prevent hydration issues
+        isMounted ? (
+          <Slider ref={sliderRef} {...settings}>
           {projects
           ?.filter(item => item?.slug !== "bmc-car-parking")
           ?.map((item, index) => {
@@ -359,6 +428,10 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
           })}
 
         </Slider>
+        ) : (
+          // NEW CODE - Show loading state while component mounts
+          <div className="slider-loading">Loading carousel...</div>
+        )
       )}
 
       {page == 'blogs' && (

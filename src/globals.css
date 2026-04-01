@@ -4226,7 +4226,7 @@ textarea.form-control.h-150.mb-3 {
   background-image: url(/_next/static/media/arrow-up.9a19ad22.png);
   width: 20px;
   height: 20px;
-  filter: invert(0) brightness(200%)!important;
+  /* filter: invert(0) brightness(200%)!important; */
 }
 .ccase-study-container .serviceDetailsWrap img{color: transparent;
     border: 1px solid #ccc;

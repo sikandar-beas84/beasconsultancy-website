@@ -19,11 +19,21 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
 
   const router = useRouter();
   
-  // REVERTED - Original simple approach
+  // OLD CODE - No slider ref
+  // const sliderRef = useRef(null);
+  
+  // NEW CODE - Add slider ref and isMounted state
   const sliderRef = useRef(null);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // REVERTED - Simple useEffect for refresh
+  // OLD CODE - No useEffect for refresh
+  // (no useEffect existed)
+  
+  // NEW CODE - Simple useEffect for refresh and mount state
   useEffect(() => {
+    // Mark component as mounted
+    setIsMounted(true);
+    
     // Simple refresh after mount
     const timer = setTimeout(() => {
       window.dispatchEvent(new Event('resize'));

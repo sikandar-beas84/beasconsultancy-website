@@ -125,7 +125,7 @@ function ModalComponent({modalshow=false}) {
                         <Row>
                             <Col xs={12} lg={5} className='bgg-bright'>
                             <div className='tech-bg'>
-                                <div class="tech-lines"></div>  
+                                <div className="tech-lines"></div>  
                                 <div className='content-wrapper'>
  
                                     <div className='year-awar'>
@@ -174,7 +174,7 @@ function ModalComponent({modalshow=false}) {
                             </div>
                             </Col>
                             <Col xs={12} lg={7} className='bgg-light-blue'>
-                                <div class="about_texts mt-3"><h1>Your Journey to Growth Begins Here</h1></div>
+                                <div className="about_texts mt-3"><h1>Your Journey to Growth Begins Here</h1></div>
                                 <p>Looking to build smarter, faster, and more modern digital solutions? Our AI-powered development team helps you turn ideas into real, practical results. From automation to intelligent apps, we make technology work for your business. Ready to grow with AI? Contact us now and let’s get started.
                                 </p>
                                 <div className='modal-ffoter'>

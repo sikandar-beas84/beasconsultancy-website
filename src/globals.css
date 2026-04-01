@@ -1913,6 +1913,10 @@ img.port-shw {
 .about_imgs {
   padding-right: 30px;
 }
+.about_thumb_img {
+  object-fit: cover;
+  object-position: center;
+}
 
 .about_texts h1 {
   font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
@@ -2535,10 +2539,24 @@ input::placeholder {
   display: flex;
   align-items: baseline;
   margin-bottom: 60px;
+  gap: 20px;
+}
+
+.map_location_icon {
+  width: 40px;
+}
+.map_location_icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: top;
+  /* width: auto; */
+  height: auto;
 }
 
 .map_location_icon_cont {
-  margin-left: 30px;
+  /* margin-left: 30px; */
+  flex: 1;
 }
 
 .map_location_icon_cont h1 {
@@ -4284,7 +4302,12 @@ textarea.form-control.h-150.mb-3 {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;}
 
-  .blog-hm-img img{height:100%;}
+  .blog-hm-img img{
+    height:100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
   .bblue-llink{color: #0081d2;
     cursor: pointer;
     text-decoration: underline;}
@@ -4323,10 +4346,37 @@ textarea.form-control.h-150.mb-3 {
   box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
-.client-logo{ border: 1px solid #E0E0E0;
+.client_carousal_block {
+  /* width: 80%; */
+  width: calc(100% - 80px);
+  margin: auto;
+  /* background-color: red; */
+}
+
+.client-logo{ 
+  border: 1px solid #E0E0E0;
   box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.04);
   border-radius: 7px;
-  padding: 22px 14px 18px 14px;}
+  padding: 22px 14px 18px 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 150px;
+}
+
+.client-logo img.client_logo_img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  position: relative !important;
+  margin: 0 auto;
+
+}
 
   .slick-slide {
     padding: 0 8px; /* left-right spacing */
@@ -4692,6 +4742,7 @@ transform-origin: 0 0;}
   .about_imgs img {
     min-width: 100%;
     height: 100% !important;
+    
   }
 
   .skill-wrap-img {
@@ -5149,12 +5200,18 @@ transform-origin: 0 0;}
     padding: 30px 20px 1px;
   }
 
-  .map_location_icon_cont {
-    margin-left: 20px;
+  .form_add {
+    margin-bottom: 20px;
   }
-
+  .map_location_icon_cont {
+    /* margin-left: 20px; */
+  }
+  .map_location_icon{
+    width: 30px;
+  }
   .map_location_icon img {
-    max-width: 32px;
+    /* max-width: 26px; */
+    width: 30px;
   }
 
   .why-box.why-1 p {

@@ -152,7 +152,9 @@ const Servicebody = ({ slug, allclient, services, initialService, initialEnriche
                                                                 );
                                                             })
                                                     ) : (
-                                                        <BannerCarousalClient page="clients" clients={allclient} />
+                                                        <div className='client_carousal_block'>
+                                                            <BannerCarousalClient page="clients" clients={allclient} />
+                                                        </div>
                                                     )}
                                                 </div>
                                             </div>

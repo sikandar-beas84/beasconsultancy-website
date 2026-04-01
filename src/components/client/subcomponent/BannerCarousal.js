@@ -181,8 +181,61 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
   // testimonial settings
   const testimonialsettings = createSliderSettings(1);
   // client settings
-  const clientsettings = createSliderSettings(5);
+  // const clientsettings = createSliderSettings(5); // ---   old code client carusal
 
+  // ---  new code for client carusal +++ start +++
+
+  const clientsettings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 3000,
+  
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 4,
+        }
+      },
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 3,
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 576,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 420,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
+  };
+
+  // ---  new code for client carusal +++ end +++
+ 
   const testimonialnewsettings = testimoniolnewSliderSettings(2);
 
 
@@ -330,16 +383,29 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
         <Slider {...clientsettings}>
 
           {clients?.map((item, index) => (
-            <div className='client-logo' key={index}>
-              <Image
-                src={`${env.BACKEND_BASE_URL}${item.logo}`}
-                alt="client logo"
-                width={150}
-                height={80}
-                className="img-fluid"
-              />
+            <>
+            {/* // <div className='client-logo' key={index}>
+            //   <Image
+            //     src={`${env.BACKEND_BASE_URL}${item.logo}`}
+            //     alt="client logo"
+            //     width={150}
+            //     height={80}
+            //     wi
+            //     className="img-fluid client_logo_img"
+            //   />
+            // </div> */}
 
-            </div>
+              <div className="client-logo">
+                  <Image
+                    src={`${env.BACKEND_BASE_URL}${item.logo}`}
+                    alt="client logo"
+                    fill
+                    sizes="(max-width: 768px) 100px, 150px"
+                    className="client_logo_img"
+                  />
+              </div>
+            </>
+
           ))}
 
         </Slider>

@@ -187,7 +187,7 @@ async function PortfolioSection() {
   const homeData = common?.data || null;
   
   return (
-    <div className="portfolio">
+    <div className="portfolio home_portfolio_carousal">
       <div className="container">
         <div className="port-head">
           <div className="port-hd-txt">

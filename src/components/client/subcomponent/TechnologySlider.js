@@ -40,7 +40,8 @@ export default function TechnologySlider({ children }) {
         onClick={() => setPage((p) => Math.max(p - 1, 0))}
         disabled={page === 0}
       >
-        ❮
+        {/* ❮ */}
+        <i class="fa fa-chevron-left"></i>
       </button>
 
       <div className="technology-viewport">
@@ -63,7 +64,8 @@ export default function TechnologySlider({ children }) {
         onClick={() => setPage((p) => Math.min(p + 1, maxPage))}
         disabled={page === maxPage}
       >
-        ❯
+        {/* ❯ */}
+        <i class="fa fa-chevron-right"></i>
       </button>
     </div>
   );

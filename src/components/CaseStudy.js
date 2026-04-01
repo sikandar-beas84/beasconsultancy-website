@@ -156,88 +156,92 @@ const CasestudyGeneric = ({
                             </Col>
 
                             <Col xs={12} lg={5}>
-                                <Image
-                                    width={600}
-                                    height={150}
-                                    src={`${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`}
-                                    alt="image"
-                                    className="img-fluid"
-                                    loading="lazy"
-                                />
+                                <div className="caseStudy_imgblock">
+                                    <Image
+                                        width={600}
+                                        height={150}
+                                        src={`${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`}
+                                        alt="image"
+                                        className="img-fluid"
+                                        loading="lazy"
+                                    />
+                                </div>
                             </Col>
 
                             <Col xs={12} lg={7}>
-                                <Accordion defaultActiveKey="0" flush>
-                                    <Accordion.Item eventKey="0" className="blue-bg2">
-                                        <Accordion.Header>
-                                            Project Overview / Business Need
-                                        </Accordion.Header>
-                                        <Accordion.Body>
-                                            <div
-                                                dangerouslySetInnerHTML={{
-                                                    __html:
-                                                        activeCaseStudy?.business_need,
-                                                }}
-                                            />
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-
-                                    <Accordion.Item eventKey="1" className="green-bg">
-                                        <Accordion.Header>
-                                            BEAS’s Solution
-                                        </Accordion.Header>
-                                        <Accordion.Body>
-                                            <div
-                                                dangerouslySetInnerHTML={{
-                                                    __html: parseHTMLWithEnv(
-                                                        activeCaseStudy?.beas_solution
-                                                    ),
-                                                }}
-                                            />
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-
-                                    <Accordion.Item eventKey="2" className="yellow-bg">
-                                        <Accordion.Header>
-                                            {activeCaseStudy?.benefits_to_the_customer
-                                                ? "Benefits To The Customer"
-                                                : "Sample Screen"}  
-                                        </Accordion.Header>
-                                        <Accordion.Body>
-                                            {activeCaseStudy?.benefits_to_the_customer ? (
+                                <div className="caseStudy_accodian_sec">
+                                    <Accordion defaultActiveKey="0" flush>
+                                        <Accordion.Item eventKey="0" className="blue-bg2">
+                                            <Accordion.Header>
+                                                Project Overview / Business Need
+                                            </Accordion.Header>
+                                            <Accordion.Body>
                                                 <div
                                                     dangerouslySetInnerHTML={{
                                                         __html:
-                                                            activeCaseStudy?.benefits_to_the_customer,
+                                                            activeCaseStudy?.business_need,
                                                     }}
                                                 />
-                                            ) : (
-                                                <Image
-                                                    width={550}
-                                                    height={50}
-                                                    src={`${env.BACKEND_BASE_URL}${activeCaseStudy?.samplescreen}`}
-                                                    alt="image"
-                                                    className="img-fluid"
-                                                />
-                                            )}
-                                        </Accordion.Body>
-                                    </Accordion.Item>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
 
-                                    <Accordion.Item eventKey="3" className="orange-bg">
-                                        <Accordion.Header>
-                                            Technology Platform
-                                        </Accordion.Header>
-                                        <Accordion.Body>
-                                            <ul>
-                                                {activeCaseStudy?.technology_platform?.map(
-                                                    (item, index) => (
-                                                        <li key={index}>{item}</li>
-                                                    )
+                                        <Accordion.Item eventKey="1" className="green-bg">
+                                            <Accordion.Header>
+                                                BEAS’s Solution
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                <div
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: parseHTMLWithEnv(
+                                                            activeCaseStudy?.beas_solution
+                                                        ),
+                                                    }}
+                                                />
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item eventKey="2" className="yellow-bg">
+                                            <Accordion.Header>
+                                                {activeCaseStudy?.benefits_to_the_customer
+                                                    ? "Benefits To The Customer"
+                                                    : "Sample Screen"}  
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                {activeCaseStudy?.benefits_to_the_customer ? (
+                                                    <div
+                                                        dangerouslySetInnerHTML={{
+                                                            __html:
+                                                                activeCaseStudy?.benefits_to_the_customer,
+                                                        }}
+                                                    />
+                                                ) : (
+                                                    <Image
+                                                        width={550}
+                                                        height={50}
+                                                        src={`${env.BACKEND_BASE_URL}${activeCaseStudy?.samplescreen}`}
+                                                        alt="image"
+                                                        className="img-fluid"
+                                                    />
                                                 )}
-                                            </ul>
-                                        </Accordion.Body>
-                                    </Accordion.Item>
-                                </Accordion>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+
+                                        <Accordion.Item eventKey="3" className="orange-bg">
+                                            <Accordion.Header>
+                                                Technology Platform
+                                            </Accordion.Header>
+                                            <Accordion.Body>
+                                                <ul>
+                                                    {activeCaseStudy?.technology_platform?.map(
+                                                        (item, index) => (
+                                                            <li key={index}>{item}</li>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            </Accordion.Body>
+                                        </Accordion.Item>
+                                    </Accordion>
+                                </div>
                             </Col>
                         </Row>
 

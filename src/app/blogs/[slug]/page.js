@@ -9,7 +9,7 @@ export async function generateMetadata({ params }) {
     try {
         const {slug}=await params
         
-        const seoRes = await getDataServiceLongCashe('get-seo-by-slug', slug);
+        const seoRes = await postServiceLongCashe('get-seo-by-slug', slug);
         const seometadata = seoRes?.data?.seometa || null;
 
         return {

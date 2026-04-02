@@ -41,7 +41,7 @@ export default function TechnologySlider({ children }) {
         disabled={page === 0}
       >
         {/* ❮ */}
-        <i class="fa fa-chevron-left"></i>
+        <i className="fa fa-chevron-left"></i>
       </button>
 
       <div className="technology-viewport">
@@ -65,7 +65,7 @@ export default function TechnologySlider({ children }) {
         disabled={page === maxPage}
       >
         {/* ❯ */}
-        <i class="fa fa-chevron-right"></i>
+        <i className="fa fa-chevron-right"></i>
       </button>
     </div>
   );

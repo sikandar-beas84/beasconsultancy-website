@@ -139,7 +139,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     margin: 10,
     nav: true,
     dots: dots,
-    autoplay: false,
+    // autoplay: false,
+    autoplay: true,
     autoplayTimeout: 3000,
     autoplayHoverPause: true,
     responsive: {
@@ -242,7 +243,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     margin: 15,
     nav: true,
     dots: false,
-    autoplay: false,
+    // autoplay: false,
+    autoplay: true,
     autoplayTimeout: 3000,
     autoplayHoverPause: true,
     responsive: {

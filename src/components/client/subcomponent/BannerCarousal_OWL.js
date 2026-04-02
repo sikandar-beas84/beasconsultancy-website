@@ -168,8 +168,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       }
     },
     navText: [
-      '<i class="fa fa-chevron-left"></i>',
-      '<i class="fa fa-chevron-right"></i>'
+      '<i className="fa fa-chevron-left"></i>',
+      '<i className="fa fa-chevron-right"></i>'
     ]
   });
 
@@ -201,8 +201,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       }
     },
     navText: [
-      '<i class="fa fa-chevron-left"></i>',
-      '<i class="fa fa-chevron-right"></i>'
+      '<i className="fa fa-chevron-left"></i>',
+      '<i className="fa fa-chevron-right"></i>'
     ]
   });
 
@@ -234,8 +234,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       }
     },
     navText: [
-      '<i class="fa fa-chevron-left"></i>',
-      '<i class="fa fa-chevron-right"></i>'
+      '<i className="fa fa-chevron-left"></i>',
+      '<i className="fa fa-chevron-right"></i>'
     ]
   });
 
@@ -280,8 +280,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       }
     },
     navText: [
-      '<i class="fa fa-chevron-left"></i>',
-      '<i class="fa fa-chevron-right"></i>'
+      '<i className="fa fa-chevron-left"></i>',
+      '<i className="fa fa-chevron-right"></i>'
     ]
   };
   // OWL Carousel Code End

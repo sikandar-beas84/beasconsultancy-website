@@ -1,5 +1,5 @@
 //REACT_ENV=prod
-const REACT_ENV = 'dev'
+const REACT_ENV = 'prod'
 // 
 const backend_base_url_dev = 'https://api.beasconsultancy.com/'
 const frontend_base_url_dev = 'https://beta.beasconsultancy.com/'

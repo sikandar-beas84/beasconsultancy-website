@@ -7,30 +7,39 @@ export async function generateMetadata() {
     try {
         const seoRes = await postServiceLongCashe('get-seo-by-slug', 'blogs');
 
-
         const seometadata = seoRes?.data?.seometa || null;
+        const baseUrl = env.FRONTEND_BASE_URL;
+
+        const canonicalUrl = seometadata?.url
+        ? `${baseUrl}${seometadata.url}`
+        : baseUrl;
+
         return {
             title: seometadata?.title || `Blog`,
             description: seometadata?.description || "Explore exciting Blog opportunities with us.",
             keywords: seometadata?.keyword || "Blog, posting",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+            alternates: {
+                canonical: canonicalUrl,
+            },
             openGraph: {
                 title: seometadata?.title || "Blog",
                 description: seometadata?.description || "Explore exciting Blog opportunities with us.",
                 images: seometadata?.image
                     && `${env.BACKEND_BASE_URL}${seometadata.image}`,
                 // : `${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`,
-                url: seometadata?.url
-                    ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
-                    : `${env.FRONTEND_BASE_URL}`,
+                url: canonicalUrl,
 
             },
         };
     } catch (error) {
-
+        const baseUrl = env.FRONTEND_BASE_URL;
         return {
             title: "Carrer",
             description: "Explore exciting career opportunities with us.",
+            alternates: {
+                canonical: baseUrl,
+              },
         };
     }
 }

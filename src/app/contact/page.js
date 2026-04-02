@@ -7,6 +7,11 @@ export async function generateMetadata() {
     try {
         const seoRes = await postServiceLongCashe('get-seo-by-slug', 'contact');
         const seo = seoRes?.data?.seometa;
+        const baseUrl = env.FRONTEND_BASE_URL;
+
+        const canonicalUrl = seo?.url
+        ? `${baseUrl}${seo.url}`
+        : baseUrl;
 
         return {
             title: seo?.title || "Contact us",
@@ -17,23 +22,26 @@ export async function generateMetadata() {
             authors: [
                 { name: seo?.author || "BEAS Consultancy And Services Private Limited" }
             ],
-
+            alternates: {
+                canonical: canonicalUrl,
+              },
             openGraph: {
                 title: seo?.title || "Contact us",
                 description: seo?.description || "",
                 images: seo?.image
                     ? [`${env.BACKEND_BASE_URL}${seo.image}`] // ✅ FIXED
                     : [],
-                url: seo?.url
-                    ? `${env.FRONTEND_BASE_URL}${seo.url}`
-                    : `${env.FRONTEND_BASE_URL}`,
+                url: canonicalUrl,
             },
         }
     } catch (error) {
-        console.error('Error fetching contact page SEO:', error);
+        const baseUrl = env.FRONTEND_BASE_URL;
         return {
             title: "Contact us",
             description: "Get in touch with us",
+            alternates: {
+                canonical: baseUrl,
+              },
         }
     }
 }

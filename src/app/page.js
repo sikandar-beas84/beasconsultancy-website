@@ -35,23 +35,36 @@ export async function generateMetadata() {
   try {
     const seoRes = await postServiceLongCashe('get-seo-by-slug', '');
     const seometadata = seoRes?.data?.seometa || null;
+    const baseUrl = env.FRONTEND_BASE_URL;
+
+    // ✅ final canonical URL
+    const canonicalUrl = seometadata?.url
+      ? `${baseUrl}${seometadata.url}`
+      : baseUrl;
 
     return {
       title: seometadata?.title || "Home",
       description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
       keywords: seometadata?.keyword || "IT Consulting, Software Development, Digital Transformation, Business Solutions, Technology Partners, Beas Consultancy",
       authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+      alternates: {
+        canonical: canonicalUrl,
+      },
       openGraph: {
         title: seometadata?.title || "Home",
         description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
         images: seometadata?.image ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
-        url: seometadata?.url ? `${env.FRONTEND_BASE_URL}${seometadata?.url}` : `${env.FRONTEND_BASE_URL}`,
+        url: canonicalUrl,
       },
     };
   } catch (error) {
+    const baseUrl = env.FRONTEND_BASE_URL;
     return {
       title: "Home",
       description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
+      alternates: {
+        canonical: baseUrl,
+      },
     };
   }
 }

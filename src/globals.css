@@ -207,6 +207,8 @@ footer {
   font-size: 1.25rem;
   text-transform: capitalize;
   color: var(--foreground);
+
+  line-height: 1.3 !important;
 }
 
 a {
@@ -218,6 +220,12 @@ a {
   padding: 10px;
   border-radius: 3px;
 }
+.skill-wrap-img-without-bg {
+  width: 50px;
+}
+.skill-wrap-head-text {
+  flex: 1;
+}
 
 .sill-wrap-text {
   font-weight: 400;
@@ -226,7 +234,7 @@ a {
   text-transform: capitalize;
   margin-top: 20px;
   color: #000;
-  min-height:60px;
+  min-height: 70px;
 }
 
 .award-section ul {
@@ -2571,7 +2579,8 @@ input::placeholder {
 .post-job-btn {
   margin-top: -15px;
   background: linear-gradient(270deg, #0081D2 -16.95%, #0081D2 122.03%);
-  border-radius: 2px;
+  /* border-radius: 2px; */
+  border-radius: 6px;
   height: 53px;
   font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
@@ -2599,6 +2608,7 @@ input::placeholder {
   width: 100%;
   background: url(/assets/images/contact_img.png);
   padding: 40px 30px 1px;
+  border-radius: 6px;
   position: relative;
   z-index: 1;
 }
@@ -2609,6 +2619,7 @@ input::placeholder {
   background: #0081d2e9;
   width: 100%;
   height: 100%;
+  border-radius: 6px;
   top: 0;
   left: 0;
   z-index: -1;
@@ -4285,8 +4296,15 @@ textarea.form-control.h-150.mb-3 {
   background-image: url(/_next/static/media/arrow-up.9a19ad22.png);
   width: 20px;
   height: 20px;
-  filter: invert(1) brightness(200%)!important;
+  filter: invert(1) brightness(200%) !important;
  
+}
+
+.contact-bg .accordion-header .accordion-button:focus::after {
+  filter: none !important;
+}
+.contact-bg .accordion-header .accordion-button:not(.collapsed)::after {
+  filter: invert(1) brightness(200%) !important;
 }
 
 .service-hm-desc {
@@ -4528,10 +4546,14 @@ textarea.form-control.h-150.mb-3 {
   width: 40px;
   height: 40px;
   padding: 5px 0;}
-.contact_form_wrap_box{background: #FFFFFF;
+.contact_form_wrap_box{
+  background: #FFFFFF;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.05);
   border-radius: 7px;
-  padding: 20px 32px;border:1px solid #f1f1f1;}
+  padding: 20px 32px;border:1px solid #f1f1f1;
+
+  margin: 0 0 20px;
+}
 .sliding-form.active .tel-contact{border: 1px solid #ccc;
   padding: 6px 10px;
   width: 100px;
@@ -4575,6 +4597,7 @@ textarea.form-control.h-150.mb-3 {
   position: relative;
   padding-right: 20px; /* space for arrow */
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .dropdown-selected.tel-contact::after {
@@ -5188,6 +5211,9 @@ transform-origin: 0 0;}
   .navbar-light .nav-link {
     font-size: 13px;
   }
+  .glow button.btn.btn-outline-primary {
+    padding: 4px 5px;
+  }
 
   .about_imgs {
     padding-right: 0;
@@ -5273,6 +5299,13 @@ transform-origin: 0 0;}
   .job-experience-txt,
   .skill-wrap button {
     font-size: 14px !important;
+  }
+
+  .skill-wrap-img-without-bg {
+    width: 30px;
+  }
+  .skill-wrap-head-text {
+    font-size: 16px !important;
   }
 
   .about_texts h1 {
@@ -5479,6 +5512,8 @@ transform-origin: 0 0;}
   .portfolio .slick-prev {
     left: -10px !important;
   }
+
+
 
 
 }
@@ -5837,6 +5872,13 @@ transform-origin: 0 0;}
 
   .bnr-txt p {
     margin-bottom: 21px;
+  }
+
+  .ccase-study-container {
+    margin-top: 30px;
+  }
+  .caseStudy_carosalArrow {
+    top: 20px;
   }
 
 }
@@ -6453,8 +6495,31 @@ transform-origin: 0 0;}
   .client_carousal_block .owl-carousel .owl-nav .owl-next {
     right: -60px !important;
   }
+
+  .caseStudy_carosalArrow {
+    position: relative;
+    top: 50px;
+  }
+  .caseStudy_carosalArrow .caseStudy_btn_pre {
+    margin-left: -50px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateY(-50%);
+  }
+  .caseStudy_carosalArrow .caseStudy_btn_next {
+    margin-right: -60px;
+    position: absolute;
+    top: 0;
+    right: 50%;
+    transform: translateY(-50%);
+  }
   /* owl-carousel ---  fixing */
   
+  .ccase-study-container {
+    /* margin-top: 80px; */
+    margin-top: 90px;
+  }
 
 }
 /* -- Responsive - max-width: 768px; -- end ============= */

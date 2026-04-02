@@ -130,16 +130,16 @@ const CasestudyGeneric = ({
 
                 <div className="bgF2F4F7 p-relative">
                     {arrow && <Container fluid>
-                        <div className="d-flex justify-content-between carosalArrow">
+                        <div className="d-flex justify-content-between carosalArrow caseStudy_carosalArrow">
                             <button
-                                className="btn btn-primary"
+                                className="btn btn-primary caseStudy_btn_pre"
                                 onClick={() => changeCaseStudy(prevIndex)}
                             >
                                 <ChevronLeft />
                             </button>
 
                             <button
-                                className="btn btn-primary"
+                                className="btn btn-primary caseStudy_btn_next"
                                 onClick={() => changeCaseStudy(nextIndex)}
                             >
                                 <ChevronRight />

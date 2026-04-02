@@ -62,7 +62,7 @@ const Blogs = ({ blogs, commonblog }) => {
                     </Row>
                 </Container>
                 
-                <section className="section-abuts section-services">
+                <section className="section-abuts section-services innerPage_blog">
                     <div className="container">
                         <div className="row">
                             {displayedBlogs?.map((item, index) => {
@@ -76,7 +76,7 @@ const Blogs = ({ blogs, commonblog }) => {
                                     : "";
 
                                 return (
-                                    <div className="col-12 col-md-4" key={index}>
+                                    <div className="col-12 col-md-6 col-lg-4" key={index}>
                                         <div>
                                             <Link href={`blogs/${item?.slug}`}>
                                                 <div className="guiditem">

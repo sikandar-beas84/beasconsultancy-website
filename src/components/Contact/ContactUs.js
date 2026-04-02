@@ -137,101 +137,103 @@ const ContactUs = ({ contactus, faqs }) => {
         <section className="section-padding">
           <Container>
             <Row>
-              <Col lg={8} md={12} className="contact_form_wrap_box">
-                <div className='contact_form_heading position-relative'>
-                  <h2>Let's Connect</h2>
-                </div>
-                <div className='contact_form_box'>
-                  <form className="was-validate contact-frm" onSubmit={handleSubmit}>
-                    <Row>
-                      <Col md={6}>
-                        <input
-                          name="name"
-                          value={formData.name}
-                          onChange={handleChange}
-                          placeholder="Name"
-                          className="form-control mb-3"
-                          required
-                        />
-                        {errors?.name && (<p className='error_message'>{errors.name[0]}</p>)}
-                      </Col>
+              <Col lg={8} md={12} className="">
+                <div className='contact_form_wrap_box'>
+                  <div className='contact_form_heading position-relative'>
+                    <h2>Let's Connect</h2>
+                  </div>
+                  <div className='contact_form_box'>
+                    <form className="was-validate contact-frm" onSubmit={handleSubmit}>
+                      <Row>
+                        <Col md={6}>
+                          <input
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Name"
+                            className="form-control mb-3"
+                            required
+                          />
+                          {errors?.name && (<p className='error_message'>{errors.name[0]}</p>)}
+                        </Col>
 
-                      <Col md={6}>
-                        <input
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          placeholder="Email"
-                          className="form-control mb-3"
-                          required
-                        />
-                        {errors?.email && (<p className='error_message'>{errors.email[0]}</p>)}
-                      </Col>
+                        <Col md={6}>
+                          <input
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Email"
+                            className="form-control mb-3"
+                            required
+                          />
+                          {errors?.email && (<p className='error_message'>{errors.email[0]}</p>)}
+                        </Col>
 
-                      <Col md={6} className="d-flex gap-2">
-                        <CountryCodeDropdown
-                          name="countrycode"
-                          value={formData.countrycode}
-                          onChange={handleChange}
-                        />
-                        <input
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          placeholder="Mobile Number"
-                          className="form-control mb-3"
-                          required
-                        />
-                        {errors?.phone && (<p className='error_message'>{errors.phone[0]}</p>)}
-                      </Col>
+                        <Col md={6} className="d-flex gap-2">
+                          <CountryCodeDropdown
+                            name="countrycode"
+                            value={formData.countrycode}
+                            onChange={handleChange}
+                          />
+                          <input
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="Mobile Number"
+                            className="form-control mb-3"
+                            required
+                          />
+                          {errors?.phone && (<p className='error_message'>{errors.phone[0]}</p>)}
+                        </Col>
 
-                      <Col md={6}>
-                        <input
-                          name="subject"
-                          value={formData.subject}
-                          onChange={handleChange}
-                          placeholder="Subject"
-                          className="form-control mb-3"
-                          required
-                        />
-                        {errors?.subject && (<p className='error_message'>{errors.subject[0]}</p>)}
-                      </Col>
+                        <Col md={6}>
+                          <input
+                            name="subject"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            placeholder="Subject"
+                            className="form-control mb-3"
+                            required
+                          />
+                          {errors?.subject && (<p className='error_message'>{errors.subject[0]}</p>)}
+                        </Col>
 
-                      <Col md={12}>
-                        <textarea
-                          name="message"
-                          value={formData.message}
-                          onChange={handleChange}
-                          placeholder="Message"
-                          rows={8}
-                          className="form-control mb-3 h-75"
-                          required
-                        />
-                        {errors?.message && (<p className='error_message'>{errors.message[0]}</p>)}
-                      </Col>
+                        <Col md={12}>
+                          <textarea
+                            name="message"
+                            value={formData.message}
+                            onChange={handleChange}
+                            placeholder="Message"
+                            rows={8}
+                            className="form-control mb-3 h-75"
+                            required
+                          />
+                          {errors?.message && (<p className='error_message'>{errors.message[0]}</p>)}
+                        </Col>
 
-                      <Col md={12}>
-                        <ReCAPTCHA
-                          sitekey={env.SITE_KEY}
-                          onChange={setCaptchaToken}
-                        />
-                      </Col>
+                        <Col md={12}>
+                          <ReCAPTCHA
+                            sitekey={env.SITE_KEY}
+                            onChange={setCaptchaToken}
+                          />
+                        </Col>
 
-                      <Col md={4}>
-                        <div className='contact_form_btn'>
-                          <button
-                            type="submit"
-                            className="red-btn w-100 mt-3 post-job-btn"
-                            disabled={loading}
-                          >
-                            {loading ? 'Submitting…' : 'Submit'}
-                          </button>
-                        </div>
-                      </Col>
+                        <Col md={4}>
+                          <div className='contact_form_btn'>
+                            <button
+                              type="submit"
+                              className="red-btn w-100 mt-3 post-job-btn"
+                              disabled={loading}
+                            >
+                              {loading ? 'Submitting…' : 'Submit'}
+                            </button>
+                          </div>
+                        </Col>
 
-                      {status && <p className="mt-3">{status}</p>}
-                    </Row>
-                  </form>
+                        {status && <p className="mt-3">{status}</p>}
+                      </Row>
+                    </form>
+                  </div>
                 </div>
               </Col>
 

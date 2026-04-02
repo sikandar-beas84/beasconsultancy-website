@@ -10,7 +10,6 @@ export async function generateMetadata() {
 
         const seo = await seoRes?.data?.seometa
         const baseUrl = env.FRONTEND_BASE_URL;
-        console.log("ghghghghgh",seo);
         const canonicalUrl = seo?.url
         ? `${baseUrl}${seo.url}`
         : baseUrl;

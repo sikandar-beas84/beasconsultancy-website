@@ -112,7 +112,7 @@ const Servicebody = ({ slug, allclient, services, initialService, initialEnriche
                                                                 if (!cs?.slug) return null;
 
                                                                 return (
-                                                                    <Col xs={12} md={4} key={index}>
+                                                                    <Col xs={12} md={6} lg={4} key={index}>
                                                                         <div className="guiditem">
                                                                             <div className="blog-hm-img">
                                                                                 <Image

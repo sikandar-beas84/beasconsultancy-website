@@ -5513,6 +5513,12 @@ transform-origin: 0 0;}
     left: -10px !important;
   }
 
+  .ccase-study-container {
+    margin-top: 30px;
+  }
+  .caseStudy_carosalArrow {
+    top: 20px;
+  }
 
 
 
@@ -5874,12 +5880,7 @@ transform-origin: 0 0;}
     margin-bottom: 21px;
   }
 
-  .ccase-study-container {
-    margin-top: 30px;
-  }
-  .caseStudy_carosalArrow {
-    top: 20px;
-  }
+
 
 }
 /* -- Responsive - max-width: 991px; -- end ============= */

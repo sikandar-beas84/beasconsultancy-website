@@ -8,25 +8,35 @@ export async function generateMetadata() {
     try {
         const seoRes = await postService('get-seo-by-slug', 'career');
         const seometadata = seoRes?.data?.seometa || null;
+        const baseUrl = env.FRONTEND_BASE_URL;
+
+        const canonicalUrl = seometadata?.url
+        ? `${baseUrl}${seometadata.url}`
+        : baseUrl;
 
         return {
             title: seometadata?.title || `Careers`,
             description: seometadata?.description || "Explore exciting career opportunities with us.",
             keywords: seometadata?.keyword || "career, jobs, openings",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+            alternates: {
+                canonical: canonicalUrl,
+            },
             openGraph: {
                 title: seometadata?.title || "Home",
                 description: seometadata?.description || "",
                 images: seometadata?.image && `${env.BACKEND_BASE_URL}${seometadata.image}`,
-                url: seometadata?.url
-                    ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
-                    : `${env.FRONTEND_BASE_URL}`,
+                url: canonicalUrl,
             },
         };
     } catch (error) {
+        const baseUrl = env.FRONTEND_BASE_URL;
         return {
             title: "Career",
             description: "Explore exciting career opportunities with us.",
+            alternates: {
+                canonical: baseUrl,
+            },
         };
     }
 }

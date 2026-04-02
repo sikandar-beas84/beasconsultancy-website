@@ -4,9 +4,15 @@ import { env } from '@/util/constants/common';
 
 
 export async function generateMetadata() {
+
   try {
-    const seoRes = await postServiceLongCashe('get-seo-by-slug', 'skills');
+    const seoRes = await postService('get-seo-by-slug', 'skills');
     const seo = seoRes?.data?.seometa;
+    const baseUrl = env.FRONTEND_BASE_URL;
+    
+    const canonicalUrl = seo?.url
+      ? `${baseUrl}${seo.url}`
+      : baseUrl;
 
     return {
       title: seo?.title || "Skills",
@@ -21,19 +27,26 @@ export async function generateMetadata() {
       authors: [
         { name: seo?.author || "BEAS Consultancy And Services Private Limited" }
       ],
-
+      alternates: {
+        canonical: canonicalUrl,
+      },
       openGraph: {
         title: seo?.title || "Skills",
         description: seo?.description || "",
         images: seo?.image
           ? [`${env.BACKEND_BASE_URL}${seo.image}`]
           : [],
+        url: canonicalUrl,
       }
     };
   } catch (error) {
+    const baseUrl = env.FRONTEND_BASE_URL;
     return {
       title: "Skills",
       description: "Explore our skills",
+      alternates: {
+        canonical: baseUrl,
+      },
     };
   }
 }

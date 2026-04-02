@@ -141,7 +141,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     margin: 10,
     nav: true,
     dots: dots,
-    autoplay: false,
+    // autoplay: false,
+    autoplay: true,
     autoplayTimeout: 3000,
     autoplayHoverPause: true,
     responsive: {
@@ -167,8 +168,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       }
     },
     navText: [
-      '<i class="fa fa-chevron-left"></i>',
-      '<i class="fa fa-chevron-right"></i>'
+      '<i className="fa fa-chevron-left"></i>',
+      '<i className="fa fa-chevron-right"></i>'
     ]
   });
 
@@ -200,8 +201,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       }
     },
     navText: [
-      '<i class="fa fa-chevron-left"></i>',
-      '<i class="fa fa-chevron-right"></i>'
+      '<i className="fa fa-chevron-left"></i>',
+      '<i className="fa fa-chevron-right"></i>'
     ]
   });
 
@@ -233,8 +234,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       }
     },
     navText: [
-      '<i class="fa fa-chevron-left"></i>',
-      '<i class="fa fa-chevron-right"></i>'
+      '<i className="fa fa-chevron-left"></i>',
+      '<i className="fa fa-chevron-right"></i>'
     ]
   });
 
@@ -244,7 +245,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
     margin: 15,
     nav: true,
     dots: false,
-    autoplay: false,
+    // autoplay: false,
+    autoplay: true,
     autoplayTimeout: 3000,
     autoplayHoverPause: true,
     responsive: {
@@ -278,8 +280,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
       }
     },
     navText: [
-      '<i class="fa fa-chevron-left"></i>',
-      '<i class="fa fa-chevron-right"></i>'
+      '<i className="fa fa-chevron-left"></i>',
+      '<i className="fa fa-chevron-right"></i>'
     ]
   };
   // OWL Carousel Code End

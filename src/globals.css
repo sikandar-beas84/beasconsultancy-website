@@ -4243,6 +4243,14 @@ textarea.form-control.h-150.mb-3 {
     border: 1px solid #ccc;
     padding: 5px;
     border-radius: 5px;}
+
+.ccase-study-container {
+
+}
+
+
+
+
 .bnr-txt p:first-child{letter-spacing: 1px;}
 .h-50{height:50px!important;}
 /* Floating widget */
@@ -5514,11 +5522,23 @@ transform-origin: 0 0;}
   }
 
   .ccase-study-container {
-    margin-top: 30px;
+    margin-top: 80px;
   }
   .caseStudy_carosalArrow {
     top: 20px;
   }
+
+   .caseStudy_carosalArrow .caseStudy_btn_pre {
+    position: absolute;
+    left: 50% ;
+    margin-left: -50px;
+  }
+  .caseStudy_carosalArrow .caseStudy_btn_next {
+    position: absolute;
+    right: 50%;
+    margin-right: -50px;
+  }
+  
 
 
 

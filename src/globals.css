@@ -27,6 +27,10 @@ body {
   font-size: 1rem;
 }
 
+.fa {
+  font-family: FontAwesome !important;
+}
+
 /* NEW CSS - Slider loading state to prevent hydration flash */
 .slider-loading {
   min-height: 300px;
@@ -2591,8 +2595,10 @@ input::placeholder {
 
 .accordion-body {
   background: #eef2fd;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
   padding: 20px;
+   margin-bottom: 10px;
+   border-radius: 10px;
 }
 
 .accordion-button::after {

@@ -141,75 +141,75 @@ const BannerSlider = ({ bannerSlide }) => {
       {/* 🔥 STYLES */}
       <style jsx>{`
 
-        .hero-banner {
-          position: relative;
-          height: 100vh;
-          overflow: hidden;
-        }
+        // .hero-banner {
+        //   position: relative;
+        //   height: 100vh;
+        //   overflow: hidden;
+        // }
 
-        .slide {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          opacity: 0;
-        }
+        // .slide {
+        //   position: absolute;
+        //   width: 100%;
+        //   height: 100%;
+        //   top: 0;
+        //   left: 0;
+        //   opacity: 0;
+        // }
 
-        .active-slide {
-          opacity: 1;
-          z-index: 2;
-        }
+        // .active-slide {
+        //   opacity: 1;
+        //   z-index: 2;
+        // }
 
-        .prev-slide {
-          z-index: 1;
-        }
+        // .prev-slide {
+        //   z-index: 1;
+        // }
 
-        .hero-img {
-          object-fit: cover;
-        }
+        // .hero-img {
+        //   object-fit: cover;
+        // }
 
-        .content {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 100%;
-          color: #fff;
-        }
+        // .content {
+        //   position: absolute;
+        //   top: 50%;
+        //   transform: translateY(-50%);
+        //   width: 100%;
+        //   color: #fff;
+        // }
 
-        .bnr-txt {
-          max-width: 700px;
-        }
+        // .bnr-txt {
+        //   max-width: 700px;
+        // }
 
-        .bnr-btn {
-          margin-top: 20px;
-          display: inline-block;
-          background: #fff;
-          color: #000;
-          padding: 10px 20px;
-        }
+        // .bnr-btn {
+        //   margin-top: 20px;
+        //   display: inline-block;
+        //   background: #fff;
+        //   color: #000;
+        //   padding: 10px 20px;
+        // }
 
-        /* 🔥 NAV BUTTONS */
-        .nav {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          z-index: 5;
-          background: rgba(0,0,0,0.5);
-          color: #fff;
-          border: none;
-          font-size: 30px;
-          padding: 10px 15px;
-          cursor: pointer;
-        }
+        // /* 🔥 NAV BUTTONS */
+        // .nav {
+        //   position: absolute;
+        //   top: 50%;
+        //   transform: translateY(-50%);
+        //   z-index: 5;
+        //   background: rgba(0,0,0,0.5);
+        //   color: #fff;
+        //   border: none;
+        //   font-size: 30px;
+        //   padding: 10px 15px;
+        //   cursor: pointer;
+        // }
 
-        .prev {
-          left: 20px;
-        }
+        // .prev {
+        //   left: 20px;
+        // }
 
-        .next {
-          right: 20px;
-        }
+        // .next {
+        //   right: 20px;
+        // }
 
       `}</style>
     </section>

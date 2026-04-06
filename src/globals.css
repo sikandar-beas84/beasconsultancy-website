@@ -2720,7 +2720,8 @@ input::placeholder {
   display: flex;
   align-items: baseline;
   margin-bottom: 60px;
-  gap: 20px;
+  /* gap: 20px; */
+  gap: 14px;
 }
 
 .map_location_icon {

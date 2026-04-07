@@ -176,8 +176,8 @@ const Blog = ({ blog,commonblog }) => {
                             <div className="mt-4">
                               <h5 className="mb-4">Leave a Reply</h5>
                               <form onSubmit={handleSubmit}>
-                                <div className="form-row">
-                                  <div className="form-group col-md-6">
+                                <div className="form-row blog_reply">
+                                  <div className="form-group col-lg-6 col-md-12 col-12">
                                     <input
                                       type='text'
                                       name="name"
@@ -189,7 +189,7 @@ const Blog = ({ blog,commonblog }) => {
                                     />
                                     {errors.name && (<p className='error_message'>{errors.name[0]}</p>)}
                                   </div>
-                                  <div className="form-group col-md-6">
+                                  <div className="form-group col-lg-6 col-md-12 col-12">
                                     <input
                                       type='text'
                                       name="email"
@@ -213,22 +213,22 @@ const Blog = ({ blog,commonblog }) => {
                                     />
                                     {errors.url && (<p className='error_message'>{errors.url[0]}</p>)}
                                   </div>
-                                  <div className="form-group col-md-12">
+                                  <div className="form-group col-12">
                                     <textarea
                                       type='text'
                                       rows={10}
                                       name="comment"
                                       value={formData.comment}
                                       onChange={handleChange}
-                                      className='form-control'
+                                      className='form-control blogReply_textArea'
                                       placeholder='Your Message'
                                       required
                                     ></textarea>
                                     {errors.comment && (<p className='error_message'>{errors.comment[0]}</p>)}
                                   </div>
-                                  <div className=" form-group col-md-12">
+                                  <div className=" form-group col-12">
                                     <div className="custom-control custom-checkbox checkbox-">
-                                      <input type="checkbox" className="custom-control-input" id="customcheck" checked={isChecked} onChange={customCheck} />
+                                      <input type="checkbox" className="custom-control-input blog_checkbox" id="customcheck" checked={isChecked} onChange={customCheck} />
                                       <label className="custom-control-label pr-5" htmlFor="customcheck"> I consent to let this website store my information to respond to my inquiry.</label>
                                     </div>
                                   </div>

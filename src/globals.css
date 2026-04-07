@@ -3063,10 +3063,14 @@ a.services-btn {
 
 .blog-post-content img {
   max-width: 100% !important;
+  height: auto !important;
+  min-height: auto;
 }
 .blog-post-content span {
   max-width: 100% !important;
   /* min-width: auto !important; */
+  height: auto !important;
+  min-height: auto;
 }
 
 .blog-post-quote .blockquote {
@@ -6064,6 +6068,8 @@ transform-origin: 0 0;}
   .blog-post-content span {
     max-width: 100% !important;
     min-width: 100%  !important;
+    height: auto !important;
+    min-height: auto;
   }
 
  

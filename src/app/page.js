@@ -92,7 +92,7 @@ async function ServiceSection() {
   return (
     <div className="service mb-0" id="what_why_panel1">
       <div className="container">
-        <div className="serv-head">
+        <div className="serv-head homePage_welcome_text">
           <h2>{common?.data?.servicehomepage?.title}</h2>
           <p>{common?.data?.servicehomepage?.long_desc}</p>
         </div>
@@ -410,7 +410,7 @@ export default async function Home() {
           {/* Service section - critical */}
           <div className="service mb-0" id="what_why_panel1">
             <div className="container">
-              <div className="serv-head">
+              <div className="serv-head homePage_welcome_text">
                 <h2>{homeData?.servicehomepage?.title}</h2>
                 <p>{homeData?.servicehomepage?.long_desc}</p>
               </div>

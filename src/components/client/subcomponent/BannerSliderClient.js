@@ -10,9 +10,27 @@ import Image from 'next/image';
 
 const BannerSlider = ({ bannerSlide }) => {
 
+  // ===== SIMPLE SLIDE ANIMATION CONFIGURATION =====
+  const slideConfig = {
+    interval: 400000,        // Slide duration in milliseconds
+    animation: 'slide',       // Animation type: 'slide' or 'fade'
+    direction: 'left',        // Slide direction: 'left' or 'right'
+    pauseOnHover: true,      // Pause on hover
+    showControls: true,       // Show navigation arrows
+    showIndicators: false      // Show dots
+  };
+
   return (
     <>
-      <Carousel slide={false} fade={false} interval={3000}>
+      <Carousel 
+        slide={true} 
+        fade={false} 
+        interval={slideConfig.interval}
+        pause={slideConfig.pauseOnHover}
+        controls={slideConfig.showControls}
+        indicators={slideConfig.showIndicators}
+        wrap={true}
+      >
         {bannerSlide?.map((item, index) => {
           const descriptionText = item?.description;
           // descriptionText="Empower your digital transformation with artificial intelligence, intelligent automation, and next-gen software innovation.";

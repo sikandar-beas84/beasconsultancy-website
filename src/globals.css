@@ -2499,7 +2499,8 @@ img.port-shw {
 
 .job-details-block-card input {
   border-radius: 0;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
+  margin-bottom: 14px !important;
   height: 49px;
 }
 
@@ -2527,6 +2528,14 @@ input::placeholder {
   border-radius: 3px;
   font-size: 1rem;
   max-width: 280px;
+}
+.btn_up_cv_wrapper {
+  width: 100%;
+  max-width: 100%;
+}
+.btn2.btn_up_cv {
+  width: 100%;
+  max-width: 100%;
 }
 
 .upload-btn-wrapper input[type=file] {
@@ -2947,6 +2956,7 @@ a.services-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-wrap: wrap;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
@@ -3049,6 +3059,14 @@ a.services-btn {
 
 .blog-post-quote .blog-post-content .blog-post-footer span {
   color: #ffffff;
+}
+
+.blog-post-content img {
+  max-width: 100% !important;
+}
+.blog-post-content span {
+  max-width: 100% !important;
+  /* min-width: auto !important; */
 }
 
 .blog-post-quote .blockquote {
@@ -3164,6 +3182,10 @@ a.services-btn {
 
 .form-row .custom-control.custom-checkbox label {
   cursor: pointer;
+}
+.blogReply_textArea {
+  min-height: 200px !important;
+  resize: none;
 }
 
 /* Subscribe & Follow */
@@ -3546,6 +3568,13 @@ a.services-btn {
 .checkbox- {
   display: flex;
   gap: 10px;
+  align-items: flex-start;
+  
+}
+
+.checkbox- .blog_checkbox {
+  position: relative;
+  top: 5px;
 }
 
 .blog-sidebar .widget .search i {
@@ -4699,7 +4728,9 @@ textarea.form-control.h-150.mb-3 {
   list-style:none!important;
  }
 .job-details-list-box li span{font-weight:600;}
-.bblue-bg{background:#e9f3f9; padding:15px;}
+.bblue-bg{background:#e9f3f9; padding:15px;
+  border-radius: 6px;
+}
 .dropdown-selected.tel-contact {
   position: relative;
   padding-right: 20px; /* space for arrow */
@@ -4851,9 +4882,20 @@ transform-origin: 0 0;}
 .slick-prev {
   left: -45px !important;
 }
-.cv-file-name{word-break: break-all;
-  position: absolute;
-  max-width: 150px;}
+.cv-file-name{
+  font-size: 12px;
+  line-height: 1.2;
+  word-break: break-all;
+  /* position: absolute; */
+  /* max-width: 150px; */
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
   .carousel-control-next, .carousel-control-prev{width:30px; height:30px;
   top:50%;}
@@ -6014,6 +6056,14 @@ transform-origin: 0 0;}
 
   .job-details-list-box li {
     width: calc(50% - 6px);
+  }
+
+  .blog-post-content img {
+    max-width: 100% !important;
+  }
+  .blog-post-content span {
+    max-width: 100% !important;
+    min-width: 100%  !important;
   }
 
  

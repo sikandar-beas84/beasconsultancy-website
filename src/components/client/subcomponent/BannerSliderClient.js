@@ -12,7 +12,7 @@ const BannerSlider = ({ bannerSlide }) => {
 
   // ===== SIMPLE SLIDE ANIMATION CONFIGURATION =====
   const slideConfig = {
-    interval: 400000,        // Slide duration in milliseconds
+    interval: 4000,        // Slide duration in milliseconds
     animation: 'slide',       // Animation type: 'slide' or 'fade'
     direction: 'left',        // Slide direction: 'left' or 'right'
     pauseOnHover: true,      // Pause on hover

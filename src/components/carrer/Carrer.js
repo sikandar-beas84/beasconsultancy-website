@@ -33,7 +33,7 @@ const Career = ({ careers, menucareer }) => {
         <Container className='pb-5'>
           <Row>
             {careers?.map((item, index) => (
-              <Col key={index} xs={12} md={6} lg={3}>
+              <Col key={index} xs={12} md={6} lg={4}>
                 <Link href={`/career/${item?.title}`} className="">
                   <div className='skill-wrap'>
                     <div className='sill-wrap-head'>

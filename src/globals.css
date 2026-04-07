@@ -4684,12 +4684,19 @@ textarea.form-control.h-150.mb-3 {
   border-radius: 0;
   background: #fff;
   height: 50px;} 
-.job-details-list-box{display: flex;
-  gap: 9px;
+.job-details-list-box {
+  display: flex;
+  /* gap: 9px; */
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  padding: 0;}
+  padding: 0;
+}
 .job-details-list-box li{
-  padding: 10px 20px 10px 0; list-style:none!important;
+  /* padding: 10px 20px 10px 0;  */
+  padding: 6px 10px 6px 0; 
+  list-style:none!important;
  }
 .job-details-list-box li span{font-weight:600;}
 .bblue-bg{background:#e9f3f9; padding:15px;}
@@ -4703,7 +4710,8 @@ textarea.form-control.h-150.mb-3 {
 .dropdown-selected.tel-contact::after {
   content: "";
   position: absolute;
-  right: 6px;
+  /* right: 6px; */
+  right: 8px;
   top: 50%;
   width: 6px;
   height: 6px;
@@ -5115,6 +5123,7 @@ transform-origin: 0 0;}
 
   .job-details-inner-block li {
     font-size: 16px;
+   
   }
 
   .job-details-title {
@@ -5637,6 +5646,10 @@ transform-origin: 0 0;}
   }
   
 
+  .job-details-list-box li {
+    width: calc(33.33% - 6px);
+  }
+
 
 
 }
@@ -5803,6 +5816,7 @@ transform-origin: 0 0;}
 
   .job-details-inner-block li {
     font-size: 16px;
+  
   }
 
   .job-details-title {
@@ -5998,6 +6012,12 @@ transform-origin: 0 0;}
     margin-bottom: 21px;
   }
 
+  .job-details-list-box li {
+    width: calc(50% - 6px);
+  }
+
+ 
+
 
 
 }
@@ -6154,17 +6174,25 @@ transform-origin: 0 0;}
     min-height: auto;
   }
 
-  .job-details-list-box li {
-    padding: 0px 20px 0 0;
-  }
+
 
   .job-details-list-box {
-    gap: 10px;
+    gap: 12px;
   }
 
   .job-details-list-box li {
     line-height: 16px;
+    padding: 0px 10px 0 0;
+    width: 100%;
   }
+
+  .skill-tags ul {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+
 
   .wpp-iicon {
     display: none;
@@ -6320,8 +6348,12 @@ transform-origin: 0 0;}
     font-size: 24px;
   }
 
+  .job-details-list-box {
+    gap: 10px;
+  }
   .job-details-inner-block li {
     font-size: 15px;
+   
   }
 
   .job-details-title {

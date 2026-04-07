@@ -6889,7 +6889,8 @@ transform-origin: 0 0;}
   }
 
   .skill-wrap-img-without-bg .img-fluid {
-    max-width: 75%;
+    /* max-width: 75%; */
+    width: 100%;
   }
 
   /* Hero Title (64px) */

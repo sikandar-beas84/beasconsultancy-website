@@ -6989,8 +6989,32 @@ transform-origin: 0 0;}
     font-size: 16px;
   }
 
+  .tech-next {
+    margin-right: -45px;
+  }
+  .tech-prev {
+    margin-left: -45px;
+  }
+
 }
 /* -- Responsive - max-width: 576px; -- end ============= */
+
+/* -- Responsive - max-width: 420px; -- start ============= */
+@media (max-width: 420px) { 
+
+  .stat-box {
+    padding: 16px 10px;
+  }
+  .stat-box  p {
+    font-size: 14px;
+  
+  }
+  .port-img2 {
+    height: auto;
+  }
+
+}
+/* -- Responsive - max-width: 420px; -- start ============= */
 
 /* -- Responsive - min-width: 992px; -- start ============= */
 @media (min-width: 992px) {

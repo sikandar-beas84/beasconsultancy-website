@@ -7,27 +7,36 @@ export async function generateMetadata() {
     try {
         const seoRes = await postService('get-seo-by-slug', 'industries');
         const seometadata = seoRes?.data?.seometa || null;
-      
+        const baseUrl = env.FRONTEND_BASE_URL;
+
+        const canonicalUrl = seometadata?.url
+        ? `${baseUrl}${seometadata.url}`
+        : baseUrl;
+
         return {
             title: seometadata?.title || "Industries",
             description: seometadata?.description || "Explore our wide range of services to empower your business through innovative solutions.",
             keywords: seometadata?.keyword || "services, beas consultancy, business solutions, software development",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+            alternates: {
+                canonical: canonicalUrl,
+              },
             openGraph: {
                 title: seometadata?.title || "Industries",
                 description: seometadata?.description || "Explore our wide range of services to empower your business through innovative solutions.",
                 images: seometadata?.image
                     ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
-                url: seometadata?.url
-                    ? `${env.FRONTEND_BASE_URL}${seometadata?.url}`
-                    : `${env.FRONTEND_BASE_URL}/industries`,
+                url: canonicalUrl,
             },
         };
     } catch (error) {
-        console.error('Error generating metadata for industries:', error);
+        const baseUrl = env.FRONTEND_BASE_URL;
         return {
             title: "Industries",
             description: "Explore our wide range of services to empower your business through innovative solutions.",
+            alternates: {
+                canonical: baseUrl,
+              },
         };
     }
 }

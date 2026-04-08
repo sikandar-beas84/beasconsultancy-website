@@ -5,31 +5,52 @@ import PrivacyPolicy from '@/components/privacypolicy/privacypolicy';
 
 
 export async function generateMetadata() {
-    const seoRes = await postService('get-seo-by-slug', 'privacypolicy')
+    try {
+        const seoRes = await postService('get-seo-by-slug', 'privacypolicy')
 
-    const seo = await seoRes?.data?.seometa
-    return {
-        title: seo?.title || `Privacy Policy`,
-        description:
-            seo?.description ||
+        const seo = await seoRes?.data?.seometa
+        const baseUrl = env.FRONTEND_BASE_URL;
+        const canonicalUrl = seo?.url
+        ? `${baseUrl}${seo.url}`
+        : baseUrl;
+        return {
+            title: seo?.title || `Privacy Policy`,
+            description:
+                seo?.description ||
+                "Explore the Privacy Policy and capabilities of Beas Consultancy.",
+            alternates: {
+                canonical: canonicalUrl,
+                },
+            openGraph: {
+                title: seo?.title,
+                description: seo?.description ?? 'Explore the Privacy Policy and capabilities of Beas Consultancy.',
+                images: seo?.image
+                    ? [`${env.BACKEND_BASE_URL}${seo.image}`]
+                    : [],
+
+                keywords: seo?.keyword
+                    ? seo?.keyword
+                    : 'Privacy Policy, Expertise, Technologies, Services',
+
+                authors: seo?.author
+                    ? [seo.author]
+                    : ["BEAS Consultancy And Services Private Limited"],
+                url: canonicalUrl,
+            }
+        };
+    } catch (error) {
+        const baseUrl = env.FRONTEND_BASE_URL;
+    
+        return {
+          title: "Privacy Policy",
+          description:
             "Explore the Privacy Policy and capabilities of Beas Consultancy.",
-
-        openGraph: {
-            title: seo?.title,
-            description: seo?.description ?? 'Explore the Privacy Policy and capabilities of Beas Consultancy.',
-            images: seo?.image
-                ? [`${env.BACKEND_BASE_URL}${seo.image}`]
-                : [],
-
-            keywords: seo?.keyword
-                ? seo?.keyword
-                : 'Privacy Policy, Expertise, Technologies, Services',
-
-            authors: seo?.author
-                ? [seo.author]
-                : ["BEAS Consultancy And Services Private Limited"]
-        }
-    };
+    
+          alternates: {
+            canonical: baseUrl,
+          },
+        };
+      }
 }
 
 const Page = async () => {

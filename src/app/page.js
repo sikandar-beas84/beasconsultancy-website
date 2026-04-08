@@ -37,7 +37,7 @@ export async function generateMetadata() {
     const seometadata = seoRes?.data?.seometa || null;
     const baseUrl = env.FRONTEND_BASE_URL;
 
-    // ✅ final canonical URL
+    
     const canonicalUrl = seometadata?.url
       ? `${baseUrl}${seometadata.url}`
       : baseUrl;
@@ -54,6 +54,7 @@ export async function generateMetadata() {
 
       other: {
           publisher: "BEAS Consultancy And Services Private Limited",
+          "article:author": "BEAS Consultancy And Services Private Limited",
       },
       alternates: {
         canonical: canonicalUrl,
@@ -63,6 +64,9 @@ export async function generateMetadata() {
         description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
         images: seometadata?.image ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
         url: canonicalUrl,
+        type: "website",
+        site_name: "Beas Consultancy and Services Pvt. Ltd.",
+
       },
     };
   } catch (error) {

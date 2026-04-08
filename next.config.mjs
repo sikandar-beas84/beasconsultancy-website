@@ -32,6 +32,21 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "beasconsultancy.com", // non-www
+          },
+        ],
+        destination: "https://www.beasconsultancy.com/:path*",
+        permanent: true, // 301 redirect (SEO best)
+      },
+    ];
+  },
 };
 
 export default nextConfig;

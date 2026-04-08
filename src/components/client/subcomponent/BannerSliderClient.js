@@ -52,9 +52,9 @@ const BannerSlider = ({ bannerSlide }) => {
                   <Carousel.Caption>
                     <div className="banner_text_infos">
                       <div className="container">
-                        <div className="bnr-txt">
+                        <div className="bnr-txt ">
                           <p>{item?.slug}</p>
-                          <h1 className="drop_ani">{item?.title}</h1>
+                          <h2 className="drop_ani">{item?.title}</h2>
                           <p>
                             {/* <div className='fw-300' dangerouslySetInnerHTML={{ __html: descriptionText }} /> */}
                             {descriptionText}

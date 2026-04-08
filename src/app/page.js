@@ -47,6 +47,14 @@ export async function generateMetadata() {
       description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
       keywords: seometadata?.keyword || "IT Consulting, Software Development, Digital Transformation, Business Solutions, Technology Partners, Beas Consultancy",
       authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      other: {
+          publisher: "BEAS Consultancy And Services Private Limited",
+      },
       alternates: {
         canonical: canonicalUrl,
       },
@@ -62,6 +70,14 @@ export async function generateMetadata() {
     return {
       title: "Home",
       description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      other: {
+          publisher: "BEAS Consultancy And Services Private Limited",
+      },
       alternates: {
         canonical: baseUrl,
       },
@@ -93,7 +109,7 @@ async function ServiceSection() {
     <div className="service mb-0" id="what_why_panel1">
       <div className="container">
         <div className="serv-head homePage_welcome_text">
-          <h2>{common?.data?.servicehomepage?.title}</h2>
+          <h1>{common?.data?.servicehomepage?.title}</h1>
           <p>{common?.data?.servicehomepage?.long_desc}</p>
         </div>
       </div>
@@ -411,7 +427,7 @@ export default async function Home() {
           <div className="service mb-0" id="what_why_panel1">
             <div className="container">
               <div className="serv-head homePage_welcome_text">
-                <h2>{homeData?.servicehomepage?.title}</h2>
+                <h1>{homeData?.servicehomepage?.title}</h1>
                 <p>{homeData?.servicehomepage?.long_desc}</p>
               </div>
             </div>

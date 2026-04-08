@@ -12,6 +12,7 @@
     "@types/owl.carousel": "^2.3.4",
     "bootstrap": "^5.3.8",
     "framer-motion": "^12.38.0",
+    "gsap": "^3.14.2",
     "jquery": "^3.7.1",
     "next": "16.1.7",
     "owl.carousel": "^2.3.4",

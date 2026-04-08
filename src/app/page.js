@@ -65,7 +65,7 @@ export async function generateMetadata() {
         images: seometadata?.image ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
         url: canonicalUrl,
         type: "website",
-        site_name: "Beas Consultancy and Services Pvt. Ltd.",
+        siteName: "Beas Consultancy and Services Pvt. Ltd.",
 
       },
     };

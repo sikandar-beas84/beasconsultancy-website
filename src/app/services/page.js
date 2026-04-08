@@ -19,6 +19,14 @@ export async function generateMetadata() {
             description: seometadata?.description || "Explore our wide range of services tailored to your business needs.",
             keywords: seometadata?.keyword || "services, beas consultancy, business solutions, software development",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+            robots: {
+                index: true,
+                follow: true,
+            },
+
+            other: {
+                publisher: "BEAS Consultancy And Services Private Limited",
+            },
             alternates: {
                 canonical: canonicalUrl,
               },
@@ -35,6 +43,14 @@ export async function generateMetadata() {
         return {
             title: "Home",
             description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
+            robots: {
+                index: true,
+                follow: true,
+            },
+
+            other: {
+                publisher: "BEAS Consultancy And Services Private Limited",
+            },
             alternates: {
                 canonical: baseUrl,
               },

@@ -390,7 +390,8 @@ footer {
   z-index: 9999!important;
 }
 
-.bnr-txt h1 {
+/* .bnr-txt h1 { */
+.bnr-txt h2 {
   font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 900;
@@ -908,6 +909,8 @@ a {
   width: 70%;
 }
 
+
+.serv-head h1,
 .serv-head h2 {
   font-style: normal;
   font-weight: 600;
@@ -1175,6 +1178,7 @@ a {
   width: 70%;
 }
 
+.serv-head h1,
 .serv-head h2 {
   font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
@@ -1873,6 +1877,7 @@ img.port-shw {
   width: 100%;
 }
 
+.serv-head h1,
 .serv-head h2 {
   font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
@@ -5345,13 +5350,15 @@ transform-origin: 0 0;}
     font-weight: 700;
   }
 
-  .bnr-txt h1 {
+  /* .bnr-txt h1 */
+  .bnr-txt h2 { 
     font-size: 45px;
     line-height: 1.25;
     font-weight: 700;
   }
   /* Section Title (48px) */
   .contact_form_heading h2,
+  .serv-head h1,
   .serv-head h2,
   .inner-page-title,
   .inner-page-title-small {
@@ -5657,13 +5664,15 @@ transform-origin: 0 0;}
 
   /* Hero Title (64px) */
   .breadcrumbWrap .pageTitle,
-  .bnr-txt h1 {
+  /* .bnr-txt h1 { */
+  .bnr-txt h2 {
     font-size: 48px;
     line-height: 1.25;
   }
 
   /* Section Title (48px) */
   .contact_form_heading h2,
+  .serv-head h1,
   .serv-head h2,
   .inner-page-title,
   .inner-page-title-small,
@@ -6066,6 +6075,7 @@ transform-origin: 0 0;}
 
   /* Section Title (48px) */
   .contact_form_heading h2,
+  .serv-head h1,
   .serv-head h2,
   .inner-page-title,
   .inner-page-title-small,
@@ -6163,7 +6173,8 @@ transform-origin: 0 0;}
     padding: unset;
   }
 
-  .bnr-txt h1 {
+  /* .bnr-txt h1 { */
+  .bnr-txt h2 {
     font-size: 40px;
   }
 
@@ -6604,6 +6615,7 @@ transform-origin: 0 0;}
 
   /* Section Title (48px) */
   .contact_form_heading h2,
+  .serv-head h1,
   .serv-head h2,
   .inner-page-title,
   .Blogs-head h2 {
@@ -6728,7 +6740,8 @@ transform-origin: 0 0;}
     text-align: left;
   }
 
-  .bnr-txt h1 {
+  /* .bnr-txt h1 { */
+  .bnr-txt h2 {
     font-size: 13px;
   }
 
@@ -6989,6 +7002,7 @@ transform-origin: 0 0;}
 
   /* Section Title (48px) */
   .contact_form_heading h2,
+  .serv-head h1,
   .serv-head h2,
   .inner-page-title,
   .Blogs-head h2 {

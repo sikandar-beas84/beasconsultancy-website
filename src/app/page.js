@@ -62,7 +62,7 @@ export async function generateMetadata() {
       openGraph: {
         title: seometadata?.title || "Home",
         description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
-        images: seometadata?.image ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
+        images: seometadata?.image ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : [],
         url: canonicalUrl,
         type: "website",
         siteName: "Beas Consultancy and Services Pvt. Ltd.",
@@ -400,7 +400,7 @@ async function BlogsSection() {
     </div>
   );
 }
-
+import JsonLd from "@/components/JsonLd"
 // Main Home component with progressive loading
 export default async function Home() {
   // Fetch critical data first (banner and services)
@@ -416,6 +416,15 @@ export default async function Home() {
 
   return (
     <>
+    {/* JSON-LD SCHEMA (ADD THIS BLOCK) */}
+      <JsonLd
+          type="WebSite"
+          title="Beas Consultancy and Services Pvt. Ltd."
+          description="BEAS Consultancy provides innovative IT services worldwide — from cloud migration to software development and application maintenance for enterprises."
+          url="https://www.beasconsultancy.com"
+          image="https://www.beasconsultancy.com/assets/images/beas-logo.png"
+          publishedDate="2026-04-08"
+        />
       <main>
         <section>
           {/* Critical sections load first */}

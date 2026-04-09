@@ -18,6 +18,14 @@ export async function generateMetadata() {
             description: seometadata?.description || "Explore our wide range of services to empower your business through innovative solutions.",
             keywords: seometadata?.keyword || "services, beas consultancy, business solutions, software development",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: canonicalUrl,
               },
@@ -27,6 +35,8 @@ export async function generateMetadata() {
                 images: seometadata?.image
                     ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
                 url: canonicalUrl,
+                type: "website",
+                siteName: "Beas Consultancy and Services Pvt. Ltd.",
             },
         };
     } catch (error) {
@@ -34,6 +44,14 @@ export async function generateMetadata() {
         return {
             title: "Industries",
             description: "Explore our wide range of services to empower your business through innovative solutions.",
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: baseUrl,
               },

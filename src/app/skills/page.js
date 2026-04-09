@@ -27,6 +27,14 @@ export async function generateMetadata() {
       authors: [
         { name: seo?.author || "BEAS Consultancy And Services Private Limited" }
       ],
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      other: {
+          publisher: "BEAS Consultancy And Services Private Limited",
+      },
       alternates: {
         canonical: canonicalUrl,
       },
@@ -37,6 +45,8 @@ export async function generateMetadata() {
           ? [`${env.BACKEND_BASE_URL}${seo.image}`]
           : [],
         url: canonicalUrl,
+        type: "website",
+        siteName: "Beas Consultancy and Services Pvt. Ltd.",
       }
     };
   } catch (error) {
@@ -44,6 +54,14 @@ export async function generateMetadata() {
     return {
       title: "Skills",
       description: "Explore our skills",
+      robots: {
+        index: true,
+        follow: true,
+      },
+
+      other: {
+          publisher: "BEAS Consultancy And Services Private Limited",
+      },
       alternates: {
         canonical: baseUrl,
       },

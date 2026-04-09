@@ -20,6 +20,14 @@ export async function generateMetadata({ params }) {
             description: seometadata?.description || "Explore the industries we serve with expert solutions tailored to your business needs. Discover how Beas Consultancy empowers various sectors.",
             keywords: seometadata?.keyword || "Industries, IT Services, Beas Consultancy & Services Pvt. Ltd., Software Solutions, Healthcare, Education, Retail, Manufacturing",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: canonicalUrl,
               },
@@ -29,6 +37,8 @@ export async function generateMetadata({ params }) {
                 images: seometadata?.image
                     ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
                 url: canonicalUrl,
+                type: "website",
+                siteName: "Beas Consultancy and Services Pvt. Ltd.",
             },
         };
     } catch (error) {
@@ -37,6 +47,14 @@ export async function generateMetadata({ params }) {
         return {
             title: "Home",
             description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: baseUrl,
               },

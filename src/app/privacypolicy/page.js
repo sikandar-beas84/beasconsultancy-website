@@ -18,9 +18,17 @@ export async function generateMetadata() {
             description:
                 seo?.description ||
                 "Explore the Privacy Policy and capabilities of Beas Consultancy.",
+            robots: {
+                index: true,
+                follow: true,
+            },
+            
+            other: {
+                publisher: "BEAS Consultancy And Services Private Limited",
+            },
             alternates: {
-                canonical: canonicalUrl,
-                },
+            canonical: canonicalUrl,
+            },
             openGraph: {
                 title: seo?.title,
                 description: seo?.description ?? 'Explore the Privacy Policy and capabilities of Beas Consultancy.',
@@ -36,19 +44,31 @@ export async function generateMetadata() {
                     ? [seo.author]
                     : ["BEAS Consultancy And Services Private Limited"],
                 url: canonicalUrl,
+                type: "website",
+                siteName: "Beas Consultancy and Services Pvt. Ltd.",
             }
         };
     } catch (error) {
         const baseUrl = env.FRONTEND_BASE_URL;
     
         return {
-          title: "Privacy Policy",
-          description:
+            title: "Privacy Policy",
+            description:
             "Explore the Privacy Policy and capabilities of Beas Consultancy.",
-    
-          alternates: {
+            robots: {
+                index: true,
+                follow: true,
+            },
+        
+            other: {
+                publisher: "BEAS Consultancy And Services Private Limited",
+            },
+            alternates: {
+            canonical: canonicalUrl,
+            },
+            alternates: {
             canonical: baseUrl,
-          },
+            },
         };
       }
 }

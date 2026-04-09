@@ -22,6 +22,14 @@ export async function generateMetadata() {
             authors: [
                 { name: seo?.author || "BEAS Consultancy And Services Private Limited" }
             ],
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: canonicalUrl,
               },
@@ -32,6 +40,8 @@ export async function generateMetadata() {
                     ? [`${env.BACKEND_BASE_URL}${seo.image}`] // ✅ FIXED
                     : [],
                 url: canonicalUrl,
+                type: "website",
+                siteName: "Beas Consultancy and Services Pvt. Ltd.",
             },
         }
     } catch (error) {
@@ -39,6 +49,14 @@ export async function generateMetadata() {
         return {
             title: "Contact us",
             description: "Get in touch with us",
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: baseUrl,
               },

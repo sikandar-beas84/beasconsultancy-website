@@ -52,6 +52,17 @@ export async function generateMetadata({ params }) {
       description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
       keywords: seometadata?.keyword || "IT Consulting, Software Development, Digital Transformation, Business Solutions, Technology Partners, Beas Consultancy",
       authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+      robots: {
+          index: true,
+          follow: true,
+      },
+
+      other: {
+          publisher: "BEAS Consultancy And Services Private Limited",
+      },
+      alternates: {
+      canonical: canonicalUrl,
+      },
       alternates: {
         canonical: canonicalUrl,
       },
@@ -61,16 +72,29 @@ export async function generateMetadata({ params }) {
         images: seometadata?.image
           ? [`${env.BACKEND_BASE_URL}${seometadata?.image}`] : '',
         url: canonicalUrl,
+        type: "website",
+        siteName: "Beas Consultancy and Services Pvt. Ltd.",
       },
     };
   } catch (error) {
     const baseUrl = env.FRONTEND_BASE_URL;
     return {
-      title: "Home",
-      description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
-      alternates: {
-        canonical: baseUrl,
+        title: "Home",
+        description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
+        robots: {
+          index: true,
+          follow: true,
       },
+
+      other: {
+          publisher: "BEAS Consultancy And Services Private Limited",
+      },
+      alternates: {
+      canonical: canonicalUrl,
+      },
+        alternates: {
+          canonical: baseUrl,
+        },
     };
   }
 }

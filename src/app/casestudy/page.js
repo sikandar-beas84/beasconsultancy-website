@@ -19,6 +19,14 @@ export async function generateMetadata() {
             description: seometadata?.description || "Learn how BEAS delivered business impact",
             keywords: seometadata?.keyword || "case study, business solution, project success",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: canonicalUrl,
               },
@@ -29,6 +37,8 @@ export async function generateMetadata() {
                     && `${env.BACKEND_BASE_URL}${seometadata.image}`,
                 url: canonicalUrl,
                 // : `${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`
+                type: "website",
+                siteName: "Beas Consultancy and Services Pvt. Ltd.",
 
             },
         };
@@ -37,6 +47,14 @@ export async function generateMetadata() {
         return {
             title: "Home",
             description: "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: baseUrl,
               },

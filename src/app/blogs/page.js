@@ -19,6 +19,15 @@ export async function generateMetadata() {
             description: seometadata?.description || "Explore exciting Blog opportunities with us.",
             keywords: seometadata?.keyword || "Blog, posting",
             authors: [{ name: seometadata?.author || "BEAS Consultancy And Services Private Limited" }],
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+                  "article:author": "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: canonicalUrl,
             },
@@ -29,7 +38,9 @@ export async function generateMetadata() {
                     && `${env.BACKEND_BASE_URL}${seometadata.image}`,
                 // : `${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`,
                 url: canonicalUrl,
-
+                type: "website",
+                siteName: "Beas Consultancy and Services Pvt. Ltd.",
+  
             },
         };
     } catch (error) {
@@ -37,6 +48,15 @@ export async function generateMetadata() {
         return {
             title: "Carrer",
             description: "Explore exciting career opportunities with us.",
+            robots: {
+                index: true,
+                follow: true,
+              },
+        
+              other: {
+                  publisher: "BEAS Consultancy And Services Private Limited",
+                  "article:author": "BEAS Consultancy And Services Private Limited",
+              },
             alternates: {
                 canonical: baseUrl,
               },

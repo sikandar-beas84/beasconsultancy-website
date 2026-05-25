@@ -422,7 +422,7 @@ export default async function Home() {
           title="Beas Consultancy and Services Pvt. Ltd."
           description="BEAS Consultancy provides innovative IT services worldwide — from cloud migration to software development and application maintenance for enterprises."
           url="https://www.beasconsultancy.com"
-          image="https://www.beasconsultancy.com/assets/images/beas-logo.png"
+          image="https://www.beasconsultancy.com/assets/images/logo.png"
           publishedDate="2026-04-08"
         />
       <main>

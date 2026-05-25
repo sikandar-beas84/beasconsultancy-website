@@ -63,7 +63,7 @@ export async function generateMetadata() {
         }
     }
 }
-
+import JsonLd from "@/components/JsonLd"
 const Page = async () => {
     try {
         const [contact, faqData] = await Promise.all([
@@ -74,12 +74,23 @@ const Page = async () => {
             return <div>Loading...</div>;
         }
         return (
+            <>
+            {/* JSON-LD SCHEMA (ADD THIS BLOCK) */}
+            <JsonLd
+                type="ContactUs"
+                title="Beas Consultancy and Services Pvt. Ltd."
+                description="Reach BEAS Consultancy’s IT professionals for project discussions, cloud consulting, and software solutions built for scalability and performance."
+                url="https://www.beasconsultancy.com/contact"
+                image="https://www.beasconsultancy.com/assets/images/logo.png"
+                publishedDate="2026-04-08"
+                />
             <div>
                 <ContactUs  
                     contactus={contact?.data?.contact || null} 
                     faqs={faqData?.data?.faqs || []} 
                 />
             </div>
+            </>
         )
     } catch (error) {
         console.error('Error fetching contact page data:', error);

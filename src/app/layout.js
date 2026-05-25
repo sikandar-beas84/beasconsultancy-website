@@ -26,6 +26,9 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Beas Consultancy",
   description: "Beas Consultancy & Services Pvt. Ltd. - AI-Driven IT Solutions",
+  verification: {
+    google: "KhkMLvYArHux_OJ4Mwd7b5kksktTCy5KqSzF4E4drUU",
+  },
   icons: {
     icon: "/favicon.ico",
   },

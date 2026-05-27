@@ -88,25 +88,4 @@ const Skills = ({ skills}) => {
 };
 
 export default Skills;
-// export async function getStaticProps() {
-//   try {
-//     const [homeres, skillsRes, seoRes] = await Promise.all([
-//       HomeService.homePage(),
-//       HomeService.menuSkillPage(),
-//       HomeService.seobyslug('skills')
-//     ]);
 
-//     return {
-//       props: {
-//         skills: skillsRes?.data?.skills || null,
-//         seometadata: seoRes?.data?.seometa || null,
-//         homeData: homeres?.data || null
-//       },
-//       revalidate: 600 // 10 minutes
-//     };
-//   } catch (error) {
-//     return {
-//       notFound: true
-//     };
-//   }
-// }

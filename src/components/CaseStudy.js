@@ -1,4 +1,6 @@
 'use client'
+import { AnimatePresence, motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
@@ -19,7 +21,7 @@ const CasestudyGeneric = ({
     arrow
 }) => {
     const router = useRouter();
-
+    const pathname = usePathname();
     if (router.isFallback) return <div>Loading...</div>;
 
     /* ----------------------------------
@@ -61,18 +63,32 @@ const CasestudyGeneric = ({
         (activeIndex - 1 + projects.length) % projects.length;
     const nextIndex =
         (activeIndex + 1) % projects.length;
-
+    const [isAnimating, setIsAnimating] = useState(false);
     const changeCaseStudy = (index) => {
+        // const project = projects[index];
+
+        // router.push(
+        //     `/casestudy/${project.slug}`,
+        //     undefined,
+        //     { shallow: true }
+        // );
+
+        // setActiveIndex(index);
+        // window.scrollTo({ top: 0, behavior: "smooth" });
+
         const project = projects[index];
-
-        router.push(
-            `/casestudy/${project.slug}`,
-            undefined,
-            { shallow: true }
-        );
-
         setActiveIndex(index);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        router.push(`/casestudy/${project.slug}`,{scroll: false});
+
+        // if (isAnimating) return;
+
+        // setIsAnimating(true);
+        // setActiveIndex(index);
+
+        // setTimeout(() => {
+        //     router.push(`/casestudy/${projects[index].slug}`);
+        //     setIsAnimating(false);
+        // }, 300);
     };
 
     /* ----------------------------------
@@ -116,7 +132,18 @@ const CasestudyGeneric = ({
                 url={metaUrl}
                 author={metaAuthor}
             /> */}
-
+            {/* <AnimatePresence mode="wait">
+            <motion.div
+                key={pathname}
+                initial={{ x: 80, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -80, opacity: 0 }}
+                transition={{
+                    duration: 0.35,
+                    ease: "easeOut",
+                }}
+                style={{ position: "relative" }}
+            > */}
             <main>
                 <BreadCrumb
                     pagetitle={activeCaseStudy?.title}
@@ -146,7 +173,17 @@ const CasestudyGeneric = ({
                             </button>
                         </div>
                     </Container>}
-
+                    <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activeCaseStudy?.slug}
+                        initial={{ x: 25, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        exit={{ x: -25, opacity: 0 }}
+                        transition={{
+                        duration: 0.3,
+                        ease: "easeOut",
+                        }}
+                    >
                     <Container className="pb-5 ccase-study-container">
                         <Row>
                             <Col xs={12}>
@@ -261,12 +298,15 @@ const CasestudyGeneric = ({
                             </Col>
                         </Row>
                     </Container>
-
+                    </motion.div>
+                    </AnimatePresence>
                     {showForm && (
                         <SlideQueryComponent modalshow={showForm} />
                     )}
                 </div>
             </main>
+                    {/* </motion.div>
+    </AnimatePresence> */}
         </>
     );
 };

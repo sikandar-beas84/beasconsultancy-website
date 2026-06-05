@@ -4488,7 +4488,14 @@ textarea.form-control.h-150.mb-3 {
     border-radius: 5px;}
 
 .ccase-study-container {
+   min-height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
 
+.ccase-study-container::-webkit-scrollbar {
+    display: none;
 }
 
 
@@ -7179,3 +7186,10 @@ transform-origin: 0 0;}
 }
 /* -- Responsive - min-width: 360px; -- start ============= */
 
+.breadcrumbWrap .pageTitle {
+    max-height: 80px;
+    min-height: 80px;
+}
+.breadcrumbWrap {
+    padding: 55px 0;
+}

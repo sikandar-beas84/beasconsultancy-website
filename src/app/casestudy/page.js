@@ -81,7 +81,7 @@ const Page = async ({ searchParams }) => {
 
     return (
         <div>
-            <CasestudyGeneric menucasestudy={menucasestudy} homeData={homeData} projects={projetcs?.data?.projects} slug={id} arrow={false} />
+            <CasestudyGeneric menucasestudy={menucasestudy} homeData={homeData} projects={projetcs?.data?.projects} slug={menucasestudy?.menu_contents?.slug} arrow={true} />
         </div>
     )
 }

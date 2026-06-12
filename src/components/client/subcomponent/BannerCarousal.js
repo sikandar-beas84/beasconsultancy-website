@@ -334,6 +334,12 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
   const clientsettings = clientOwlOptions;
   // OWL Carousel Code End
 
+  function truncateText(text, limit) {
+    if (text.length <= limit) return text;
+    const lastSpace = text.lastIndexOf(" ", limit);
+    return text.slice(0, lastSpace) + "...";
+  }
+
   return (
     <>
 
@@ -543,7 +549,8 @@ const BannerCarousal = ({ page, technologiya, clients, projects, testimonials, b
                   <div className="pport_image_title_block">
                     <h3 className='pport-image-title'>{titleText}</h3>
                   </div>
-                  <div className='blog-hm-desc p-3'>{item?.short_desc}</div>
+                  <div className='blog-hm-desc p-3'>{truncateText(item?.short_desc, 100)}</div>
+                  {/* <div className='blog-hm-desc p-3'>{item?.short_desc?.length > 100 ? item?.short_desc?.slice(0, 100) + "..." : item?.short_desc}</div> */}
                   <div className="port-tags">
                     { longdesc?.map((item, index)=>(
                     <h4 key={index}>{item}</h4>

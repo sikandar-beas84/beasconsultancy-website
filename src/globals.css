@@ -4489,7 +4489,7 @@ textarea.form-control.h-150.mb-3 {
 
 .ccase-study-container {
    min-height: 100vh;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     scrollbar-width: none;
     -ms-overflow-style: none;
 }

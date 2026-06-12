@@ -154,16 +154,16 @@ const Header = ({ homeData, loading  }) => {
     if (!Array.isArray(children)) return [];
   
     const expanded = children.flatMap(item => {
-      if (item.slug === "application-solutioning") {
-        return item.children?.map(child => ({
+      if (item?.slug === "application-solutioning") {
+        return item?.children?.map(child => ({
           slug: child.slug,
           name: child.name,
         })) || [];
       }
   
       return [{
-        slug: item.slug,
-        name: item.name,
+        slug: item?.slug,
+        name: item?.name,
       }];
     });
   
@@ -236,7 +236,7 @@ const Header = ({ homeData, loading  }) => {
                 ?.sort((a, b) => a.order - b.order) // sort menus by order field
                 ?.map((item, index) => {
                   // Special dropdown for Industries
-                  if (item.slug === "industries") {
+                  if (item?.slug === "industries") {
                     return (
                       <NavDropdown
                         key={index}
@@ -270,7 +270,7 @@ const Header = ({ homeData, loading  }) => {
                   }
 
                   // Special dropdown for Services
-                  if (item.slug === "services") {
+                  if (item?.slug === "services") {
 
                     return (
                       <NavDropdown
@@ -293,11 +293,11 @@ const Header = ({ homeData, loading  }) => {
                         {finalServices?.map((item, index) => (
                           <Link
                             key={index}
-                            href={`/services/${item.slug}`}
+                            href={`/services/${item?.slug}`}
                             className="dropdown-item"
                             onClick={closeNavbar}
                           >
-                            {item.name}
+                            {item?.name}
                           </Link>
                         ))}
                       </NavDropdown>
@@ -306,24 +306,24 @@ const Header = ({ homeData, loading  }) => {
                   }
 
                   // Special case for Case Study
-                  if (item.slug === "casestudy") {
+                  if (item?.slug === "casestudy") {
                     return (
-                      // <Nav.Link href={`/${item.slug}/${casestudy.slug}`} key={index}>
-                      //   {item.name}
+                      // <Nav.Link href={`/${item?.slug}/${casestudy.slug}`} key={index}>
+                      //   {item?.name}
                       // </Nav.Link>
-                      <Link  key={index}  href={`/${item.slug}/${casestudy.slug}`} className="nav-link" onClick={closeNavbar}>
-                      {item.name}
+                      <Link  key={index}  href={`/${item?.slug}/${casestudy?.slug}`} className="nav-link" onClick={closeNavbar}>
+                      {item?.name}
                     </Link>
                     );
                   }
 
                   // Default menu item
                   return (
-                    // <Nav.Link href={`/${item.slug}`} key={index}>
-                    //   {item.name}
+                    // <Nav.Link href={`/${item?.slug}`} key={index}>
+                    //   {item?.name}
                     // </Nav.Link>
-                    <Link   key={index} href={`/${item.slug}`} className="nav-link" onClick={closeNavbar}>
-                    {item.name}
+                    <Link   key={index} href={`/${item?.slug}`} className="nav-link" onClick={closeNavbar}>
+                    {item?.name}
                   </Link>
                   );
                 })}

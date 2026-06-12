@@ -64,6 +64,10 @@ export async function generateMetadata() {
 const Page = async ({ searchParams }) => {
     const params = await searchParams;
     const id = params?.id;
+    let checkSlugUndefined = false;
+    if(id === undefined){
+        checkSlugUndefined = true
+    }
     const [common, projetcs, caseStudy] = await Promise.all([getDataService('get-home-common'), getDataService('get-projects'), getDataService('get-menu-casestudy')])
     // const currentIndex = projetcs?.data?.projects?.findIndex(
     //     (item) => item?.slug?.toString() === id
@@ -81,7 +85,7 @@ const Page = async ({ searchParams }) => {
 
     return (
         <div>
-            <CasestudyGeneric menucasestudy={menucasestudy} homeData={homeData} projects={projetcs?.data?.projects} slug={menucasestudy?.menu_contents?.slug} arrow={true} />
+            <CasestudyGeneric menucasestudy={menucasestudy} homeData={homeData} projects={projetcs?.data?.projects} slug={id} arrow={false} checkSlugUndefined= {checkSlugUndefined} />
         </div>
     )
 }

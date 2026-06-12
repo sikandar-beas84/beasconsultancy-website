@@ -18,7 +18,8 @@ const CasestudyGeneric = ({
     currentSlug,
     homeData,
     slug,
-    arrow
+    arrow,
+    checkSlugUndefined
 }) => {
     const router = useRouter();
     const pathname = usePathname();
@@ -40,7 +41,7 @@ const CasestudyGeneric = ({
     const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
-        const timer = setTimeout(() => setShowForm(true), 15000);
+        const timer = setTimeout(() => setShowForm(true), 120000);
         return () => clearTimeout(timer);
     }, []);
 
@@ -153,6 +154,7 @@ const CasestudyGeneric = ({
                         currentStudy: activeIndex + 1,
                         totalStudy: projects.length,
                     }}
+                    checkSlugUndefined={checkSlugUndefined}
                 />
 
                 <div className="bgF2F4F7 p-relative">
@@ -185,10 +187,11 @@ const CasestudyGeneric = ({
                         }}
                     >
                     <Container className="pb-5 ccase-study-container">
+                        {!checkSlugUndefined && (
                         <Row>
                             <Col xs={12}>
                                 <h1 className="inner-page-title-small">
-                                    {activeCaseStudy?.title}
+                                    {/* {activeCaseStudy?.title} */}
                                 </h1>
                             </Col>
 
@@ -281,7 +284,7 @@ const CasestudyGeneric = ({
                                 </div>
                             </Col>
                         </Row>
-
+                        )}
                         <Row>
                             <Col xs={12} className="mt-5 text-center">
                                 <h1 className="inner-page-title mb-2">

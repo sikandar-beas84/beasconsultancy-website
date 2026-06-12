@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { env } from '@/util/constants/common';
-const BreadCrumb = ({pagetitle, pageslug, pageBanner, totalCasestudy}) => {
+const BreadCrumb = ({pagetitle, pageslug, pageBanner, totalCasestudy, checkSlugUndefined}) => {
 
   const bannerUrl = `${env.BACKEND_BASE_URL}${pageBanner}`;
   const bgStyle = {
@@ -11,19 +11,20 @@ const BreadCrumb = ({pagetitle, pageslug, pageBanner, totalCasestudy}) => {
 
   return (
     <section className="breadcrumbBg" style={bgStyle}>
+      {/* {!checkSlugUndefined && ( */}
       <Container>
         <Row>
           <Col>
            <div className='breadcrumbWrap'>
              <div className='pageTitle'>{pagetitle}</div>
-             {/* <div className='pgNameListing'>
+             <div className='pgNameListing'>
               <ul>
-                <li>Home</li>
-                {pageslug && <li>{pageslug}</li>}
-                <li>{pagetitle}</li>
+                
+                {checkSlugUndefined && pageslug && <li style={{fontSize:35}}>{pageslug}</li>}
+                
               </ul>
-             </div> */}
-             { totalCasestudy && 
+             </div>
+             { totalCasestudy && !checkSlugUndefined &&
              <Row>
               <Col xs={12} className="position-relative">
                 <p className="totalCasestudy">Case Study: <span>{totalCasestudy?.currentStudy}</span> / {totalCasestudy?.totalStudy}</p>
@@ -34,6 +35,7 @@ const BreadCrumb = ({pagetitle, pageslug, pageBanner, totalCasestudy}) => {
           </Col>
         </Row>
       </Container>
+      {/* )} */}
     </section>
   )
 }

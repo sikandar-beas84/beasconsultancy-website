@@ -74,7 +74,9 @@ const Blogs = ({ blogs, commonblog }) => {
                                 const monthName = created_at
                                     ? new Intl.DateTimeFormat('en-US', { month: 'short' }).format(created_at)
                                     : "";
-
+                                const year = created_at
+                                    ? String(created_at.getFullYear())
+                                    : "";
                                 return (
                                     <div className="col-12 col-md-6 col-lg-4" key={index}>
                                         <div>
@@ -91,7 +93,7 @@ const Blogs = ({ blogs, commonblog }) => {
                                                             className="img-fluid port-shw"
                                                         />
                                                         <div className="guidcal">
-                                                            <strong>{day}</strong> <br /><span>{monthName}</span>
+                                                            <strong>{day}</strong> <br /><span>{monthName}</span> <br /><span>{year}</span>
                                                         </div>
                                                     </div>
                                                     <div className="guidtext">

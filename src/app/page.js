@@ -308,6 +308,36 @@ async function TechnologySection() {
   );
 }
 
+async function ClientSection() {
+  const [clientsData, common] = await Promise.all([
+    getDataService('get-clients'),
+    getDataServiceLongCashe('get-home-common')
+  ]);
+  const allclient = clientsData?.data?.clients;
+  const homeData = common?.data || null;
+
+  return (
+    <div className="client">
+      <div className="container">
+        <div className="serv-head">
+          <h2>{homeData?.clienthomepage?.title}</h2>
+          <p>{homeData?.clienthomepage?.long_desc}</p>
+        </div>
+        <div className="test-inr">
+          <div className="row">
+            <div className="col-lg-12 col-md-12 col-sm-12">
+              <BannerCarousalClient
+                page="clients"
+                clients={allclient}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 async function TestimonialSection() {
   const [testimonials, common] = await Promise.all([
     getDataService('get-home-testimonials'),
@@ -480,6 +510,10 @@ export default async function Home() {
 
           <Suspense fallback={<SectionLoader />}>
             <TechnologySection />
+          </Suspense>
+
+          <Suspense fallback={<SectionLoader />}>
+            <ClientSection />
           </Suspense>
 
           <Suspense fallback={<SectionLoader />}>

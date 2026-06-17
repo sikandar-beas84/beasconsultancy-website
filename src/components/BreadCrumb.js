@@ -10,12 +10,12 @@ const BreadCrumb = ({pagetitle, pageslug, pageBanner, totalCasestudy, checkSlugU
   
 
   return (
-    <section className="breadcrumbBg" style={bgStyle}>
+    <section className="breadcrumbBg caseStudyBanner" style={bgStyle}>
       {/* {!checkSlugUndefined && ( */}
       <Container>
         <Row>
           <Col>
-           <div className='breadcrumbWrap'>
+           <div className='breadcrumbWrap caseStudyBannerText'>
              <div className='pageTitle'>{pagetitle}</div>
              <div className='pgNameListing'>
               <ul>

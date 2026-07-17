@@ -3,15 +3,23 @@ import CasestudyGeneric from '@/components/CaseStudy';
 import React from 'react'
 import { env } from '@/util/constants/common';
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }) {
+    
+    const { slug } = await params;
     try {
-        const seoRes = await postService('get-seo-by-slug', 'casestudies');
+        const seoRes = await postService('get-seo-by-slug', slug);
         const seometadata = seoRes?.data?.seometa || null;
+
         const baseUrl = env.FRONTEND_BASE_URL;
+        const backendUrl = env.BACKEND_BASE_URL;
 
         const canonicalUrl = seometadata?.url
-        ? `${baseUrl}${seometadata.url}`
+        ? `${baseUrl}casestudy/${seometadata.url}`
         : baseUrl;
+
+        const imageUrl = seometadata?.image
+        ? `${backendUrl}${seometadata.image}`
+        : `${backendUrl}/assets/img/logo/1765541148_image.png`;
 
         return {
             title: seometadata?.title || "Home",
@@ -32,9 +40,7 @@ export async function generateMetadata() {
             openGraph: {
                 title: seometadata?.title || "Home",
                 description: seometadata?.description || "Learn about our 25+ years of IT consulting expertise, client stories, and services.",
-                images: seometadata?.image
-                    && `${env.BACKEND_BASE_URL}${seometadata.image}`,
-                // : `${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`
+                images: imageUrl,
                 url: canonicalUrl,
                 type: "website",
                 siteName: "Beas Consultancy and Services Pvt. Ltd.",

@@ -35,6 +35,20 @@ const CasestudyGeneric = ({
     const [activeIndex, setActiveIndex] = useState(initialIndex);
     const activeCaseStudy = projects[activeIndex];
 
+    useEffect(() => {
+        projects.forEach((project) => {
+            if (project.image) {
+                const img = new window.Image();
+                img.src = `${env.BACKEND_BASE_URL}${project.image}`;
+            }
+
+            if (project.samplescreen) {
+                const img2 = new window.Image();
+                img2.src = `${env.BACKEND_BASE_URL}${project.samplescreen}`;
+            }
+        });
+    }, [projects]);
+
     /* ----------------------------------
        Delayed Form
     ---------------------------------- */
@@ -177,12 +191,12 @@ const CasestudyGeneric = ({
                     </Container>}
                     <AnimatePresence mode="wait">
                     <motion.div
-                        key={activeCaseStudy?.slug}
-                        initial={{ x: 25, opacity: 0 }}
+                        //key={activeCaseStudy?.slug}
+                        initial={{ x: 10, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: -25, opacity: 0 }}
+                        exit={{ x: -10, opacity: 0 }}
                         transition={{
-                        duration: 0.3,
+                        duration: 0.01,
                         ease: "easeOut",
                         }}
                     >
@@ -197,14 +211,16 @@ const CasestudyGeneric = ({
 
                             <Col xs={12} lg={5}>
                                 <div className="caseStudy_imgblock">
+                                    {activeCaseStudy?.image && (
                                     <Image
                                         width={600}
                                         height={150}
                                         src={`${env.BACKEND_BASE_URL}${activeCaseStudy?.image}`}
-                                        alt="image"
+                                        alt={activeCaseStudy?.title || "Case study image"}
                                         className="img-fluid"
-                                        loading="lazy"
+                                        priority
                                     />
+                                    )}
                                 </div>
                             </Col>
 
@@ -255,13 +271,14 @@ const CasestudyGeneric = ({
                                                         }}
                                                     />
                                                 ) : (
-                                                    <Image
-                                                        width={550}
-                                                        height={50}
-                                                        src={`${env.BACKEND_BASE_URL}${activeCaseStudy?.samplescreen}`}
-                                                        alt="image"
-                                                        className="img-fluid"
-                                                    />
+                                                    activeCaseStudy?.samplescreen && (
+                                                        <Image
+                                                            width={550}
+                                                            height={50}
+                                                            src={`${env.BACKEND_BASE_URL}${activeCaseStudy.samplescreen}`}
+                                                            alt="Sample Screen"
+                                                        />
+                                                    )
                                                 )}
                                             </Accordion.Body>
                                         </Accordion.Item>

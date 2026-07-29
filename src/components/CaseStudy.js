@@ -93,7 +93,12 @@ const CasestudyGeneric = ({
 
         const project = projects[index];
         setActiveIndex(index);
-        router.push(`/casestudy/${project.slug}`,{scroll: false});
+        //router.push(`/casestudy/${project.slug}`,{scroll: false});
+        window.history.replaceState(
+        {},
+        "",
+        `/casestudy/${project.slug}`
+        );
 
         // if (isAnimating) return;
 
@@ -189,12 +194,12 @@ const CasestudyGeneric = ({
                             </button>
                         </div>
                     </Container>}
-                    <AnimatePresence mode="wait">
+                    {/* <AnimatePresence mode="wait"> */}
                     <motion.div
                         //key={activeCaseStudy?.slug}
-                        initial={{ x: 10, opacity: 0 }}
+                        initial={{ x: 25, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: -10, opacity: 0 }}
+                        exit={{ x: -25, opacity: 0 }}
                         transition={{
                         duration: 0.01,
                         ease: "easeOut",
@@ -319,7 +324,7 @@ const CasestudyGeneric = ({
                         </Row>
                     </Container>
                     </motion.div>
-                    </AnimatePresence>
+                    {/* </AnimatePresence> */}
                     {showForm && (
                         <SlideQueryComponent modalshow={showForm} />
                     )}

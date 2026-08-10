@@ -39,10 +39,12 @@ const nextConfig = {
         has: [
           {
             type: "host",
-            value: "beasconsultancy.com", // non-www
+            //value: "beasconsultancy.com", // non-www
+            value: "beta.beasconsultancy.com", // non-www
           },
         ],
-        destination: "https://www.beasconsultancy.com/:path*",
+        destination: "https://www.beta.beasconsultancy.com/:path*",
+        //destination: "https://www.beasconsultancy.com/:path*",
         permanent: true, // 301 redirect (SEO best)
       },
     ];

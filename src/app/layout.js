@@ -12,6 +12,7 @@ import "swiper/css/pagination";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import VisitorTracker from "@/components/VisitorTracker";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -96,7 +97,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body>
-
+        <VisitorTracker />
         {/* GTM Script */}
         <Script
           id="gtm-script"

@@ -370,6 +370,13 @@ export default function VisitorTracker() {
                 // SUCCESS
                 (position) => {
 
+                    console.log(
+                        "GPS location:",
+                        position.coords.latitude,
+                        position.coords.longitude,
+                        position.coords.accuracy
+                    );
+
                     const latitude =
                         position.coords.latitude;
 
@@ -392,7 +399,8 @@ export default function VisitorTracker() {
                 (error) => {
 
                     console.log(
-                        "GPS location unavailable:",
+                        "GPS unavailable:",
+                        error.code,
                         error.message
                     );
 
@@ -405,9 +413,9 @@ export default function VisitorTracker() {
 
                 // OPTIONS
                 {
-                    enableHighAccuracy: true,
-                    timeout: 10000,
-                    maximumAge: 300000,
+                    enableHighAccuracy: false,
+                    timeout: 30000,
+                    maximumAge: 600000
                 }
             );
 

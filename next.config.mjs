@@ -39,8 +39,8 @@ const nextConfig = {
         has: [
           {
             type: "host",
-            //value: "beasconsultancy.com", // non-www
-            value: "beta.beasconsultancy.com", // non-www
+            value: "beasconsultancy.com", // non-www
+            //value: "beta.beasconsultancy.com", // non-www
           },
         ],
         destination: "https://www.beta.beasconsultancy.com/:path*",

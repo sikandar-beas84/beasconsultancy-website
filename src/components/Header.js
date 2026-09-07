@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation';
 import { env } from '@/util/constants/common';
 import Image from 'next/image';
 import Link from "next/link";
+//import GoogleVisitorButton from "../components/GoogleVisitorButton";
 
 const Header = ({ homeData, loading  }) => {
 
@@ -187,7 +188,7 @@ const Header = ({ homeData, loading  }) => {
 
   return (
     <>
-    
+      {/* <GoogleVisitorButton/> */}
       <section className="blue-bg p-10">
         <Container>
           <Row className="align-items-center">
